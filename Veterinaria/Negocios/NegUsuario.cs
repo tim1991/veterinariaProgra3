@@ -17,6 +17,13 @@ namespace Negocios
             bool insertar = accionesUsuario.Agregar(vpoUsuario);
 
             return insertar;
+        }  
+        
+        public Sesion Loguear(Usuario vpoUsuario)
+        {
+            Sesion sesion = accionesUsuario.Loguear(vpoUsuario);
+
+            return sesion;
         } 
 
         public bool ActualizarUsuario(Usuario vpoUsuario)
@@ -31,7 +38,7 @@ namespace Negocios
         
         public List<Usuario> ListarUsuarios()
         {
-            List<Usuario> vloUsuarios = new List<Usuario>();
+            List<Usuario> vloUsuarios = accionesUsuario.listarUsuarios();
 
             return vloUsuarios;
         } 

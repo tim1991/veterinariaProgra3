@@ -16,7 +16,7 @@ namespace Veterinaria
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FRMUsuarios());
+            Application.Run(new FRMLongin());
         }
     }
 }
