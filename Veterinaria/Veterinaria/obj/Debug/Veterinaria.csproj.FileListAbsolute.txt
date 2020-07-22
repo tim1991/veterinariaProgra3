@@ -1,0 +1,17 @@
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\bin\Debug\Veterinaria.exe.config
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\bin\Debug\Veterinaria.exe
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\bin\Debug\Veterinaria.pdb
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.csprojAssemblyReference.cache
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.Properties.Resources.resources
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.csproj.GenerateResource.cache
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.csproj.CoreCompileInputs.cache
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.exe
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.pdb
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\bin\Debug\Entidades.dll
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\bin\Debug\Negocios.dll
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\bin\Debug\Datos.dll
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\bin\Debug\Entidades.pdb
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\bin\Debug\Negocios.pdb
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\bin\Debug\Datos.pdb
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.FRMUsuarios.resources
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.csproj.CopyComplete
