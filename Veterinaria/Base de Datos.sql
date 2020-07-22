@@ -84,7 +84,7 @@ create table DetalleFactura
 CREATE PROCEDURE listarRoles
 AS
 SELECT * FROM Roles
-GO;
+GO
 
 CREATE PROCEDURE agregarUsuario
 	@Cedula int ,
@@ -98,5 +98,21 @@ CREATE PROCEDURE agregarUsuario
 AS
 BEGIN
 INSERT INTO Usuario (Cedula,NombrePersona,Contrasena,Apellidos,Email,Telefono,Direccion,IdRol) VALUES (@Cedula,@NombrePersona,@Contrasena,@Apellidos,@Email,@Telefono,@Direccion,@IdRol)
+END
+GO
+
+
+CREATE PROCEDURE listarUsuarios
+AS
+SELECT Usuario.*,Roles.Detalle FROM Usuario INNER JOIN Roles ON Roles.IdRol = Usuario.IdRol
+GO
+
+
+CREATE PROCEDURE ingresar
+@Email varchar(50),
+@Contrasena varchar(20)
+AS
+BEGIN
+SELECT Usuario.*,Roles.Detalle FROM Usuario INNER JOIN Roles ON Roles.IdRol = Usuario.IdRol WHERE Usuario.Email = @Email AND Usuario.Contrasena = @Contrasena
 END
 GO

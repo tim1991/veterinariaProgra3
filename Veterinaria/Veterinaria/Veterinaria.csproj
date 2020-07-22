@@ -52,10 +52,28 @@
     <Compile Include="FRMUsuarios.Designer.cs">
       <DependentUpon>FRMUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRMLongin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMLongin.Designer.cs">
+      <DependentUpon>FRMLongin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIPrincipal.Designer.cs">
+      <DependentUpon>MDIPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FRMUsuarios.resx">
       <DependentUpon>FRMUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMLongin.resx">
+      <DependentUpon>FRMLongin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIPrincipal.resx">
+      <DependentUpon>MDIPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

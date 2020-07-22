@@ -22,6 +22,7 @@ namespace Veterinaria
         {
             InitializeComponent();
             cargarRoles();
+            cargarUsuarios();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,6 +46,8 @@ namespace Veterinaria
 
                 if (insertar)
                 {
+                    limpiarCampos();
+                    cargarUsuarios();
                     MessageBox.Show("Usuario creado correctamente","Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else {
@@ -62,9 +65,9 @@ namespace Veterinaria
         public bool validar()
         {
 
-            if(txtCedula.Text != String.Empty || txtNombre.Text != String.Empty || txtApellidos.Text != String.Empty 
-                || txtTelefono.Text != String.Empty || txtDireccion.Text != String.Empty || txtEmail.Text != String.Empty
-                || txtContrasena.Text != String.Empty || cboRol.SelectedItem != null)
+            if(txtCedula.Text != String.Empty && txtNombre.Text != String.Empty && txtApellidos.Text != String.Empty
+                && txtTelefono.Text != String.Empty && txtDireccion.Text != String.Empty && txtEmail.Text != String.Empty
+                && txtContrasena.Text != String.Empty && cboRol.SelectedItem != null)
             {
                 return true;
             }
@@ -76,6 +79,17 @@ namespace Veterinaria
 
         }
 
+        public void limpiarCampos()
+        {
+            txtCedula.Text = String.Empty; 
+            txtNombre.Text = String.Empty; 
+            txtApellidos.Text = String.Empty;
+            txtTelefono.Text = String.Empty; 
+            txtDireccion.Text = String.Empty; 
+            txtEmail.Text = String.Empty;
+            txtContrasena.Text = String.Empty; 
+        }
+
 
         public void cargarRoles()
         {
@@ -84,6 +98,32 @@ namespace Veterinaria
             cboRol.DisplayMember = "Detalle";
             cboRol.ValueMember = "IdRol";
 
+
+        } public void cargarUsuarios()
+        {
+            List<Usuario> litaUsuarios = accionesUsuario.ListarUsuarios();
+            dgvUsuarios.DataSource = litaUsuarios;
+
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDireccion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboRol_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

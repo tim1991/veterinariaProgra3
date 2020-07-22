@@ -15,3 +15,5 @@ C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\bin
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\bin\Debug\Datos.pdb
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.FRMUsuarios.resources
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.csproj.CopyComplete
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.FRMLongin.resources
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.MDIPrincipal.resources
