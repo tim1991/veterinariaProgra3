@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.Enumeradores;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +22,7 @@ namespace Veterinaria
         {
             datosUsuario = sesion;
             InitializeComponent();
-
+            permisos();
             lblUsuario.Text = datosUsuario.nombre;
             lblRol.Text = datosUsuario.nombreRol;
 
@@ -122,6 +123,16 @@ namespace Veterinaria
             FRMUsuarios usuarios = new FRMUsuarios();
             usuarios.MdiParent = this;
             usuarios.Show();
+        }
+
+        public void permisos()
+        {
+
+            if (datosUsuario.idRol != (int)EnumRoles.Administrador)
+            {
+                usuariosToolStripMenuItem.Visible = false;
+            }
+            
         }
     }
 }
