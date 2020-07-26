@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidades
+namespace Entidades.Enumeradores
 {
-    public class Class1
+    public enum EnumRoles
     {
+        Administrador = 1,
+        Vendedor = 2,
+        Cliente = 3
     }
 }
