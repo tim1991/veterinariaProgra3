@@ -116,3 +116,31 @@ BEGIN
 SELECT Usuario.*,Roles.Detalle FROM Usuario INNER JOIN Roles ON Roles.IdRol = Usuario.IdRol WHERE Usuario.Email = @Email AND Usuario.Contrasena = @Contrasena
 END
 GO
+
+CREATE PROCEDURE agregarProducto
+    @NombreProducto varchar(70),
+    @Precio money,
+    @Stock int
+AS
+BEGIN
+INSERT INTO Productos(NombreProducto, Precio, Stock)
+VALUES(@NombreProducto, @Precio, @Stock)
+END
+GO
+
+CREATE PROCEDURE actualizarProducto
+    @NombreProducto varchar(70),
+    @Precio money,
+    @Stock int
+AS
+BEGIN
+UPDATE Productos SET Precio = @Precio, Stock = @Stock WHERE NombreProducto = @NombreProducto
+END
+GO
+
+CREATE PROCEDURE mostrarProducto
+AS
+BEGIN
+SELECT * FROM Productos
+END
+GO
