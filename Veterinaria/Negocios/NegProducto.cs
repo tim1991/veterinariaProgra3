@@ -22,9 +22,9 @@ namespace Negocios
 
         public bool Actualizar(Producto producto)
         {
-            bool actualizar = accionesProducto.ActualizarProducto(producto);
+            bool update = accionesProducto.ActualizarProducto(producto);
 
-            return actualizar;
+            return update;
         }
 
         public DataTable dtTblProducto()

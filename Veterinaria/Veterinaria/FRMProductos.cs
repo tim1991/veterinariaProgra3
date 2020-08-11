@@ -61,6 +61,7 @@ namespace Veterinaria
                         MessageBox.Show("Producto agregado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         Limpiar();
+                        cargarProductos();
                     }
                 }
                 else
@@ -82,13 +83,13 @@ namespace Veterinaria
             {
                 if (validar())
                 {
-                    Producto actualizar = new Producto();
+                    Producto updateProducto = new Producto();
 
-                    actualizar.nombreProducto = txbNombre.Text;
-                    actualizar.precioProducto = int.Parse(txbPrecio.Text);
-                    actualizar.stockProducto = int.Parse(txbStock.Text);
+                    updateProducto.nombreProducto = txbNombre.Text;
+                    updateProducto.precioProducto = (int)decimal.Parse(txbPrecio.Text);
+                    updateProducto.stockProducto = int.Parse(txbStock.Text);
 
-                    bool update = accionesProducto.Actualizar(actualizar);
+                    bool update = accionesProducto.Actualizar(updateProducto);
 
                     if (update)
                     {
@@ -113,8 +114,8 @@ namespace Veterinaria
 
         public void cargarProductos()
         {
-            NegProducto listProducto = new NegProducto();
-            dgvBuscar.DataSource = listProducto.dtTblProducto();
+            NegProducto negProducto = new NegProducto();
+            dgvBuscar.DataSource = negProducto.dtTblProducto();
         }
 
         private void selecDatos()

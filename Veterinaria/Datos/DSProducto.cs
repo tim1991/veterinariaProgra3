@@ -35,7 +35,7 @@ namespace Datos
                     insertar = true;
                 }
             }
-            catch (SqlException)
+            catch (Exception e)
             {
 
             }
@@ -48,7 +48,7 @@ namespace Datos
 
         public bool ActualizarProducto(Producto producto)
         {
-            bool actualizar = false;
+            bool update = false;
 
             try
             {
@@ -62,10 +62,10 @@ namespace Datos
                     vCmd.Parameters.Add("@Stock", SqlDbType.Int).Value = producto.stockProducto;
                     vCmd.ExecuteNonQuery();
 
-                    actualizar = true;
+                    update = true;
                 }
             }
-            catch (SqlException)
+            catch (Exception e)
             {
 
             }
@@ -73,7 +73,7 @@ namespace Datos
             {
                 vCnx.Close();
             }
-            return actualizar;
+            return update;
         }
 
         public DataTable GetTblProducto()
@@ -87,7 +87,7 @@ namespace Datos
                     adaptador.Fill(tblProducto);
                 }
             }
-            catch (SqlException)
+            catch (Exception e)
             {
 
             }

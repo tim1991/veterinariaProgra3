@@ -25,7 +25,7 @@ create table Usuario
     IdRol int foreign key (IdRol) references Roles (IdRol) not null
 );
 
-insert into Usuarios(Cedula, Contrasena, NombrePersona, Apellidos, Email, Telefono, Direccion, IdRol)
+insert into Usuario(Cedula, Contrasena, NombrePersona, Apellidos, Email, Telefono, Direccion, IdRol)
 values(300010001, 'admin', 'Administrador', 'Administrador', 'admin', 88888888, 'Cartago', 1)
 
 create table Mascota
@@ -49,7 +49,7 @@ create table Cita
 
 create table Productos
 (
-    IDProducto int primary key not null,
+    IDProducto int identity(1, 1) primary key not null,
     NombreProducto varchar(70) not null,
     Precio money not null,
     Stock int  not null
