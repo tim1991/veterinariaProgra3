@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DSConexion.cs" />
+    <Compile Include="DSProducto.cs" />
     <Compile Include="DSRol.cs" />
     <Compile Include="DSUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
