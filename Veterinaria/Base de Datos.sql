@@ -116,3 +116,39 @@ BEGIN
 SELECT Usuario.*,Roles.Detalle FROM Usuario INNER JOIN Roles ON Roles.IdRol = Usuario.IdRol WHERE Usuario.Email = @Email AND Usuario.Contrasena = @Contrasena
 END
 GO
+
+
+CREATE PROCEDURE agregarMascota
+    @IdMascota int,
+    @NombreMascota varchar(10),
+    @Especie varchar(10),
+    @Raza varchar(10),
+    @Nacimiento datetime,
+    @Genero varchar(10),
+    @IDUsuario int
+AS
+BEGIN
+INSERT INTO Mascota (IdMascota,NombreMascota,Especie,Raza,Nacimiento,Genero,IDUsuario) VALUES (@IdMascota,@NombreMascota,@Especie,@Raza,@Nacimiento,@Genero,@IDUsuario)
+END
+GO
+
+CREATE PROCEDURE listarMascotas
+AS
+SELECT * FROM Mascota
+GO
+
+CREATE PROCEDURE agregarCita
+    @IdCita int,
+    @Servicio varchar(30),
+    @FechaCita datetime,
+    @IDUsuario int
+AS
+BEGIN
+INSERT INTO Cita (IdCita,Servicio,FechaCita,IDUsuario) VALUES (@IdCita,@Servicio,@FechaCita,@IDUsuari)
+END
+GO
+
+CREATE PROCEDURE listarCitas
+AS
+SELECT * FROM Cita
+GO
