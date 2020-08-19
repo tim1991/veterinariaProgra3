@@ -41,8 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NegCita.cs" />
-    <Compile Include="NegMascota.cs" />
+    <Compile Include="NegProducto.cs" />
     <Compile Include="NegRol.cs" />
     <Compile Include="NegUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

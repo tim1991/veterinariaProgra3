@@ -18,6 +18,7 @@ namespace Veterinaria
         private NegUsuario accionesUsuario = new NegUsuario();
         private NegRol accionesRol = new NegRol();
         private Rol rolSeleccionado;
+
         public FRMUsuarios()
         {
             InitializeComponent();

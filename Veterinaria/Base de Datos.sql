@@ -2,7 +2,8 @@
 create database MundoAnimalia
 use MundoAnimalia
 
-create table Roles(
+create table Roles
+(
     IdRol int primary key Identity(1,1) not null,
     Detalle varchar(100)
 );
@@ -10,9 +11,6 @@ create table Roles(
 INSERT INTO	Roles VALUES('Administrador');
 INSERT INTO	Roles VALUES('Vendedor');
 INSERT INTO	Roles VALUES('Cliente');
-
-
-
 
 create table Usuario
 (
@@ -27,8 +25,8 @@ create table Usuario
     IdRol int foreign key (IdRol) references Roles (IdRol) not null
 );
 
-
-
+insert into Usuario(Cedula, Contrasena, NombrePersona, Apellidos, Email, Telefono, Direccion, IdRol)
+values(300010001, 'admin', 'Administrador', 'Administrador', 'admin', 88888888, 'Cartago', 1)
 
 create table Mascota
 (
@@ -51,7 +49,7 @@ create table Cita
 
 create table Productos
 (
-    IDProducto int primary key not null,
+    IDProducto int identity(1, 1) primary key not null,
     NombreProducto varchar(70) not null,
     Precio money not null,
     Stock int  not null
@@ -77,7 +75,7 @@ create table DetalleFactura
     IDProducto int foreign key (IDProducto) references Productos (IDProducto) not null,
     IDFactura int foreign key (IDFactura) references Factura (IDFactura) not null
 );
-
+GO
 
 --Procedimientos almacenados
 
@@ -109,46 +107,38 @@ GO
 
 
 CREATE PROCEDURE ingresar
-@Email varchar(50),
-@Contrasena varchar(20)
+    @Email varchar(50),
+    @Contrasena varchar(20)
 AS
 BEGIN
 SELECT Usuario.*,Roles.Detalle FROM Usuario INNER JOIN Roles ON Roles.IdRol = Usuario.IdRol WHERE Usuario.Email = @Email AND Usuario.Contrasena = @Contrasena
 END
 GO
 
-
-CREATE PROCEDURE agregarMascota
-    @IdMascota int,
-    @NombreMascota varchar(10),
-    @Especie varchar(10),
-    @Raza varchar(10),
-    @Nacimiento datetime,
-    @Genero varchar(10),
-    @IDUsuario int
+CREATE PROCEDURE agregarProducto
+    @NombreProducto varchar(70),
+    @Precio money,
+    @Stock int
 AS
 BEGIN
-INSERT INTO Mascota (IdMascota,NombreMascota,Especie,Raza,Nacimiento,Genero,IDUsuario) VALUES (@IdMascota,@NombreMascota,@Especie,@Raza,@Nacimiento,@Genero,@IDUsuario)
+INSERT INTO Productos(NombreProducto, Precio, Stock)
+VALUES(@NombreProducto, @Precio, @Stock)
 END
 GO
 
-CREATE PROCEDURE listarMascotas
-AS
-SELECT * FROM Mascota
-GO
-
-CREATE PROCEDURE agregarCita
-    @IdCita int,
-    @Servicio varchar(30),
-    @FechaCita datetime,
-    @IDUsuario int
+CREATE PROCEDURE actualizarProducto
+    @NombreProducto varchar(70),
+    @Precio money,
+    @Stock int
 AS
 BEGIN
-INSERT INTO Cita (IdCita,Servicio,FechaCita,IDUsuario) VALUES (@IdCita,@Servicio,@FechaCita,@IDUsuari)
+UPDATE Productos SET Precio = @Precio, Stock = @Stock WHERE NombreProducto = @NombreProducto
 END
 GO
 
-CREATE PROCEDURE listarCitas
+CREATE PROCEDURE mostrarProducto
 AS
-SELECT * FROM Cita
+BEGIN
+SELECT * FROM Productos
+END
 GO

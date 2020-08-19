@@ -46,17 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FRMCitas.cs">
+    <Compile Include="FRMProductos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FRMCitas.Designer.cs">
-      <DependentUpon>FRMCitas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FRMMascotas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FRMMascotas.Designer.cs">
-      <DependentUpon>FRMMascotas.cs</DependentUpon>
+    <Compile Include="FRMProductos.Designer.cs">
+      <DependentUpon>FRMProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="FRMUsuarios.cs">
       <SubType>Form</SubType>
@@ -78,11 +72,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FRMCitas.resx">
-      <DependentUpon>FRMCitas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FRMMascotas.resx">
-      <DependentUpon>FRMMascotas.cs</DependentUpon>
+    <EmbeddedResource Include="FRMProductos.resx">
+      <DependentUpon>FRMProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRMUsuarios.resx">
       <DependentUpon>FRMUsuarios.cs</DependentUpon>
