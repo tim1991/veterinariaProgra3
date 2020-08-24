@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Entidades
+{
+    public class Cita
+    {
+        int IDCita;
+        string Servicio;
+        int FechaCita;
+        int IdUsuario;
+
+        public int idcita { get => IDCita; set => IDCita = value; }
+        public string servicio { get => Servicio; set => Servicio = value; }
+        public int fechacita { get => FechaCita; set => FechaCita = value; }
+        public int idUsuario { get => IdUsuario; set => IdUsuario = value; }
+
+    }
+}
