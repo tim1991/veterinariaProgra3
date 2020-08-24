@@ -135,11 +135,18 @@ namespace Veterinaria
             
         }
 
-        private void mantenimientoProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mantMascotaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FRMProductos productos = new FRMProductos();
-            productos.MdiParent = this;
-            productos.Show();
+            FRMMascotas mascotas = new FRMMascotas();
+            mascotas.MdiParent = this;
+            mascotas.Show();
+        }
+
+        private void nuevaCitaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMCitas citas = new FRMCitas();
+            citas.MdiParent = this;
+            citas.Show();
         }
     }
 }
