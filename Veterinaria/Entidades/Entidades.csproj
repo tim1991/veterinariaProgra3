@@ -42,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cita.cs" />
+    <Compile Include="Detalles.cs" />
+    <Compile Include="DetalleVenta.cs" />
     <Compile Include="Enumeradores\EnumRoles.cs" />
+    <Compile Include="Factura.cs" />
     <Compile Include="Mascota.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Producto.cs" />
