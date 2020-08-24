@@ -2,6 +2,8 @@
 create database MundoAnimalia
 use MundoAnimalia
 
+--Tablas
+
 create table Roles
 (
     IdRol int primary key Identity(1,1) not null,
@@ -58,10 +60,10 @@ create table Productos
 create table Factura
 (
     IDFactura int primary key Identity(1,1)  not null,
-	NumeroFactura int  not null,
     FechaFactura datetime not null,
-    Total money not null,
     Subtotal money not null,
+	Impuestos money not null,
+    Total money not null,
     MetodoPago varchar(15) not null,
     IDUsuario int foreign key (IDUsuario) references Usuario (IDUsuario) not null,
     IDProducto int foreign key (IDProducto) references Productos (IDProducto) not null
@@ -72,17 +74,37 @@ create table DetalleFactura
     IdDetalle int primary key not null,
     Cantidad int not null,
     SubtotalDetalle money not null,
+	ImpuestosDetalle money not null,
+	TotalDetalle money not null,
     IDProducto int foreign key (IDProducto) references Productos (IDProducto) not null,
     IDFactura int foreign key (IDFactura) references Factura (IDFactura) not null
 );
 GO
 
---Procedimientos almacenados
+--Procedimientos almacenados listar
 
 CREATE PROCEDURE listarRoles
 AS
 SELECT * FROM Roles
 GO
+
+CREATE PROCEDURE listarUsuarios
+AS
+SELECT Usuario.*,Roles.Detalle FROM Usuario INNER JOIN Roles ON Roles.IdRol = Usuario.IdRol
+GO
+
+--Procedimiento almacenado ingresar
+
+CREATE PROCEDURE ingresar
+    @Email varchar(50),
+    @Contrasena varchar(20)
+AS
+BEGIN
+SELECT Usuario.*,Roles.Detalle FROM Usuario INNER JOIN Roles ON Roles.IdRol = Usuario.IdRol WHERE Usuario.Email = @Email AND Usuario.Contrasena = @Contrasena
+END
+GO
+
+--Procedimientos almacenados para Usuario
 
 CREATE PROCEDURE agregarUsuario
 	@Cedula int ,
@@ -99,46 +121,107 @@ INSERT INTO Usuario (Cedula,NombrePersona,Contrasena,Apellidos,Email,Telefono,Di
 END
 GO
 
+--Procedimientos almacenados para Producto
 
-CREATE PROCEDURE listarUsuarios
-AS
-SELECT Usuario.*,Roles.Detalle FROM Usuario INNER JOIN Roles ON Roles.IdRol = Usuario.IdRol
-GO
-
-
-CREATE PROCEDURE ingresar
-    @Email varchar(50),
-    @Contrasena varchar(20)
-AS
-BEGIN
-SELECT Usuario.*,Roles.Detalle FROM Usuario INNER JOIN Roles ON Roles.IdRol = Usuario.IdRol WHERE Usuario.Email = @Email AND Usuario.Contrasena = @Contrasena
-END
-GO
-
-CREATE PROCEDURE agregarProducto
+create procedure agregarProducto
     @NombreProducto varchar(70),
     @Precio money,
     @Stock int
-AS
-BEGIN
-INSERT INTO Productos(NombreProducto, Precio, Stock)
-VALUES(@NombreProducto, @Precio, @Stock)
-END
-GO
+as
+insert into Productos(NombreProducto, Precio, Stock)
+values(@NombreProducto, @Precio, @Stock)
+go
 
-CREATE PROCEDURE actualizarProducto
+create procedure actualizarProducto
     @NombreProducto varchar(70),
     @Precio money,
     @Stock int
-AS
-BEGIN
-UPDATE Productos SET Precio = @Precio, Stock = @Stock WHERE NombreProducto = @NombreProducto
-END
-GO
+as
+UPDATE Productos set Precio = @Precio, Stock = @Stock where NombreProducto = @NombreProducto
+go
 
-CREATE PROCEDURE mostrarProducto
-AS
-BEGIN
-SELECT * FROM Productos
-END
-GO
+create procedure mostrarProducto
+as
+select * from Productos
+go
+
+create procedure deleteProducto
+@NombreProducto varchar(70)
+as
+delete from Productos where NombreProducto = @NombreProducto
+go
+
+--Procedimientos almacenados para Factura y Detalles
+
+create procedure insertFactura
+    @FechaFactura datetime,
+    @Subtotal money,
+	@Impuestos money,
+    @Total money,
+    @MetodoPago varchar(15),
+    @IDUsuario int,
+    @IDProducto int
+as
+insert into Factura(FechaFactura, Subtotal, Impuestos, Total, MetodoPago, IDUsuario, IDProducto)
+values(@FechaFactura, @Subtotal, @Impuestos, @Total, @MetodoPago, @IDUsuario, @IDProducto)
+go
+
+create procedure insertDetalle
+    @Cantidad int,
+    @SubtotalDetalle money,
+	@ImpuestosDetalle money,
+	@TotalDetalle money,
+    @IDProducto int,
+    @IDFactura int
+as
+insert into DetalleFactura(Cantidad, SubtotalDetalle, ImpuestosDetalle, TotalDetalle, IDProducto, IDFactura)
+values(@Cantidad, @SubtotalDetalle, @ImpuestosDetalle, @TotalDetalle, @IDProducto, @IDFactura)
+go
+
+create procedure selectFacturas
+as
+select * from Factura
+go
+
+create procedure selectIdFactura
+@IDFactura int
+as
+select * from Factura where IDFactura = IDFactura
+go
+
+create procedure selectNumFactura
+as
+select IDFactura from Factura order by IDFactura desc
+go
+
+create procedure selectBuscarUsuario
+@Cedula int
+as
+select * from Usuario where Cedula = @Cedula
+go
+
+create procedure selectBuscarProducto
+@IDProducto int
+as
+select * from Productos where IDProducto = @IDProducto
+go
+
+create procedure selectDetalles
+as
+select a.IDFactura, b.NombrePersona, b.Apellidos, b.Cedula, b.Telefono, b.Email, b.Direccion, a.FechaFactura, d.Cantidad, c.NombreProducto, c.Precio,
+a.Subtotal, a.MetodoPago, d.ImpuestosDetalle, a.Total from Factura a
+inner join Usuario b on b.IDUsuario = a.IDUsuario
+inner join Productos c on c.IDProducto = a.IDProducto
+inner join DetalleFactura d on d.IDFactura = a.IDFactura
+go
+
+create procedure selectDetallesVenta
+@IDFactura int
+as
+select a.IDFactura, d.NombrePersona, d.Apellidos, d.Telefono, d.Direccion, b.FechaFactura, c.IDProducto, c.NombreProducto, c.Precio, a.Cantidad,
+a.SubtotalDetalle, a.ImpuestosDetalle, a.TotalDetalle, b.MetodoPago from DetalleFactura a
+inner join Factura b on a.IDFactura = b.IDFactura
+inner join Productos c on a.IDProducto = c.IDProducto and b.IDProducto = c.IDProducto
+inner join Usuario d on b.IDUsuario = d.IDUsuario
+where a.IDFactura = @IDFactura
+go
