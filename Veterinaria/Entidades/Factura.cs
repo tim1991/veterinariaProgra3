@@ -34,6 +34,6 @@ namespace Entidades
 
         public int IDUsuario { get => idUsuario; set => idUsuario = value; }
 
-        public int ISProducto { get => idProducto; set => idProducto = value; }
+        public int IDProducto { get => idProducto; set => idProducto = value; }
     }
 }
