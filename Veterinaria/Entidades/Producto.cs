@@ -15,7 +15,7 @@ namespace Entidades
 
         private int idProducto;
         private string nombre;
-        private int precio;
+        private decimal precio;
         private int stock;
 
         public int IdProducto
@@ -30,7 +30,7 @@ namespace Entidades
             set { nombre = value; }
         }
 
-        public int precioProducto
+        public decimal precioProducto
         {
             get { return precio; }
             set { precio = value; }

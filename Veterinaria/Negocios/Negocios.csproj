@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NegCita.cs" />
+    <Compile Include="NegDetalles.cs" />
+    <Compile Include="NegFactura.cs" />
     <Compile Include="NegMascota.cs" />
     <Compile Include="NegProducto.cs" />
     <Compile Include="NegRol.cs" />
