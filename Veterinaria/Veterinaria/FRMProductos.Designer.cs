@@ -169,6 +169,7 @@
             this.Controls.Add(this.gpbVer);
             this.Controls.Add(this.gpbProducto);
             this.Name = "FRMProductos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Productos";
             this.gpbProducto.ResumeLayout(false);
             this.gpbProducto.PerformLayout();

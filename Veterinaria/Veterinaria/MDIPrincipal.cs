@@ -25,7 +25,6 @@ namespace Veterinaria
             permisos();
             lblUsuario.Text = datosUsuario.nombre;
             lblRol.Text = datosUsuario.nombreRol;
-
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -41,6 +40,7 @@ namespace Veterinaria
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             openFileDialog.Filter = "Archivos de texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
+
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string FileName = openFileDialog.FileName;
@@ -61,28 +61,6 @@ namespace Veterinaria
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -113,11 +91,6 @@ namespace Veterinaria
             }
         }
 
-        private void MDIPrincipal_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void mantenimientoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FRMUsuarios usuarios = new FRMUsuarios();
@@ -127,12 +100,11 @@ namespace Veterinaria
 
         public void permisos()
         {
-
             if (datosUsuario.idRol != (int)EnumRoles.Administrador)
             {
                 usuariosToolStripMenuItem.Visible = false;
+                productosToolStripMenuItem.Visible = false;
             }
-            
         }
 
         private void mantMascotaToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -147,6 +119,20 @@ namespace Veterinaria
             FRMCitas citas = new FRMCitas();
             citas.MdiParent = this;
             citas.Show();
+        }
+
+        private void mantenimientoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FRMProductos productos = new FRMProductos();
+            productos.MdiParent = this;
+            productos.Show();
+        }
+
+        private void nuevaCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMModuloFactura factura = new FRMModuloFactura();
+            factura.MdiParent = this;
+            factura.Show();
         }
     }
 }

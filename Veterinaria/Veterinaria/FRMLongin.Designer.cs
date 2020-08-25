@@ -87,20 +87,21 @@
             this.groupBox1.Controls.Add(this.txtContrasena);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(31, 50);
+            this.groupBox1.Location = new System.Drawing.Point(91, 178);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(309, 332);
+            this.groupBox1.Size = new System.Drawing.Size(309, 229);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingresar al sistema";
             // 
-            // Longin
+            // FRMLongin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 450);
+            this.ClientSize = new System.Drawing.Size(502, 450);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Longin";
+            this.Name = "FRMLongin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Longin";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -15,14 +15,14 @@ namespace Negocios
 
         public bool Agregar(Producto producto)
         {
-            bool insertar = accionesProducto.InsertarProducto(producto);
+            bool insertar = accionesProducto.insertarProducto(producto);
 
             return insertar;
         }
 
         public bool Actualizar(Producto producto)
         {
-            bool update = accionesProducto.ActualizarProducto(producto);
+            bool update = accionesProducto.actualizarProducto(producto);
 
             return update;
         }
@@ -30,7 +30,7 @@ namespace Negocios
         public DataTable dtTblProducto()
         {
             DSProducto insDatos = new DSProducto();
-            return insDatos.GetTblProducto();
+            return insDatos.getTblProducto();
         }
     }
 }

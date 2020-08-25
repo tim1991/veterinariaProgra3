@@ -39,3 +39,4 @@ C:\Users\rodos\OneDrive\Documentos\GitHub\veterinariaProgra3\Veterinaria\Veterin
 C:\Users\rodos\OneDrive\Documentos\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.FRMProductos.resources
 C:\Users\rodos\OneDrive\Documentos\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.FRMCitas.resources
 C:\Users\rodos\OneDrive\Documentos\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.FRMMascotas.resources
+C:\Users\rodos\OneDrive\Documentos\GitHub\veterinariaProgra3\Veterinaria\Veterinaria\obj\Debug\Veterinaria.FRMModuloFactura.resources
