@@ -96,6 +96,9 @@
     <EmbeddedResource Include="FRMMascotas.resx">
       <DependentUpon>FRMMascotas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FRMModuloFactura.resx">
+      <DependentUpon>FRMModuloFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRMProductos.resx">
       <DependentUpon>FRMProductos.cs</DependentUpon>
     </EmbeddedResource>

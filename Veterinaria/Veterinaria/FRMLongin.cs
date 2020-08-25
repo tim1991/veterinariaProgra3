@@ -14,8 +14,8 @@ namespace Veterinaria
 {
     public partial class FRMLongin : Form
     {
-
         private NegUsuario accionesUsuario = new NegUsuario();
+
         public FRMLongin()
         {
             InitializeComponent();
@@ -49,8 +49,6 @@ namespace Veterinaria
             {
                 MessageBox.Show("Debes ingresar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-           
         }
 
         public bool validar()

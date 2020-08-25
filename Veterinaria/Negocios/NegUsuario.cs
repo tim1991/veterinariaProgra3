@@ -42,11 +42,9 @@ namespace Negocios
 
             return vloUsuarios;
         } 
-        public Usuario BuscarUsuario(int vpcIdUsuario = 0, string vpcNombre = null)
+        public Usuario BuscarUsuario(int vpcCedula)
         {
-            Usuario vloUsuario = new Usuario();
-
-            return vloUsuario;
+            return accionesUsuario.Buscar(vpcCedula);
         }
     }
 }
