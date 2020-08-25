@@ -11,6 +11,7 @@ namespace Datos
     {
         public SqlConnection vCnx;
         public SqlCommand vCmd;
+        public SqlDataAdapter adaptador;
 
         private static string servidor = "RODOLFO";
         private static string baseDatos = "MundoAnimalia";
