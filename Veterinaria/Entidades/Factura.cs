@@ -17,8 +17,7 @@ namespace Entidades
         private decimal impuestos;
         private decimal total;
         private string metodoPago;
-        private int idUsuario;
-        private int idProducto;
+        private int IdUsuario;
 
         public int Id { get => id; set => id = value; }
 
@@ -32,8 +31,6 @@ namespace Entidades
 
         public string MetodoPago { get => metodoPago; set => metodoPago = value; }
 
-        public int IDUsuario { get => idUsuario; set => idUsuario = value; }
-
-        public int IDProducto { get => idProducto; set => idProducto = value; }
+        public int IDUsuario { get => IdUsuario; set => IdUsuario = value; }
     }
 }

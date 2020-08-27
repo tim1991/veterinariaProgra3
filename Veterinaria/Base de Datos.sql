@@ -53,8 +53,7 @@ create table Productos
 (
     IDProducto int identity(1, 1) primary key not null,
     NombreProducto varchar(70) not null,
-    Precio money not null,
-    Stock int  not null
+    Precio money not null
 )
 
 create table Factura
@@ -65,13 +64,12 @@ create table Factura
 	Impuestos money not null,
     Total money not null,
     MetodoPago varchar(15) not null,
-    IDUsuario int foreign key (IDUsuario) references Usuario (IDUsuario) not null,
-    IDProducto int foreign key (IDProducto) references Productos (IDProducto) not null
+    IDUsuario int foreign key (IDUsuario) references Usuario (IDUsuario) not null
 )
 
 create table DetalleFactura
 (
-    IdDetalle int primary key not null,
+    IdDetalle int identity(1, 1) primary key not null,
     Cantidad int not null,
     SubtotalDetalle money not null,
 	ImpuestosDetalle money not null,
@@ -129,21 +127,19 @@ go
 
 --Procedimientos almacenados para Producto
 
-create procedure agregarProducto
+alter procedure agregarProducto
 @NombreProducto varchar(70),
-@Precio money,
-@Stock int
+@Precio money
 as
-insert into Productos(NombreProducto, Precio, Stock)
-values(@NombreProducto, @Precio, @Stock)
+insert into Productos(NombreProducto, Precio)
+values(@NombreProducto, @Precio)
 go
 
-create procedure actualizarProducto
+alter procedure actualizarProducto
 @NombreProducto varchar(70),
-@Precio money,
-@Stock int
+@Precio money
 as
-UPDATE Productos set Precio = @Precio, Stock = @Stock where NombreProducto = @NombreProducto
+UPDATE Productos set Precio = @Precio where NombreProducto = @NombreProducto
 go
 
 create procedure mostrarProducto
@@ -165,11 +161,10 @@ create procedure insertFactura
 @Impuestos money,
 @Total money,
 @MetodoPago varchar(15),
-@IDUsuario int,
-@IDProducto int
+@IDUsuario int
 as
-insert into Factura(FechaFactura, Subtotal, Impuestos, Total, MetodoPago, IDUsuario, IDProducto)
-values(@FechaFactura, @Subtotal, @Impuestos, @Total, @MetodoPago, @IDUsuario, @IDProducto)
+insert into Factura(FechaFactura, Subtotal, Impuestos, Total, MetodoPago, IDUsuario)
+values(@FechaFactura, @Subtotal, @Impuestos, @Total, @MetodoPago, @IDUsuario)
 go
 
 create procedure insertDetalle
@@ -212,12 +207,12 @@ as
 select * from Productos where IDProducto = @IDProducto
 go
 
-create procedure selectDetalles
+alter procedure selectDetalles
 as
 select a.IDFactura, b.NombrePersona, b.Apellidos, b.Cedula, b.Telefono, b.Email, b.Direccion, a.FechaFactura, d.Cantidad, c.NombreProducto, c.Precio,
-a.Subtotal, a.MetodoPago, d.ImpuestosDetalle, a.Total from Factura a
+a.Subtotal, a.MetodoPago, a.Impuestos, a.Total from Factura a
 inner join Usuario b on b.IDUsuario = a.IDUsuario
-inner join Productos c on c.IDProducto = a.IDProducto
+inner join Productos c on c.IDProducto = a.IDUsuario
 inner join DetalleFactura d on d.IDFactura = a.IDFactura
 go
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Datos;
 using Entidades;
+using System.Data;
 
 namespace Negocios
 {
@@ -19,6 +20,13 @@ namespace Negocios
             int idFactura = accionesFactura.idFactura();
 
             return idFactura;
+        }
+
+        public bool Agregar(Producto producto)
+        {
+            bool insertar = accionesProducto.insertarProducto(producto);
+
+            return insertar;
         }
 
         public void agregarDetalle(DetalleVenta detalles)

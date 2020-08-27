@@ -36,7 +36,7 @@ namespace Veterinaria
             lbl_IdFactura.Text = "" + idFactura.ToString();
         }
 
-        #region Metodos buscar
+        #region Metodos
         public void buscarUsuario()
         {
             try
@@ -97,9 +97,46 @@ namespace Veterinaria
             }
         }
 
-        #endregion
+        public void agregarProducto()
+        {
+            DetalleVenta detalles = new DetalleVenta();
 
-        #region Metodos factura
+            decimal impuesto = Decimal.Parse(txtSubtotalProd.Text) * (Decimal.Parse(txtIVAProd.Text) / 100);
+
+            try
+            {
+                detalles.Id = int.Parse(txtCodigo.Text);
+                detalles.Nombre = txtNomProd.Text;
+                detalles.Precio = Decimal.Parse(txtPrecio.Text);
+                detalles.Cantidad = int.Parse(txtCantidad.Text);
+                detalles.Subtotal = Decimal.Parse(txtSubtotalProd.Text);
+                detalles.Impuestos = impuesto;
+                detalles.Total = Decimal.Parse(txtTotalProd.Text);
+                accionesFactura.agregarDetalle(detalles);
+
+                cargarDetalles();
+            }
+            catch (Exception)
+            {
+
+            }
+
+            txtCantidad.Enabled = false;
+            btnAgregarProd.Enabled = false;
+            txtBuscarProd.Focus();
+
+            limpiarCampos();
+        }
+
+        public void cargarDetalles()
+        {
+            List<DetalleVenta> detallesVenta = accionesFactura.listar();
+            dgvVenta.DataSource = null;
+            dgvVenta.DataSource = detallesVenta;
+            dgvVenta.Refresh();
+
+            totalizar();
+        }
 
         public void calcularMontos(Producto producto)
         {
@@ -150,61 +187,6 @@ namespace Veterinaria
             }
         }
 
-        private void limpiarCampos()
-        {
-            this.txtBuscarProd.Text = "";
-            this.txtCodigo.Text = "";
-            this.txtNomProd.Text = "";
-            this.txtPrecio.Text = "";
-            this.txtCantidad.Text = "1";
-            this.txtSubtotalProd.Text = "";
-            this.txtIVAProd.Text = "";
-            this.txtTotalProd.Text = "";
-
-            producto = null;
-        }
-
-        public void agregarProducto()
-        {
-            DetalleVenta detalles = new DetalleVenta();
-
-            decimal impuesto = Decimal.Parse(txtSubtotalProd.Text) * (Decimal.Parse(txtIVAProd.Text) / 100);
-
-            try
-            {
-                detalles.Id = int.Parse(txtCodigo.Text);
-                detalles.Nombre = txtNomProd.Text;
-                detalles.Precio = Decimal.Parse(txtPrecio.Text);
-                detalles.Cantidad = int.Parse(txtCantidad.Text);
-                detalles.Subtotal = Decimal.Parse(txtSubtotalProd.Text);
-                detalles.Impuestos = impuesto;
-                detalles.Total = Decimal.Parse(txtTotalProd.Text);
-                accionesFactura.agregarDetalle(detalles);
-
-                cargarDetalles();
-            }
-            catch (Exception)
-            {
-
-            }
-
-            txtCantidad.Enabled = false;
-            btnAgregarProd.Enabled = false;
-            txtBuscarProd.Focus();
-
-            limpiarCampos();
-        }
-
-        public void cargarDetalles()
-        {
-            List<DetalleVenta> detallesVenta = accionesFactura.listar();
-            dgvVenta.DataSource = null;
-            dgvVenta.DataSource = detallesVenta;
-            dgvVenta.Refresh();
-
-            totalizar();
-        }
-
         public void totalizar()
         {
             decimal[] totales = new decimal[3];
@@ -227,7 +209,7 @@ namespace Veterinaria
             if (rdbEfectivo.Checked == true)
             {
                 factura.Fecha = DateTime.Now;
-                factura.idUsuario = idUsuario;
+                factura.IDUsuario = idUsuario;
                 factura.MetodoPago = "Efectivo";
                 factura.Subtotal = subtotal;
                 factura.Impuestos = impuestos;
@@ -237,7 +219,7 @@ namespace Veterinaria
             else if (rdbTarjeta.Checked == true)
             {
                 factura.Fecha = DateTime.Now;
-                factura.idUsuario = idUsuario;
+                factura.IDUsuario = idUsuario;
                 factura.MetodoPago = "Tarjeta";
                 factura.Subtotal = subtotal;
                 factura.Impuestos = impuestos;
@@ -250,24 +232,38 @@ namespace Veterinaria
             if (insert)
             {
                 idFactura = accionesFactura.idFactura();
-                lblNumFactura.Text = "" + idFactura.ToString();
+                lbl_IdFactura.Text = "" + idFactura.ToString();
                 txtNomCliente.Text = "";
                 txtCedula.Text = "";
 
                 MessageBox.Show("Compra Exitosa.", "Felicidades", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 cargarDetalles();
-                this.Close();
             }
             else
             {
                 MessageBox.Show("¡Ha ocurrido un error! \n\n" +
-                "Verifique que la cédula y el nombre son correctos, \n" +
-                "que haya escogido un método de pago y que en el \n" +
-                "carrito de compras haya al menos un producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                "Vuelvalo a intentar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                this.Close();
             }
+
             //FacturaVenta factVenta = new FacturaVenta(idFactura);
             //factVenta.ShowDialog();
+        }
+
+        private void limpiarCampos()
+        {
+            this.txtBuscarProd.Text = "";
+            this.txtCodigo.Text = "";
+            this.txtNomProd.Text = "";
+            this.txtPrecio.Text = "";
+            this.txtCantidad.Text = "1";
+            this.txtSubtotalProd.Text = "";
+            this.txtIVAProd.Text = "";
+            this.txtTotalProd.Text = "";
+
+            producto = null;
         }
 
         #endregion
@@ -295,8 +291,7 @@ namespace Veterinaria
 
         private void btnBuscarProd_Click(object sender, EventArgs e)
         {
-            agregarProducto();
-            limpiarCampos();
+            buscarProducto();
         }
 
         private void txtIVAProd_TextChanged(object sender, EventArgs e)
@@ -307,6 +302,17 @@ namespace Veterinaria
         private void btnFacturar_Click(object sender, EventArgs e)
         {
             realizarCompra();
+        }
+
+        private void btnAgregarProd_Click(object sender, EventArgs e)
+        {
+            agregarProducto();
+            limpiarCampos();
+        }
+
+        private void txtCantidad_TextChanged(object sender, EventArgs e)
+        {
+            calcularMontos(producto);
         }
     }
 }
