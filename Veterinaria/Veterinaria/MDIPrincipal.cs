@@ -134,5 +134,19 @@ namespace Veterinaria
             }
             
         }
+
+        private void mantMascotaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FRMMascotas mascotas = new FRMMascotas();
+            mascotas.MdiParent = this;
+            mascotas.Show();
+        }
+
+        private void nuevaCitaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMCitas citas = new FRMCitas();
+            citas.MdiParent = this;
+            citas.Show();
+        }
     }
 }
