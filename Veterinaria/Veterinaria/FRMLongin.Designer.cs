@@ -94,13 +94,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingresar al sistema";
             // 
-            // Longin
+            // FRMLongin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 450);
+            this.ClientSize = new System.Drawing.Size(368, 450);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Longin";
+            this.Name = "FRMLongin";
             this.Text = "Longin";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

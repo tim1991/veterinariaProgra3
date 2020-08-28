@@ -18,6 +18,8 @@ namespace Veterinaria
         private NegUsuario accionesUsuario = new NegUsuario();
         private NegRol accionesRol = new NegRol();
         private Rol rolSeleccionado;
+        private bool insertar = true;
+        private int vgIdUsuario = 0;
 
         public FRMUsuarios()
         {
@@ -32,6 +34,7 @@ namespace Veterinaria
 
             if (validar())
             {
+                bool ejecutar = false;
                 rolSeleccionado = (Rol)cboRol.SelectedItem;
 
                 usuario.cedula = int.Parse(txtCedula.Text);
@@ -43,16 +46,24 @@ namespace Veterinaria
                 usuario.contrasena = txtContrasena.Text;
                 usuario.rol = rolSeleccionado.idRol;
 
-                bool insertar = accionesUsuario.AgregarUsuario(usuario);
+                if (insertar)
+                {
+                    ejecutar = accionesUsuario.AgregarUsuario(usuario);
+                }
+                else
+                {
+                    ejecutar = accionesUsuario.ActualizarUsuario(usuario);
+                }
+               
 
                 if (insertar)
                 {
                     limpiarCampos();
                     cargarUsuarios();
-                    MessageBox.Show("Usuario creado correctamente","Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Usuario guardado correctamente","Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else {
-                    MessageBox.Show("Problema al agregar el usuario","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Problema al guardar el usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -124,6 +135,47 @@ namespace Veterinaria
         }
 
         private void cboRol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvUsuarios_DoubleClick(object sender, EventArgs e)
+        {
+            int rowIndex = dgvUsuarios.CurrentCell.RowIndex;
+            int columIndex = 5;
+            string codigo = this.dgvUsuarios[columIndex, rowIndex].Value.ToString();
+
+            Usuario usuario = accionesUsuario.BuscarUsuario(int.Parse(codigo));
+
+            if (usuario != null)
+            {
+                insertar = false;
+                btnCancelar.Visible = true;
+                btnAgregarUsuario.Text = "Actualizar";
+                vgIdUsuario = usuario.idUsuario;
+                txtCedula.Text = usuario.cedula.ToString();
+                txtNombre.Text = usuario.nombre;
+                txtApellidos.Text = usuario.apellidos;
+                txtTelefono.Text = usuario.telefono.ToString();
+                txtDireccion.Text = usuario.direccion;
+                txtContrasena.Text = usuario.contrasena;
+                txtEmail.Text = usuario.email;
+
+                cboRol.SelectedValue = usuario.rol;
+
+            }
+            else
+            {
+                MessageBox.Show("El usuario no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void FRMUsuarios_Load(object sender, EventArgs e)
         {
 
         }

@@ -28,7 +28,9 @@ namespace Negocios
 
         public bool ActualizarUsuario(Usuario vpoUsuario)
         {
-            return true;
+            bool actualizar = accionesUsuario.Actualizar(vpoUsuario);
+
+            return actualizar;
         } 
 
         public bool EliminarUsuario()
@@ -42,10 +44,10 @@ namespace Negocios
 
             return vloUsuarios;
         } 
-        public Usuario BuscarUsuario(int vpcIdUsuario = 0, string vpcNombre = null)
+        public Usuario BuscarUsuario(int vpnCedula)
         {
             Usuario vloUsuario = new Usuario();
-
+            vloUsuario = accionesUsuario.Buscar(vpnCedula);
             return vloUsuario;
         }
     }

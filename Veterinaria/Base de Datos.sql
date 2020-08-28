@@ -142,3 +142,27 @@ BEGIN
 SELECT * FROM Productos
 END
 GO
+
+
+create procedure obtenerUsuarioCedula  
+@Cedula int  
+AS  
+BEGIN  
+ select * from Usuario where Cedula = @Cedula  
+END  
+  
+
+  CREATE PROCEDURE actualizarUsuario  
+ @IDUsuario int,  
+ @Cedula int ,  
+ @NombrePersona varchar(15) ,  
+ @Contrasena varchar(20) ,  
+ @Apellidos varchar(50) ,  
+ @Email varchar(50) ,  
+ @Telefono int ,  
+ @Direccion varchar(200),  
+ @IdRol int  
+AS  
+BEGIN  
+Update  Usuario set Cedula = @Cedula, NombrePersona = @NombrePersona, Contrasena = @Contrasena, Apellidos = Apellidos, Email = @Email, Telefono = @Telefono, Direccion = @Direccion, IdRol = @IdRol Where IDUsuario = @IDUsuario  
+END

@@ -51,8 +51,11 @@ C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\ro
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\roslyn\VBCSCompiler.exe
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Antlr3.Runtime.dll
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Datos.dll
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Entidades.dll
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Negocios.dll
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Newtonsoft.Json.dll
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\System.Web.Helpers.dll
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\System.Web.Mvc.dll
@@ -62,6 +65,9 @@ C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Sy
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\System.Web.WebPages.dll
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\System.Web.WebPages.Razor.dll
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\WebGrease.dll
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Datos.pdb
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Entidades.pdb
+C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Negocios.pdb
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\System.Web.Helpers.xml
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\System.Web.Mvc.xml
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\System.Web.Optimization.xml
@@ -84,9 +90,3 @@ C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\obj\De
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\obj\Debug\SitioWeb.csproj.CopyComplete
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\obj\Debug\SitioWeb.dll
 C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\obj\Debug\SitioWeb.pdb
-C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Datos.dll
-C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Entidades.dll
-C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Negocios.dll
-C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Datos.pdb
-C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Entidades.pdb
-C:\Users\Agustin\Documents\GitHub\veterinariaProgra3\Veterinaria\SitioWeb\bin\Negocios.pdb
