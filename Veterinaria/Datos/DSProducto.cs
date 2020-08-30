@@ -11,7 +11,6 @@ namespace Datos
 {
     public class DSProducto : DSConexion
     {
-        SqlDataAdapter adaptador;
         DataTable tblProducto;
 
         #region Metodos
@@ -28,14 +27,13 @@ namespace Datos
                     vCmd.CommandType = CommandType.StoredProcedure;
 
                     vCmd.Parameters.Add("@NombreProducto", SqlDbType.NVarChar).Value = producto.nombreProducto;
-                    vCmd.Parameters.Add("@Precio", SqlDbType.Int).Value = producto.precioProducto;
-                    vCmd.Parameters.Add("@Stock", SqlDbType.Int).Value = producto.stockProducto;
+                    vCmd.Parameters.Add("@Precio", SqlDbType.Decimal).Value = producto.precioProducto;
                     vCmd.ExecuteNonQuery();
 
                     insertar = true;
                 }
             }
-            catch (Exception e)
+            catch (SqlException)
             {
 
             }
@@ -58,14 +56,13 @@ namespace Datos
                     vCmd.CommandType = CommandType.StoredProcedure;
 
                     vCmd.Parameters.Add("@NombreProducto", SqlDbType.NVarChar).Value = producto.nombreProducto;
-                    vCmd.Parameters.Add("@Precio", SqlDbType.Int).Value = producto.precioProducto;
-                    vCmd.Parameters.Add("@Stock", SqlDbType.Int).Value = producto.stockProducto;
+                    vCmd.Parameters.Add("@Precio", SqlDbType.Decimal).Value = producto.precioProducto;
                     vCmd.ExecuteNonQuery();
 
                     update = true;
                 }
             }
-            catch (Exception e)
+            catch (SqlException)
             {
 
             }
@@ -97,7 +94,6 @@ namespace Datos
                         producto.IdProducto = int.Parse(reader["IDProducto"].ToString());
                         producto.nombreProducto = reader["NombreProducto"].ToString();
                         producto.precioProducto = decimal.Parse(reader["Precio"].ToString());
-                        producto.stockProducto = int.Parse(reader["Stock"].ToString());
                     }
                 }
             }
@@ -151,7 +147,7 @@ namespace Datos
                     adaptador.Fill(tblProducto);
                 }
             }
-            catch (Exception e)
+            catch (SqlException)
             {
 
             }
