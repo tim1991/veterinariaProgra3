@@ -32,7 +32,7 @@ namespace Datos
                     idFactura = int.Parse(reader[0].ToString());
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -54,20 +54,20 @@ namespace Datos
                     vCmd = new SqlCommand("InsertarFactura", vCnx);
                     vCmd.CommandType = CommandType.StoredProcedure;
 
+                    vCmd.Parameters.Add("@IDFactura", SqlDbType.Int).Value = factura.Id;
                     vCmd.Parameters.Add("@FechaFactura", SqlDbType.DateTime).Value = factura.Fecha;
                     vCmd.Parameters.Add("@Subtotal", SqlDbType.Decimal).Value = factura.Subtotal;
                     vCmd.Parameters.Add("@Impuestos", SqlDbType.Decimal).Value = factura.Impuestos;
                     vCmd.Parameters.Add("@Total", SqlDbType.Decimal).Value = factura.Total;
                     vCmd.Parameters.Add("@MetodoPago", SqlDbType.VarChar).Value = factura.MetodoPago;
-                    vCmd.Parameters.Add("@IDUsuario", SqlDbType.Int).Value = factura.IDUsuario;
-                    vCmd.Parameters.Add("@IDProducto", SqlDbType.Int).Value = factura.IDProducto;
+                    vCmd.Parameters.Add("@IDUsuario", SqlDbType.Int).Value = factura.idUsuario;
                     vCmd.ExecuteNonQuery();
 
                     Factura fact = buscarFactura(factura.Id);
                     num = fact.Id;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -102,8 +102,7 @@ namespace Datos
                         fact.Impuestos = decimal.Parse(reader["Impuestos"].ToString());
                         fact.Total = decimal.Parse(reader["Total"].ToString());
                         fact.MetodoPago = reader["MetodoPago"].ToString();
-                        fact.IDUsuario = int.Parse(reader["IDUsuario"].ToString());
-                        fact.IDProducto = int.Parse(reader["IDProducto"].ToString());
+                        fact.idUsuario = int.Parse(reader["IDUsuario"].ToString());
                     }
                 }
             }
@@ -166,7 +165,7 @@ namespace Datos
                     insertar = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

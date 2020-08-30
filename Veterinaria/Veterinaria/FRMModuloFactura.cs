@@ -34,6 +34,7 @@ namespace Veterinaria
 
             idFactura = accionesFactura.idFactura();
             lbl_IdFactura.Text = "" + idFactura.ToString();
+            bloquearCampos();
         }
 
         #region Metodos buscar
@@ -161,7 +162,21 @@ namespace Veterinaria
             this.txtIVAProd.Text = "";
             this.txtTotalProd.Text = "";
 
-            producto = null;
+            //producto = null;
+        }
+
+
+        private void bloquearCampos()
+        {
+            this.txtCodigo.Enabled = false;
+            this.txtNomProd.Enabled = false;
+            this.txtPrecio.Enabled = false;
+            this.txtCantidad.Text = "1";
+            this.txtSubtotalProd.Enabled = false;
+            this.txtIVAProd.Enabled = false;
+            this.txtTotalProd.Enabled = false;
+
+            //producto = null;
         }
 
         public void agregarProducto()
@@ -183,7 +198,7 @@ namespace Veterinaria
 
                 cargarDetalles();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -226,8 +241,9 @@ namespace Veterinaria
 
             if (rdbEfectivo.Checked == true)
             {
+                int usuario = idUsuario;
                 factura.Fecha = DateTime.Now;
-                factura.idUsuario = idUsuario;
+                factura.idUsuario = usuario;
                 factura.MetodoPago = "Efectivo";
                 factura.Subtotal = subtotal;
                 factura.Impuestos = impuestos;
@@ -295,8 +311,8 @@ namespace Veterinaria
 
         private void btnBuscarProd_Click(object sender, EventArgs e)
         {
-            agregarProducto();
-            limpiarCampos();
+            buscarProducto();
+          
         }
 
         private void txtIVAProd_TextChanged(object sender, EventArgs e)
@@ -307,6 +323,24 @@ namespace Veterinaria
         private void btnFacturar_Click(object sender, EventArgs e)
         {
             realizarCompra();
+        }
+
+      
+
+        private void btnAgregarProd_Click_1(object sender, EventArgs e)
+        {
+            agregarProducto();
+            limpiarCampos();
+        }
+
+        private void txtCantidad_TextChanged(object sender, EventArgs e)
+        {
+            calcularMontos(producto);
+        }
+
+        private void FRMModuloFactura_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -53,6 +53,9 @@ namespace Datos
             bool actualizar = false;
             try
             {
+
+           
+
                 if (Open())
                 {
                     vCmd = new SqlCommand("actualizarUsuario", vCnx);

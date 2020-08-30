@@ -52,11 +52,12 @@ namespace Veterinaria
                 }
                 else
                 {
+                    usuario.idUsuario = vgIdUsuario;
                     ejecutar = accionesUsuario.ActualizarUsuario(usuario);
                 }
                
 
-                if (insertar)
+                if (ejecutar)
                 {
                     limpiarCampos();
                     cargarUsuarios();

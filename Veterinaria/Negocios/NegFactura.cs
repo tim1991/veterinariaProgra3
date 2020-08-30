@@ -18,6 +18,15 @@ namespace Negocios
         {
             int idFactura = accionesFactura.idFactura();
 
+            if(idFactura == 0)
+            {
+                idFactura = 1;
+            }
+            else
+            {
+                idFactura ++;
+            }
+
             return idFactura;
         }
 

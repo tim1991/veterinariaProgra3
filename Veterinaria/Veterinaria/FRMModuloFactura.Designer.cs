@@ -369,6 +369,7 @@
             this.btnAgregarProd.TabIndex = 11;
             this.btnAgregarProd.Text = "Agregar";
             this.btnAgregarProd.UseVisualStyleBackColor = true;
+            this.btnAgregarProd.Click += new System.EventHandler(this.btnAgregarProd_Click_1);
             // 
             // dgvVenta
             // 
@@ -415,6 +416,7 @@
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(60, 20);
             this.txtCantidad.TabIndex = 6;
+            this.txtCantidad.TextChanged += new System.EventHandler(this.txtCantidad_TextChanged);
             // 
             // txtBuscarProd
             // 
@@ -510,6 +512,7 @@
             this.Name = "FRMModuloFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FRMModuloFactura";
+            this.Load += new System.EventHandler(this.FRMModuloFactura_Load);
             this.gpbCliente.ResumeLayout(false);
             this.gpbCliente.PerformLayout();
             this.gpbPago.ResumeLayout(false);
