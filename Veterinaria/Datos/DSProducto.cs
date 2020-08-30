@@ -16,7 +16,7 @@ namespace Datos
 
         #region Metodos
 
-        public bool InsertarProducto(Producto producto)
+        public bool insertarProducto(Producto producto)
         {
             bool insertar = false;
 
@@ -46,7 +46,7 @@ namespace Datos
             return insertar;
         }
 
-        public bool ActualizarProducto(Producto producto)
+        public bool actualizarProducto(Producto producto)
         {
             bool update = false;
 
@@ -76,7 +76,71 @@ namespace Datos
             return update;
         }
 
-        public DataTable GetTblProducto()
+        public Producto buscar(int codigo)
+        {
+            Producto producto;
+            producto = null;
+
+            try
+            {
+                if (Open())
+                {
+                    vCmd = new SqlCommand("selectBuscarProducto", vCnx);
+                    vCmd.CommandType = CommandType.StoredProcedure;
+                    vCmd.Parameters.Add("@IDProducto", SqlDbType.Int).Value = codigo;
+
+                    SqlDataReader reader = vCmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        producto = new Producto();
+                        producto.IdProducto = int.Parse(reader["IDProducto"].ToString());
+                        producto.nombreProducto = reader["NombreProducto"].ToString();
+                        producto.precioProducto = decimal.Parse(reader["Precio"].ToString());
+                        producto.stockProducto = int.Parse(reader["Stock"].ToString());
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+
+            }
+            finally
+            {
+                Close();
+            }
+            return producto;
+        }
+
+        public bool eliminar(Producto producto)
+        {
+            bool delete = false;
+
+            try
+            {
+                if (Open())
+                {
+                    vCmd = new SqlCommand("deleteProducto", vCnx);
+                    vCmd.CommandType = CommandType.StoredProcedure;
+
+                    vCmd.Parameters.Add("@NombreProducto", SqlDbType.NVarChar).Value = producto.nombreProducto;
+                    vCmd.ExecuteNonQuery();
+
+                    delete = true;
+                }
+            }
+            catch (SqlException)
+            {
+
+            }
+            finally
+            {
+                Close();
+            }
+            return delete;
+        }
+
+        public DataTable getTblProducto()
         {
             try
             {
