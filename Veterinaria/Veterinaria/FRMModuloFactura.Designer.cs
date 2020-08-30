@@ -363,12 +363,14 @@
             // 
             // btnAgregarProd
             // 
+            this.btnAgregarProd.Enabled = false;
             this.btnAgregarProd.Location = new System.Drawing.Point(114, 237);
             this.btnAgregarProd.Name = "btnAgregarProd";
             this.btnAgregarProd.Size = new System.Drawing.Size(90, 34);
             this.btnAgregarProd.TabIndex = 11;
             this.btnAgregarProd.Text = "Agregar";
             this.btnAgregarProd.UseVisualStyleBackColor = true;
+            this.btnAgregarProd.Click += new System.EventHandler(this.btnAgregarProd_Click);
             // 
             // dgvVenta
             // 
@@ -390,6 +392,7 @@
             // 
             // txtNomProd
             // 
+            this.txtNomProd.Enabled = false;
             this.txtNomProd.Location = new System.Drawing.Point(23, 98);
             this.txtNomProd.Name = "txtNomProd";
             this.txtNomProd.Size = new System.Drawing.Size(165, 20);
@@ -397,6 +400,7 @@
             // 
             // txtCodigo
             // 
+            this.txtCodigo.Enabled = false;
             this.txtCodigo.Location = new System.Drawing.Point(23, 149);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(60, 20);
@@ -404,6 +408,7 @@
             // 
             // txtPrecio
             // 
+            this.txtPrecio.Enabled = false;
             this.txtPrecio.Location = new System.Drawing.Point(23, 197);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(107, 20);
@@ -411,10 +416,12 @@
             // 
             // txtCantidad
             // 
+            this.txtCantidad.Enabled = false;
             this.txtCantidad.Location = new System.Drawing.Point(23, 245);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(60, 20);
             this.txtCantidad.TabIndex = 6;
+            this.txtCantidad.TextChanged += new System.EventHandler(this.txtCantidad_TextChanged);
             // 
             // txtBuscarProd
             // 

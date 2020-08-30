@@ -31,10 +31,8 @@
             this.gpbProducto = new System.Windows.Forms.GroupBox();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.txbStock = new System.Windows.Forms.TextBox();
             this.txbPrecio = new System.Windows.Forms.TextBox();
             this.txbNombre = new System.Windows.Forms.TextBox();
-            this.lblStock = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -50,10 +48,8 @@
             // 
             this.gpbProducto.Controls.Add(this.btnActualizar);
             this.gpbProducto.Controls.Add(this.btnAgregar);
-            this.gpbProducto.Controls.Add(this.txbStock);
             this.gpbProducto.Controls.Add(this.txbPrecio);
             this.gpbProducto.Controls.Add(this.txbNombre);
-            this.gpbProducto.Controls.Add(this.lblStock);
             this.gpbProducto.Controls.Add(this.lblPrecio);
             this.gpbProducto.Controls.Add(this.lblNombre);
             this.gpbProducto.Location = new System.Drawing.Point(30, 27);
@@ -83,13 +79,6 @@
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // txbStock
-            // 
-            this.txbStock.Location = new System.Drawing.Point(585, 36);
-            this.txbStock.Name = "txbStock";
-            this.txbStock.Size = new System.Drawing.Size(100, 20);
-            this.txbStock.TabIndex = 5;
-            // 
             // txbPrecio
             // 
             this.txbPrecio.Location = new System.Drawing.Point(360, 36);
@@ -103,15 +92,6 @@
             this.txbNombre.Name = "txbNombre";
             this.txbNombre.Size = new System.Drawing.Size(176, 20);
             this.txbNombre.TabIndex = 3;
-            // 
-            // lblStock
-            // 
-            this.lblStock.AutoSize = true;
-            this.lblStock.Location = new System.Drawing.Point(544, 39);
-            this.lblStock.Name = "lblStock";
-            this.lblStock.Size = new System.Drawing.Size(35, 13);
-            this.lblStock.TabIndex = 2;
-            this.lblStock.Text = "Stock";
             // 
             // lblPrecio
             // 
@@ -183,10 +163,8 @@
 
         private System.Windows.Forms.GroupBox gpbProducto;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Label lblStock;
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.TextBox txbStock;
         private System.Windows.Forms.TextBox txbPrecio;
         private System.Windows.Forms.TextBox txbNombre;
         private System.Windows.Forms.GroupBox gpbVer;

@@ -11,9 +11,9 @@ namespace Datos
 {
     public class DSFactura : DSConexion
     {
-        DataTable dtFactura;
-
         #region Metodos
+
+        DataTable dtFactura;
 
         public int idFactura()
         {
@@ -60,7 +60,6 @@ namespace Datos
                     vCmd.Parameters.Add("@Total", SqlDbType.Decimal).Value = factura.Total;
                     vCmd.Parameters.Add("@MetodoPago", SqlDbType.VarChar).Value = factura.MetodoPago;
                     vCmd.Parameters.Add("@IDUsuario", SqlDbType.Int).Value = factura.IDUsuario;
-                    vCmd.Parameters.Add("@IDProducto", SqlDbType.Int).Value = factura.IDProducto;
                     vCmd.ExecuteNonQuery();
 
                     Factura fact = buscarFactura(factura.Id);
@@ -103,7 +102,6 @@ namespace Datos
                         fact.Total = decimal.Parse(reader["Total"].ToString());
                         fact.MetodoPago = reader["MetodoPago"].ToString();
                         fact.IDUsuario = int.Parse(reader["IDUsuario"].ToString());
-                        fact.IDProducto = int.Parse(reader["IDProducto"].ToString());
                     }
                 }
             }
