@@ -57,21 +57,22 @@ create table Productos
     Stock int  not null
 )
 
+
 create table Factura
 (
-    IDFactura int primary key Identity(1, 1)  not null,
+    IDFactura int primary key not null,
     FechaFactura datetime not null,
     Subtotal money not null,
 	Impuestos money not null,
     Total money not null,
     MetodoPago varchar(15) not null,
-    IDUsuario int foreign key (IDUsuario) references Usuario (IDUsuario) not null,
-    IDProducto int foreign key (IDProducto) references Productos (IDProducto) not null
+    IDUsuario int foreign key (IDUsuario) references Usuario (IDUsuario) not null
 )
+ 
 
 create table DetalleFactura
 (
-    IdDetalle int primary key not null,
+    IdDetalle int primary key identity(1,1) not null,
     Cantidad int not null,
     SubtotalDetalle money not null,
 	ImpuestosDetalle money not null,
@@ -159,17 +160,18 @@ go
 
 --Procedimientos almacenados para Factura y Detalles
 
-create procedure insertFactura
+
+create procedure insertarFactura
+@IDFactura int,
 @FechaFactura datetime,
 @Subtotal money,
 @Impuestos money,
 @Total money,
 @MetodoPago varchar(15),
-@IDUsuario int,
-@IDProducto int
+@IDUsuario int
 as
-insert into Factura(FechaFactura, Subtotal, Impuestos, Total, MetodoPago, IDUsuario, IDProducto)
-values(@FechaFactura, @Subtotal, @Impuestos, @Total, @MetodoPago, @IDUsuario, @IDProducto)
+insert into Factura(IDFactura,FechaFactura, Subtotal, Impuestos, Total, MetodoPago, IDUsuario)
+values(@IDFactura,@FechaFactura, @Subtotal, @Impuestos, @Total, @MetodoPago, @IDUsuario)
 go
 
 create procedure insertDetalle
@@ -188,7 +190,7 @@ create procedure selectFacturas
 as
 select * from Factura
 go
-
+=
 create procedure selectIdFactura
 @IDFactura int
 as
@@ -237,7 +239,7 @@ BEGIN
 END  
   
 
-  CREATE PROCEDURE actualizarUsuario  
+create PROCEDURE actualizarUsuario  
  @IDUsuario int,  
  @Cedula int ,  
  @NombrePersona varchar(15) ,  
@@ -249,8 +251,9 @@ END
  @IdRol int  
 AS  
 BEGIN  
-Update  Usuario set Cedula = @Cedula, NombrePersona = @NombrePersona, Contrasena = @Contrasena, Apellidos = Apellidos, Email = @Email, Telefono = @Telefono, Direccion = @Direccion, IdRol = @IdRol Where IDUsuario = @IDUsuario  
+Update  Usuario set Cedula = @Cedula, NombrePersona = @NombrePersona, Contrasena = @Contrasena, Apellidos = @Apellidos, Email = @Email, Telefono = @Telefono, Direccion = @Direccion, IdRol = @IdRol Where IDUsuario = @IDUsuario  
 END
+
 create procedure selectDetallesVenta
 @IDFactura int
 as
