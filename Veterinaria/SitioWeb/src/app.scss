@@ -1,0 +1,140 @@
+// Start Bootstrap
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+// End Bootstrap
+
+//Start slick
+@import "~slick-carousel/slick/slick.scss";
+//End slick
+
+//Start AOS
+@import "~aos/dist/aos.css";
+
+.banner-home {
+    background-size: cover;
+    height: 600px;
+    background-position: center;
+
+    .caption {
+        float: left;
+        margin-top: 80px;
+
+        p {
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff4880;
+        }
+
+        h2 {
+            font-size: 60px;
+            color: #393c71;
+        }
+    }
+}
+
+nav {
+    &.hero {
+        background: white;
+        float: left;
+        width: 100%;
+        margin-top: 20px;
+        border-radius: 2px;
+        height: 90px;
+        line-height: 90px;
+        padding: 0 20px;
+    }
+
+    .logo {
+        float: left;
+    }
+
+    ul {
+        float: left;
+        padding: 0;
+        list-style: none;
+        margin-left: 30px;
+
+        li {
+            display: inline-block;
+
+            a {
+                color: #393c71;
+                font-weight: bold;
+                margin-right: 20px;
+            }
+        }
+    }
+}
+
+.btn-nav {
+    float: right;
+    margin-right: 10px;
+    margin-top: 22px;
+    height: 50px;
+    padding: 0 24px;
+    font-weight: bold;
+    line-height: 48px;
+    border-radius: 20px;
+
+    &.morado {
+        background: #393c71;
+        color: white !important;
+    }
+
+    &.rosado {
+        background: #ff4880;
+        color: white !important;
+    }
+
+    &.verde {
+        background: #8ec424;
+        color: white !important;
+    }
+
+}
+
+.featured {
+    margin-top: -40px;
+
+    .card {
+        display: inline-block;
+        width: 32%;
+        padding: 10px;
+
+        .icon {
+            display: inline-block;
+
+            svg {
+                font-size: 60px;
+            }
+        }
+
+        .content {
+            margin-left: 10px;
+            font-weight: bold;
+            color: #393c71;
+            margin-top: 20px;
+            display: inline-block;
+        }
+    }
+}
+
+.c-rosado {
+    color: #ff4880;
+}
+
+.c-amarillo {
+    color: #f9bd4d;
+}
+
+.c-verde {
+    color: #8ec424;
+}
