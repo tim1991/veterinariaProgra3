@@ -14,39 +14,37 @@ namespace Datos
 
         public bool Agregar(Usuario vpoUsuario)
         {
-                bool insertar = false;
-                try
+            bool insertar = false;
+            try
+            {
+                if (Open())
                 {
-                    if (Open())
-                    {
-                        vCmd = new SqlCommand("agregarUsuario", vCnx);
-                        vCmd.CommandType = CommandType.StoredProcedure;
-                        vCmd.Parameters.Add("@Cedula", SqlDbType.VarChar).Value = vpoUsuario.cedula;
-                        vCmd.Parameters.Add("@NombrePersona", SqlDbType.VarChar).Value = vpoUsuario.nombre;
-                        vCmd.Parameters.Add("@Contrasena", SqlDbType.VarChar).Value = vpoUsuario.contrasena;
-                        vCmd.Parameters.Add("@Apellidos", SqlDbType.VarChar).Value = vpoUsuario.apellidos;
-                        vCmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = vpoUsuario.email;
-                        vCmd.Parameters.Add("@Telefono", SqlDbType.Int).Value = vpoUsuario.telefono;
-                        vCmd.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = vpoUsuario.direccion;
-                        vCmd.Parameters.Add("@IdRol", SqlDbType.Int).Value = vpoUsuario.rol;
+                    vCmd = new SqlCommand("agregarUsuario", vCnx);
+                    vCmd.CommandType = CommandType.StoredProcedure;
+                    vCmd.Parameters.Add("@Cedula", SqlDbType.VarChar).Value = vpoUsuario.cedula;
+                    vCmd.Parameters.Add("@NombrePersona", SqlDbType.VarChar).Value = vpoUsuario.nombre;
+                    vCmd.Parameters.Add("@Contrasena", SqlDbType.VarChar).Value = vpoUsuario.contrasena;
+                    vCmd.Parameters.Add("@Apellidos", SqlDbType.VarChar).Value = vpoUsuario.apellidos;
+                    vCmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = vpoUsuario.email;
+                    vCmd.Parameters.Add("@Telefono", SqlDbType.Int).Value = vpoUsuario.telefono;
+                    vCmd.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = vpoUsuario.direccion;
+                    vCmd.Parameters.Add("@IdRol", SqlDbType.Int).Value = vpoUsuario.rol;
 
-                        vCmd.ExecuteNonQuery();
+                    vCmd.ExecuteNonQuery();
 
-                        insertar = true;
-                    }
+                    insertar = true;
                 }
-                catch (Exception e)
-                {
-
-                }
-                finally
-                {
-                    Close();
-                }
-
-
-                return insertar;
             }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                Close();
+            }
+            return insertar;
+        }
 
         public List<Usuario> listarUsuarios()
         {
@@ -84,10 +82,7 @@ namespace Datos
             {
                 Close();
             }
-
-
             return RolList;
-
         }
 
 
@@ -123,13 +118,46 @@ namespace Datos
             {
                 Close();
             }
-
-
             return sesion;
-
         }
 
+        public Usuario Buscar(int cedula)
+        {
+            Usuario usuario;
+            usuario = null;
 
+            try
+            {
+                if (Open())
+                {
+                    vCmd = new SqlCommand("buscarUsuario", vCnx);
+                    vCmd.CommandType = CommandType.StoredProcedure;
 
+                    vCmd.Parameters.Add("@Cedula", SqlDbType.Int).Value = cedula;
+
+                    SqlDataReader reader = vCmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        usuario = new Usuario();
+                        usuario.idUsuario = int.Parse(reader["IdUsuario"].ToString());
+                        usuario.cedula = int.Parse(reader["Cedula"].ToString());
+                        usuario.nombre = reader["NombrePersona"].ToString();
+                        usuario.apellidos = reader["Apellidos"].ToString();
+                        usuario.direccion = reader["Direccion"].ToString();
+                        usuario.email = reader["Email"].ToString();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                Close();
+            }
+            return usuario;
+        }
     }
 }
