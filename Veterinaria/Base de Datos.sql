@@ -190,11 +190,14 @@ create procedure selectFacturas
 as
 select * from Factura
 go
-=
+
 create procedure selectIdFactura
 @IDFactura int
 as
-select * from Factura where IDFactura = IDFactura
+select Factura.IDFactura,Usuario.NombrePersona,Usuario.Apellidos, Usuario.Cedula,Usuario.Direccion,Factura.FechaFactura,Factura.MetodoPago,Factura.Subtotal,Factura.Impuestos,Factura.Total 
+from Factura 
+inner join Usuario on Usuario.IDUsuario = Factura.IDUsuario
+where Factura.IDFactura = @IDFactura
 go
 
 create procedure selectNumFactura
@@ -215,13 +218,14 @@ select * from Productos where IDProducto = @IDProducto
 go
 
 create procedure selectDetalles
+@IDFactura int
 as
-select a.IDFactura, b.NombrePersona, b.Apellidos, b.Cedula, b.Telefono, b.Email, b.Direccion, a.FechaFactura, d.Cantidad, c.NombreProducto, c.Precio,
-a.Subtotal, a.MetodoPago, d.ImpuestosDetalle, a.Total from Factura a
-inner join Usuario b on b.IDUsuario = a.IDUsuario
-inner join Productos c on c.IDProducto = a.IDProducto
-inner join DetalleFactura d on d.IDFactura = a.IDFactura
+select  d.IdDetalle,d.Cantidad,d.SubtotalDetalle,d.ImpuestosDetalle,d.TotalDetalle, p.NombreProducto  from DetalleFactura as d
+inner join Factura as f on f.IDFactura = d.IDFactura
+inner join Productos as p on p.IDProducto = d.IDProducto 
+where f.IDFactura = @IDFactura
 go
+
 
 CREATE PROCEDURE mostrarProducto
 AS

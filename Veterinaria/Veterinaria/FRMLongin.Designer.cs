@@ -41,7 +41,7 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(30, 68);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(240, 20);
+            this.txtEmail.Size = new System.Drawing.Size(240, 22);
             this.txtEmail.TabIndex = 0;
             // 
             // txtContrasena
@@ -49,7 +49,7 @@
             this.txtContrasena.Location = new System.Drawing.Point(30, 134);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.PasswordChar = '*';
-            this.txtContrasena.Size = new System.Drawing.Size(240, 20);
+            this.txtContrasena.Size = new System.Drawing.Size(240, 22);
             this.txtContrasena.TabIndex = 1;
             // 
             // label1
@@ -57,7 +57,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(27, 43);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.Size = new System.Drawing.Size(48, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Email";
             // 
@@ -66,18 +66,22 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(27, 107);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(89, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Contraseña";
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(195, 178);
+            this.btnIngresar.BackColor = System.Drawing.Color.Teal;
+            this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresar.ForeColor = System.Drawing.Color.White;
+            this.btnIngresar.Location = new System.Drawing.Point(30, 178);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(75, 23);
+            this.btnIngresar.Size = new System.Drawing.Size(240, 35);
             this.btnIngresar.TabIndex = 4;
             this.btnIngresar.Text = "Ingresar";
-            this.btnIngresar.UseVisualStyleBackColor = true;
+            this.btnIngresar.UseVisualStyleBackColor = false;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
             // groupBox1
@@ -87,6 +91,7 @@
             this.groupBox1.Controls.Add(this.txtContrasena);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(31, 50);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(309, 332);
@@ -98,10 +103,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 450);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(375, 450);
             this.Controls.Add(this.groupBox1);
             this.Name = "FRMLongin";
-            this.Text = "Longin";
+            this.Text = "Login";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

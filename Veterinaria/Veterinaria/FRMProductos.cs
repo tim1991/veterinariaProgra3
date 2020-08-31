@@ -17,6 +17,7 @@ namespace Veterinaria
         public FRMProductos()
         {
             InitializeComponent();
+            cargarProductos();
         }
 
         private NegProducto accionesProducto = new NegProducto();

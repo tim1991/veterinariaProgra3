@@ -269,7 +269,8 @@ namespace Veterinaria
                 lblNumFactura.Text = "" + idFactura.ToString();
                 txtNomCliente.Text = "";
                 txtCedula.Text = "";
-
+                Reporte reporte = new Reporte(factura.Id);
+                reporte.Show();
                 MessageBox.Show("Compra Exitosa.", "Felicidades", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 cargarDetalles();
