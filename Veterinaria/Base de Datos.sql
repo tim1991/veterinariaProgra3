@@ -10,9 +10,9 @@ create table Roles
     Detalle varchar(100)
 )
 
-INSERT INTO	Roles VALUES('Administrador');
-INSERT INTO	Roles VALUES('Vendedor');
-INSERT INTO	Roles VALUES('Cliente');
+INSERT INTO	Roles VALUES('Administrador')
+INSERT INTO	Roles VALUES('Vendedor')
+INSERT INTO	Roles VALUES('Cliente')
 
 create table Usuario
 (
@@ -57,7 +57,6 @@ create table Productos
     Stock int  not null
 )
 
-
 create table Factura
 (
     IDFactura int primary key not null,
@@ -67,8 +66,7 @@ create table Factura
     Total money not null,
     MetodoPago varchar(15) not null,
     IDUsuario int foreign key (IDUsuario) references Usuario (IDUsuario) not null
-)
- 
+) 
 
 create table DetalleFactura
 (
@@ -226,22 +224,13 @@ inner join Productos as p on p.IDProducto = d.IDProducto
 where f.IDFactura = @IDFactura
 go
 
-
-CREATE PROCEDURE mostrarProducto
-AS
-BEGIN
-SELECT * FROM Productos
-END
-GO
-
-
 create procedure obtenerUsuarioCedula  
 @Cedula int  
 AS  
 BEGIN  
  select * from Usuario where Cedula = @Cedula  
 END  
-  
+GO
 
 create PROCEDURE actualizarUsuario  
  @IDUsuario int,  
@@ -257,6 +246,7 @@ AS
 BEGIN  
 Update  Usuario set Cedula = @Cedula, NombrePersona = @NombrePersona, Contrasena = @Contrasena, Apellidos = @Apellidos, Email = @Email, Telefono = @Telefono, Direccion = @Direccion, IdRol = @IdRol Where IDUsuario = @IDUsuario  
 END
+GO
 
 create procedure selectDetallesVenta
 @IDFactura int
