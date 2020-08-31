@@ -13,7 +13,7 @@ namespace Datos
         public SqlCommand vCmd;
         public SqlDataAdapter adaptador;
 
-        private static string servidor = "RODOLFO";
+        private static string servidor = "DESKTOP-KGJOPLI";
         private static string baseDatos = "MundoAnimalia";
 
         private string connectionString = "Data Source="+servidor+";Initial Catalog="+baseDatos+";Integrated Security=True";
