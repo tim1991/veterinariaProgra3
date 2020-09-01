@@ -15,24 +15,47 @@ namespace Veterinaria
     public partial class FRMCitas : Form
     {
         NegCita accionesCitas = new NegCita();
+
+        private int v_consecutivo = 0;
+        private int v_idCita = 0;
+
         public FRMCitas()
         {
             InitializeComponent();
+            v_consecutivo = accionesCitas.consecutivoCita();
+            lb_numCita.Text = v_consecutivo.ToString();
         }
 
-        private void btnAgendarCita_Click(object sender, EventArgs e)
+        #region metodos
+
+        public void limpiarCampos()
+        {
+            cbTipoServicio.Text = String.Empty;
+            txtUsuarioCita.Text = String.Empty;
+        }
+
+        public void cargarCitas()
+        {
+            List<Cita> listarCitas = accionesCitas.ListarCita();
+            dgvCitas.DataSource = listarCitas;
+        }
+
+        public void m_agendarCita()
         {
             Cita nuevaCita = new Cita();
 
             try
             {
-                nuevaCita.idcita = int.Parse(txtIDCita.Text);
-                nuevaCita.servicio = txtIDCita.Text;
-                nuevaCita.fechacita = int.Parse(txtFecha.Text);
+                nuevaCita.idcita = int.Parse(lb_numCita.Text);
+                nuevaCita.servicio = cbTipoServicio.Text;
+                nuevaCita.fechacita = dtp_cita.Value;
                 nuevaCita.idUsuario = int.Parse(txtUsuarioCita.Text);
+
                 accionesCitas.AgregarCita(nuevaCita);
+
                 limpiarCampos();
                 cargarCitas();
+
                 MessageBox.Show("Cita agendada correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception error)
@@ -41,18 +64,35 @@ namespace Veterinaria
             }
         }
 
-        public void limpiarCampos()
+        public void m_buscarCita()
         {
-            txtIDCita.Text = String.Empty;
-            cbTipoServicio.Text = String.Empty;
-            txtFecha.Text = String.Empty;
-            txtUsuarioCita.Text = String.Empty;
+            int idCita = int.Parse(txtFiltroCita.Text);
+
+            Cita cita = accionesCitas.buscarCita();
+
+            try
+            {
+                v_idCita = cita.idUsuario;
+
+                //dgvCitas.DataSource = buscarCita;
+
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
         }
 
-        public void cargarCitas()
+        #endregion metodos
+
+        private void btnAgendarCita_Click(object sender, EventArgs e)
         {
-            List<Cita> listarCitas = accionesCitas.ListarCita();
-            dgvCitas.DataSource = listarCitas;
+            m_agendarCita();
+        }
+
+        private void btnBuscarCita_Click(object sender, EventArgs e)
+        {
+            m_buscarCita();
         }
     }
 }
