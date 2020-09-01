@@ -36,7 +36,7 @@ create table Mascota
     NombreMascota varchar(10)  not null,
     Especie varchar(10) not null,
     Raza varchar(10) not null,
-    Nacimiento datetime not null,
+    Nacimiento int not null,
     Genero varchar(10) not null,
     IDUsuario int foreign key (IDUsuario) references Usuario (IDUsuario) not null
 )
@@ -140,6 +140,82 @@ BEGIN
 Update  Usuario set Cedula = @Cedula, NombrePersona = @NombrePersona, Contrasena = @Contrasena, Apellidos = @Apellidos, Email = @Email, Telefono = @Telefono, Direccion = @Direccion, IdRol = @IdRol Where IDUsuario = @IDUsuario  
 END
 GO
+
+--Procedimientos almacenados para Mascota
+create procedure agregarMascota
+	@IdMascota int ,
+	@NombreMascota varchar(10) ,
+	@Especie varchar(10) ,
+	@Raza varchar(10) ,
+	@Nacimiento int ,
+	@Genero varchar(10),
+	@IDUsuario int
+as
+begin
+insert into Mascota (IdMascota,NombreMascota,Especie,Raza,Nacimiento,Genero,IDUsuario) values (@IdMascota,@NombreMascota,@Especie,@Raza,@Nacimiento,@Genero,@IDUsuario)
+end
+go
+
+create procedure mostrarMascotas
+as
+select * from Mascota
+go
+
+create procedure buscarMascota
+@IdMascota int
+as
+select * from Mascota where IdMascota = @IdMascota
+go
+
+create procedure actualizarMascota  
+	@IdMascota int ,
+	@NombreMascota varchar(10) ,
+	@Especie varchar(10) ,
+	@Raza varchar(10) ,
+	@Nacimiento int ,
+	@Genero varchar(10),
+	@IDUsuario int
+as
+begin  
+Update Mascota set IdMascota = @IdMascota, NombreMascota = @NombreMascota, Especie = @Especie, Raza = @Raza, Nacimiento = @Nacimiento, Genero = @Genero Where IDUsuario = @IDUsuario  
+end
+go
+
+create procedure deleteMascota
+@IdMascota int
+as
+delete from Mascota where IdMascota = @IdMascota
+go
+
+--Procedimientos almacenados para Cita
+create procedure ConsecutivoCita
+as
+select IdCita from Cita order by IdCita desc
+go
+
+create procedure agregarCita
+	@IdCita int ,
+	@Servicio varchar(30) ,
+	@FechaCita datetime ,
+	@IDUsuario int
+as
+begin
+insert into Cita (IdCita, Servicio, FechaCita, IDUsuario) values (@IdCita, @Servicio, @FechaCita, @IDUsuario)
+end
+go
+
+create procedure mostrarCita
+as
+select * from Cita
+go
+
+create procedure buscarCita
+@IdCita int
+as
+select * from Cita where IdCita = @IdCita
+go
+
+
 
 --Procedimientos almacenados para Producto
 

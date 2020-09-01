@@ -11,6 +11,35 @@ namespace Datos
 {
     public class DSCitas : DSConexion
     {
+        public int ConsecutivoCita()
+        {
+            int conse = 0;
+
+            try
+            {
+                if (Open())
+                {
+                    SqlCommand cmd = new SqlCommand("ConsecutivoCita", vCnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+                    conse = int.Parse(reader[0].ToString());
+                }
+            }
+
+            catch (Exception)
+            {
+
+            }
+
+            finally
+            {
+                Close();
+            }
+
+            return conse;
+        }
+
         public void NuevaCita(Cita cita)
         {
             SqlCommand cmd = new SqlCommand("agregarCita", vCnx);
@@ -53,7 +82,7 @@ namespace Datos
                         cita = new Cita();
                         cita.idcita = int.Parse(reader["IdCita"].ToString());
                         cita.servicio = reader["Servicio"].ToString();
-                        cita.fechacita = int.Parse(reader["FechaCita"].ToString());
+                        cita.fechacita = DateTime.Parse(reader["FechaCita"].ToString());
                         cita.idUsuario = int.Parse(reader["IDUsuario"].ToString());
                         citaList.Add(cita);
                     }
@@ -69,6 +98,43 @@ namespace Datos
             }
 
             return citaList;
+        }
+
+        public Cita BuscarCita(int idCita)
+        {
+            Cita cita = null;
+
+            try
+            {
+                if (Open())
+                {
+                    vCmd = new SqlCommand("buscarCita", vCnx);
+                    vCmd.CommandType = CommandType.StoredProcedure;
+                    vCmd.Parameters.Add("@IdCita", SqlDbType.Int).Value = idCita;
+
+                    SqlDataReader reader = vCmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        cita = new Cita();
+                        cita.idcita = int.Parse(reader["IdMascota"].ToString());
+                        cita.servicio = reader["NombreMascota"].ToString();
+                        cita.fechacita = DateTime.Parse(reader["Especie"].ToString());
+                        cita.idUsuario = int.Parse(reader["Raza"].ToString());
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+
+            finally
+            {
+                Close();
+            }
+
+            return cita;
         }
     }
 }
