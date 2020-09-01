@@ -23,5 +23,10 @@ namespace Negocios
 
             return cita;
         }
+
+        public Cita buscarCita(int idCita)
+        {
+            return accionesCitas.BuscarCita(idCita);
+        }
     }
 }

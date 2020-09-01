@@ -21,13 +21,14 @@ namespace Veterinaria
             cargarMascotas();
         }
 
+        #region Metodos
+
         private void btnAgregarMascota_Click(object sender, EventArgs e)
         {
             Mascota nuevaMascota = new Mascota();
 
             try
             {
-                nuevaMascota.idmascota = int.Parse(txtIDMascota.Text);
                 nuevaMascota.nombremascota = txtNombreMascota.Text;
                 nuevaMascota.especie = txtEspecie.Text;
                 nuevaMascota.raza = txtRaza.Text;
@@ -48,15 +49,46 @@ namespace Veterinaria
                 }
                
             }
-            catch (Exception error)
+            catch (Exception)
             {
-                MessageBox.Show("Ha ocurrido un error: " + error.Message);
+                MessageBox.Show("Ha ocurrido un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        public void cargarMascotas()
+        {
+            List<Mascota> listarMascotas = accionesMascotas.ListarMascota();
+            dgvMascotas.DataSource = listarMascotas;
+        }
+
+        public void buscarMascota()
+        {
+            try
+            {
+                int id = int.Parse(txtFiltroMascotas.Text);
+
+                Mascota mascota = accionesMascotas.buscarMascota(id);
+
+                if (mascota != null)
+                {
+                    dgvMascotas.DataSource = txtFiltroMascotas.Text;
+                }
+                else
+                {
+                    MessageBox.Show("La mascota no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.txtFiltroMascotas.Text = "";
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ingrese el ID de una mascota", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+
         public void limpiarCampos()
         {
-            txtIDMascota.Text = String.Empty;
             txtNombreMascota.Text = String.Empty;
             txtEspecie.Text = String.Empty;
             txtRaza.Text = String.Empty;
@@ -64,10 +96,9 @@ namespace Veterinaria
             cbGenero.Text = String.Empty;
         }
 
-        public void cargarMascotas()
+        private void btnBuscarMascotas_Click(object sender, EventArgs e)
         {
-            List<Mascota> listarMascotas = accionesMascotas.ListarMascota();
-            dgvMascotas.DataSource = listarMascotas;
+            buscarMascota();
         }
     }
 }

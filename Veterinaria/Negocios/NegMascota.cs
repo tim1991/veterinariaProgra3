@@ -16,11 +16,31 @@ namespace Negocios
         {
            return  accionesMascotas.NuevaMascota(mascota);
         }
+
         public List<Mascota> ListarMascota()
         {
             List<Mascota> mascota = accionesMascotas.listarMascotas();
 
             return mascota;
+        }
+
+        public Mascota buscarMascota(int idMascot)
+        {
+            return accionesMascotas.BuscarMascota(idMascot);
+        }
+
+        public bool actualizarMascota(Mascota mascota)
+        {
+            bool update = accionesMascotas.ActualizarMascota(mascota);
+
+            return update;
+        }
+
+        public bool eliminarMascota(Mascota mascota)
+        {
+            bool delete = accionesMascotas.EliminarMascota(mascota);
+
+            return delete;
         }
     }
 }
