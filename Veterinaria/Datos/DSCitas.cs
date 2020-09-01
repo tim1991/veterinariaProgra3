@@ -11,58 +11,35 @@ namespace Datos
 {
     public class DSCitas : DSConexion
     {
-        public int ConsecutivoCita()
+        public bool NuevaCita(Cita cita)
         {
-            int conse = 0;
+            bool insertar = true;
+
+            
 
             try
             {
                 if (Open())
                 {
-                    SqlCommand cmd = new SqlCommand("ConsecutivoCita", vCnx);
+                    SqlCommand cmd = new SqlCommand("agregarCita", vCnx);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    reader.Read();
-                    conse = int.Parse(reader[0].ToString());
+                    cmd.Parameters.AddWithValue("@Servicio", cita.servicio);
+                    cmd.Parameters.AddWithValue("@FechaCita", cita.fechacita);
+                    cmd.Parameters.AddWithValue("@IDUsuario", cita.idUsuario);
+
+                    cmd.ExecuteNonQuery();
                 }
             }
-
-            catch (Exception)
+            catch (Exception ex)
             {
-
-            }
-
-            finally
-            {
-                Close();
-            }
-
-            return conse;
-        }
-
-        public void NuevaCita(Cita cita)
-        {
-            SqlCommand cmd = new SqlCommand("agregarCita", vCnx);
-
-            try
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@IdCita", cita.idcita);
-                cmd.Parameters.AddWithValue("@Servicio", cita.servicio);
-                cmd.Parameters.AddWithValue("@FechaCita", cita.fechacita);
-                cmd.Parameters.AddWithValue("@IDUsuario", cita.idUsuario);
-
-                vCnx.Open();
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
-
+                insertar = false;
             }
             finally
             {
                 vCnx.Close();
             }
+
+            return insertar;
         }
 
         public List<Cita> listarCitas()
@@ -98,43 +75,6 @@ namespace Datos
             }
 
             return citaList;
-        }
-
-        public Cita BuscarCita(int idCita)
-        {
-            Cita cita = null;
-
-            try
-            {
-                if (Open())
-                {
-                    vCmd = new SqlCommand("buscarCita", vCnx);
-                    vCmd.CommandType = CommandType.StoredProcedure;
-                    vCmd.Parameters.Add("@IdCita", SqlDbType.Int).Value = idCita;
-
-                    SqlDataReader reader = vCmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        cita = new Cita();
-                        cita.idcita = int.Parse(reader["IdMascota"].ToString());
-                        cita.servicio = reader["NombreMascota"].ToString();
-                        cita.fechacita = DateTime.Parse(reader["Especie"].ToString());
-                        cita.idUsuario = int.Parse(reader["Raza"].ToString());
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                throw error;
-            }
-
-            finally
-            {
-                Close();
-            }
-
-            return cita;
         }
     }
 }
