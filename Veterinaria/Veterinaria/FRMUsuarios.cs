@@ -120,26 +120,6 @@ namespace Veterinaria
 
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDireccion_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboRol_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgvUsuarios_DoubleClick(object sender, EventArgs e)
         {
             int rowIndex = dgvUsuarios.CurrentCell.RowIndex;
@@ -169,16 +149,6 @@ namespace Veterinaria
             {
                 MessageBox.Show("El usuario no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void FRMUsuarios_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

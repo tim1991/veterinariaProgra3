@@ -31,6 +31,7 @@ namespace Veterinaria
         {
             Form childForm = new Form();
             childForm.MdiParent = this;
+            childForm.TopLevel = false;
             childForm.Text = "Ventana " + childFormNumber++;
             childForm.Show();
         }
@@ -91,13 +92,6 @@ namespace Veterinaria
             }
         }
 
-        private void mantenimientoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FRMUsuarios usuarios = new FRMUsuarios();
-            usuarios.MdiParent = this;
-            usuarios.Show();
-        }
-
         public void permisos()
         {
             if (datosUsuario.idRol != (int)EnumRoles.Administrador)
@@ -105,6 +99,13 @@ namespace Veterinaria
                 usuariosToolStripMenuItem.Visible = false;
                 productosToolStripMenuItem.Visible = false;
             }
+        }
+
+        private void mantenimientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMUsuarios usuarios = new FRMUsuarios();
+            usuarios.MdiParent = this;
+            usuarios.Show();
         }
 
         private void mantMascotaToolStripMenuItem1_Click(object sender, EventArgs e)

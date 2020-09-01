@@ -10,9 +10,9 @@ create table Roles
     Detalle varchar(100)
 )
 
-INSERT INTO	Roles VALUES('Administrador');
-INSERT INTO	Roles VALUES('Vendedor');
-INSERT INTO	Roles VALUES('Cliente');
+INSERT INTO	Roles VALUES('Administrador')
+INSERT INTO	Roles VALUES('Vendedor')
+INSERT INTO	Roles VALUES('Cliente')
 
 create table Usuario
 (
@@ -53,10 +53,8 @@ create table Productos
 (
     IDProducto int identity(1, 1) primary key not null,
     NombreProducto varchar(70) not null,
-    Precio money not null,
-    Stock int  not null
+    Precio money not null
 )
-
 
 create table Factura
 (
@@ -67,8 +65,7 @@ create table Factura
     Total money not null,
     MetodoPago varchar(15) not null,
     IDUsuario int foreign key (IDUsuario) references Usuario (IDUsuario) not null
-)
- 
+) 
 
 create table DetalleFactura
 (
@@ -128,23 +125,37 @@ as
 select * from Usuario where Cedula = @Cedula
 go
 
+create PROCEDURE actualizarUsuario  
+ @IDUsuario int,  
+ @Cedula int ,  
+ @NombrePersona varchar(15) ,  
+ @Contrasena varchar(20) ,  
+ @Apellidos varchar(50) ,  
+ @Email varchar(50) ,  
+ @Telefono int ,  
+ @Direccion varchar(200),  
+ @IdRol int  
+AS  
+BEGIN  
+Update  Usuario set Cedula = @Cedula, NombrePersona = @NombrePersona, Contrasena = @Contrasena, Apellidos = @Apellidos, Email = @Email, Telefono = @Telefono, Direccion = @Direccion, IdRol = @IdRol Where IDUsuario = @IDUsuario  
+END
+GO
+
 --Procedimientos almacenados para Producto
 
-create procedure agregarProducto
+alter procedure agregarProducto
 @NombreProducto varchar(70),
-@Precio money,
-@Stock int
+@Precio money
 as
-insert into Productos(NombreProducto, Precio, Stock)
-values(@NombreProducto, @Precio, @Stock)
+insert into Productos(NombreProducto, Precio)
+values(@NombreProducto, @Precio)
 go
 
-create procedure actualizarProducto
+alter procedure actualizarProducto
 @NombreProducto varchar(70),
-@Precio money,
-@Stock int
+@Precio money
 as
-UPDATE Productos set Precio = @Precio, Stock = @Stock where NombreProducto = @NombreProducto
+UPDATE Productos set Precio = @Precio where NombreProducto = @NombreProducto
 go
 
 create procedure mostrarProducto
@@ -220,20 +231,11 @@ go
 create procedure selectDetalles
 @IDFactura int
 as
-select  d.IdDetalle,d.Cantidad,d.SubtotalDetalle,d.ImpuestosDetalle,d.TotalDetalle, p.NombreProducto  from DetalleFactura as d
+select d.IdDetalle,d.Cantidad,d.SubtotalDetalle,d.ImpuestosDetalle,d.TotalDetalle, p.NombreProducto from DetalleFactura as d
 inner join Factura as f on f.IDFactura = d.IDFactura
 inner join Productos as p on p.IDProducto = d.IDProducto 
 where f.IDFactura = @IDFactura
 go
-
-
-CREATE PROCEDURE mostrarProducto
-AS
-BEGIN
-SELECT * FROM Productos
-END
-GO
-
 
 create procedure obtenerUsuarioCedula  
 @Cedula int  
@@ -241,22 +243,7 @@ AS
 BEGIN  
  select * from Usuario where Cedula = @Cedula  
 END  
-  
-
-create PROCEDURE actualizarUsuario  
- @IDUsuario int,  
- @Cedula int ,  
- @NombrePersona varchar(15) ,  
- @Contrasena varchar(20) ,  
- @Apellidos varchar(50) ,  
- @Email varchar(50) ,  
- @Telefono int ,  
- @Direccion varchar(200),  
- @IdRol int  
-AS  
-BEGIN  
-Update  Usuario set Cedula = @Cedula, NombrePersona = @NombrePersona, Contrasena = @Contrasena, Apellidos = @Apellidos, Email = @Email, Telefono = @Telefono, Direccion = @Direccion, IdRol = @IdRol Where IDUsuario = @IDUsuario  
-END
+GO
 
 create procedure selectDetallesVenta
 @IDFactura int
@@ -264,7 +251,7 @@ as
 select a.IDFactura, d.NombrePersona, d.Apellidos, d.Telefono, d.Direccion, b.FechaFactura, c.IDProducto, c.NombreProducto, c.Precio, a.Cantidad,
 a.SubtotalDetalle, a.ImpuestosDetalle, a.TotalDetalle, b.MetodoPago from DetalleFactura a
 inner join Factura b on a.IDFactura = b.IDFactura
-inner join Productos c on a.IDProducto = c.IDProducto and b.IDProducto = c.IDProducto
+inner join Productos c on a.IDProducto = c.IDProducto
 inner join Usuario d on b.IDUsuario = d.IDUsuario
 where a.IDFactura = @IDFactura
 go
