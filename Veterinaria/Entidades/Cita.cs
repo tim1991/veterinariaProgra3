@@ -10,12 +10,12 @@ namespace Entidades
     {
         int IDCita;
         string Servicio;
-        int FechaCita;
+        DateTime FechaCita;
         int IdUsuario;
 
         public int idcita { get => IDCita; set => IDCita = value; }
         public string servicio { get => Servicio; set => Servicio = value; }
-        public int fechacita { get => FechaCita; set => FechaCita = value; }
+        public DateTime fechacita { get => FechaCita; set => FechaCita = value; }
         public int idUsuario { get => IdUsuario; set => IdUsuario = value; }
 
     }
