@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lb_numCita = new System.Windows.Forms.Label();
             this.dtp_cita = new System.Windows.Forms.DateTimePicker();
             this.btnAgendarCita = new System.Windows.Forms.Button();
             this.btnBuscarUsuarioCita = new System.Windows.Forms.Button();
@@ -48,15 +46,6 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCitas)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(460, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Cita N°";
             // 
             // label2
             // 
@@ -87,7 +76,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lb_numCita);
             this.groupBox1.Controls.Add(this.dtp_cita);
             this.groupBox1.Controls.Add(this.btnAgendarCita);
             this.groupBox1.Controls.Add(this.btnBuscarUsuarioCita);
@@ -95,7 +83,6 @@
             this.groupBox1.Controls.Add(this.cbTipoServicio);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -103,15 +90,6 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nueva Cita";
-            // 
-            // lb_numCita
-            // 
-            this.lb_numCita.AutoSize = true;
-            this.lb_numCita.Location = new System.Drawing.Point(506, 52);
-            this.lb_numCita.Name = "lb_numCita";
-            this.lb_numCita.Size = new System.Drawing.Size(44, 13);
-            this.lb_numCita.TabIndex = 23;
-            this.lb_numCita.Text = "Número";
             // 
             // dtp_cita
             // 
@@ -228,8 +206,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -244,6 +220,5 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dgvCitas;
         private System.Windows.Forms.DateTimePicker dtp_cita;
-        private System.Windows.Forms.Label lb_numCita;
     }
 }

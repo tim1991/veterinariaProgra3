@@ -32,7 +32,7 @@ namespace Datos
                     idFactura = int.Parse(reader[0].ToString());
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -67,7 +67,7 @@ namespace Datos
                     num = fact.Id;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -165,7 +165,7 @@ namespace Datos
                     insertar = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

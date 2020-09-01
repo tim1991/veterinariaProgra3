@@ -47,8 +47,8 @@ namespace Veterinaria
             try
             {
                 nuevaCita.idcita = int.Parse(lb_numCita.Text);
-                nuevaCita.servicio = cbTipoServicio.Text;
-                nuevaCita.fechacita = DateTime.;
+                //nuevaCita.servicio = cbTipoServicio.Text;
+                //nuevaCita.fechacita = DateTime.;
                 nuevaCita.idUsuario = int.Parse(txtUsuarioCita.Text);
 
                 accionesCitas.AgregarCita(nuevaCita);
@@ -68,11 +68,11 @@ namespace Veterinaria
         {
             int idCita = int.Parse(txtFiltroCita.Text);
 
-            Cita cita = accionesCitas.buscarCita();
+            //Cita cita = accionesCitas.buscarCita();
 
             try
             {
-                v_idCita = cita.idUsuario;
+            //    v_idCita = cita.idUsuario;
 
                 //dgvCitas.DataSource = buscarCita;
 
