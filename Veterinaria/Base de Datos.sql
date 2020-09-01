@@ -188,6 +188,7 @@ delete from Mascota where IdMascota = @IdMascota
 go
 
 --Procedimientos almacenados para Cita
+
 create procedure ConsecutivoCita
 as
 select IdCita from Cita order by IdCita desc
@@ -214,8 +215,6 @@ create procedure buscarCita
 as
 select * from Cita where IdCita = @IdCita
 go
-
-
 
 --Procedimientos almacenados para Producto
 
@@ -246,7 +245,6 @@ delete from Productos where NombreProducto = @NombreProducto
 go
 
 --Procedimientos almacenados para Factura y Detalles
-
 
 create procedure insertarFactura
 @IDFactura int,

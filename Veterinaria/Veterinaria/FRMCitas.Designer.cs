@@ -33,6 +33,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lb_numCita = new System.Windows.Forms.Label();
             this.dtp_cita = new System.Windows.Forms.DateTimePicker();
             this.btnAgendarCita = new System.Windows.Forms.Button();
             this.btnBuscarUsuarioCita = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@
             this.txtFiltroCita = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.dgvCitas = new System.Windows.Forms.DataGridView();
-            this.lb_numCita = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCitas)).BeginInit();
@@ -104,13 +104,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nueva Cita";
             // 
+            // lb_numCita
+            // 
+            this.lb_numCita.AutoSize = true;
+            this.lb_numCita.Location = new System.Drawing.Point(506, 52);
+            this.lb_numCita.Name = "lb_numCita";
+            this.lb_numCita.Size = new System.Drawing.Size(44, 13);
+            this.lb_numCita.TabIndex = 23;
+            this.lb_numCita.Text = "Número";
+            // 
             // dtp_cita
             // 
             this.dtp_cita.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_cita.Location = new System.Drawing.Point(508, 14);
+            this.dtp_cita.MinDate = new System.DateTime(2020, 9, 2, 0, 0, 0, 0);
             this.dtp_cita.Name = "dtp_cita";
             this.dtp_cita.Size = new System.Drawing.Size(86, 20);
             this.dtp_cita.TabIndex = 22;
+            this.dtp_cita.Value = new System.DateTime(2020, 9, 2, 0, 0, 0, 0);
             // 
             // btnAgendarCita
             // 
@@ -196,14 +207,6 @@
             this.dgvCitas.Name = "dgvCitas";
             this.dgvCitas.Size = new System.Drawing.Size(550, 283);
             this.dgvCitas.TabIndex = 19;
-            // 
-            // lb_numCita
-            // 
-            this.lb_numCita.AutoSize = true;
-            this.lb_numCita.Location = new System.Drawing.Point(506, 52);
-            this.lb_numCita.Name = "lb_numCita";
-            this.lb_numCita.Size = new System.Drawing.Size(0, 13);
-            this.lb_numCita.TabIndex = 23;
             // 
             // FRMCitas
             // 
