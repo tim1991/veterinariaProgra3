@@ -34,9 +34,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dgvMascotas = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.txtUsuarioMascota = new System.Windows.Forms.TextBox();
             this.cbGenero = new System.Windows.Forms.ComboBox();
-            this.txtIDMascota = new System.Windows.Forms.TextBox();
             this.btnAgregarMascota = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.txtNombreMascota = new System.Windows.Forms.TextBox();
@@ -47,8 +47,6 @@
             this.txtRaza = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMascotas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -75,6 +73,7 @@
             this.btnBuscarMascotas.TabIndex = 22;
             this.btnBuscarMascotas.Text = "Buscar";
             this.btnBuscarMascotas.UseVisualStyleBackColor = true;
+            this.btnBuscarMascotas.Click += new System.EventHandler(this.btnBuscarMascotas_Click);
             // 
             // txtFiltroMascotas
             // 
@@ -105,7 +104,6 @@
             this.groupBox1.Controls.Add(this.dtpFechaNacimiento);
             this.groupBox1.Controls.Add(this.txtUsuarioMascota);
             this.groupBox1.Controls.Add(this.cbGenero);
-            this.groupBox1.Controls.Add(this.txtIDMascota);
             this.groupBox1.Controls.Add(this.btnAgregarMascota);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtNombreMascota);
@@ -116,13 +114,19 @@
             this.groupBox1.Controls.Add(this.txtRaza);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(85, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(870, 182);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Agregar mascota";
+            // 
+            // dtpFechaNacimiento
+            // 
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(25, 116);
+            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaNacimiento.TabIndex = 17;
             // 
             // txtUsuarioMascota
             // 
@@ -141,13 +145,6 @@
             this.cbGenero.Name = "cbGenero";
             this.cbGenero.Size = new System.Drawing.Size(121, 21);
             this.cbGenero.TabIndex = 6;
-            // 
-            // txtIDMascota
-            // 
-            this.txtIDMascota.Location = new System.Drawing.Point(25, 64);
-            this.txtIDMascota.Name = "txtIDMascota";
-            this.txtIDMascota.Size = new System.Drawing.Size(100, 20);
-            this.txtIDMascota.TabIndex = 1;
             // 
             // btnAgregarMascota
             // 
@@ -234,22 +231,6 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Nombre";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "ID Mascota";
-            // 
-            // dtpFechaNacimiento
-            // 
-            this.dtpFechaNacimiento.Location = new System.Drawing.Point(25, 116);
-            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(200, 20);
-            this.dtpFechaNacimiento.TabIndex = 17;
-            // 
             // FRMMascotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,7 +260,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dgvMascotas;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtIDMascota;
         private System.Windows.Forms.Button btnAgregarMascota;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtNombreMascota;
@@ -290,7 +270,6 @@
         private System.Windows.Forms.TextBox txtRaza;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtUsuarioMascota;
         private System.Windows.Forms.ComboBox cbGenero;
         private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;

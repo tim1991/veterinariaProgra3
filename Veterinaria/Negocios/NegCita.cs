@@ -12,14 +12,6 @@ namespace Negocios
     {
         private DSCitas accionesCitas = new DSCitas();
 
-        public int consecutivoCita()
-        {
-            int conse = accionesCitas.ConsecutivoCita();
-            conse = conse + 1;
-
-            return conse;
-        }
-
         public void AgregarCita(Cita cita)
         {
             accionesCitas.NuevaCita(cita);

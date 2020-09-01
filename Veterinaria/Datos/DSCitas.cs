@@ -15,7 +15,7 @@ namespace Datos
         {
             bool insertar = true;
 
-            
+
 
             try
             {
@@ -75,6 +75,41 @@ namespace Datos
             }
 
             return citaList;
+        }
+
+        public Cita BuscarCita(int id)
+        {
+            Cita cita;
+            cita = null;
+
+            try
+            {
+                if (Open())
+                {
+                    vCmd = new SqlCommand("buscarCita", vCnx);
+                    vCmd.CommandType = CommandType.StoredProcedure;
+                    vCmd.Parameters.Add("@IdCita", SqlDbType.Int).Value = id;
+
+                    SqlDataReader reader = vCmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        cita = new Cita();
+                        cita.idcita = int.Parse(reader["IdCita"].ToString());
+                        cita.servicio = reader["Servicio"].ToString();
+                        cita.fechacita = DateTime.Parse(reader["FechaCita"].ToString());
+                        cita.idcita = int.Parse(reader["IDUsuario"].ToString());
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                Close();
+            }
+            return cita;
         }
     }
 }

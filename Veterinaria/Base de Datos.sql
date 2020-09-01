@@ -77,7 +77,7 @@ create table DetalleFactura
     IDProducto int foreign key (IDProducto) references Productos (IDProducto) not null,
     IDFactura int foreign key (IDFactura) references Factura (IDFactura) not null
 )
-
+go
 
 --Procedimientos almacenados listar
 
@@ -142,7 +142,8 @@ END
 GO
 
 --Procedimientos almacenados para Mascota
-alter procedure agregarMascota
+
+create procedure agregarMascota
 	@NombreMascota varchar(10) ,
 	@Especie varchar(10) ,
 	@Raza varchar(10) ,
@@ -187,10 +188,6 @@ delete from Mascota where IdMascota = @IdMascota
 go
 
 --Procedimientos almacenados para Cita
-create procedure ConsecutivoCita
-as
-select IdCita from Cita order by IdCita desc
-go
 
 create procedure agregarCita
 	@Servicio varchar(30) ,
@@ -213,7 +210,12 @@ as
 select * from Cita where IdCita = @IdCita
 go
 
-
+create procedure listarCitas
+as
+begin
+select * from Cita
+end
+go
 
 --Procedimientos almacenados para Producto
 
@@ -244,7 +246,6 @@ delete from Productos where NombreProducto = @NombreProducto
 go
 
 --Procedimientos almacenados para Factura y Detalles
-
 
 create procedure insertarFactura
 @IDFactura int,
@@ -328,11 +329,4 @@ inner join Factura b on a.IDFactura = b.IDFactura
 inner join Productos c on a.IDProducto = c.IDProducto
 inner join Usuario d on b.IDUsuario = d.IDUsuario
 where a.IDFactura = @IDFactura
-go
-
-create procedure listarCitas
-as
-begin
-select * from Cita
-end
 go

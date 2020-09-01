@@ -27,8 +27,6 @@ namespace Veterinaria
 
             try
             {
-               
-                nuevaCita.servicio = txtIDCita.Text;
                 nuevaCita.fechacita = dtpFechaCita.Value;
                 nuevaCita.idUsuario = int.Parse(txtUsuarioCita.Text);
                 accionesCitas.AgregarCita(nuevaCita);
@@ -44,7 +42,6 @@ namespace Veterinaria
 
         public void limpiarCampos()
         {
-            txtIDCita.Text = String.Empty;
             cbTipoServicio.Text = String.Empty;
             dtpFechaCita.Text = String.Empty;
             txtUsuarioCita.Text = String.Empty;
