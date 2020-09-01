@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRMProductos));
             this.gpbProducto = new System.Windows.Forms.GroupBox();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -36,12 +37,11 @@
             this.lblPrecio = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.gpbVer = new System.Windows.Forms.GroupBox();
-            this.btnVer = new System.Windows.Forms.Button();
             this.dgvBuscar = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gpbProducto.SuspendLayout();
-            this.gpbVer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // gpbProducto
@@ -52,16 +52,16 @@
             this.gpbProducto.Controls.Add(this.txbNombre);
             this.gpbProducto.Controls.Add(this.lblPrecio);
             this.gpbProducto.Controls.Add(this.lblNombre);
-            this.gpbProducto.Location = new System.Drawing.Point(30, 27);
+            this.gpbProducto.Location = new System.Drawing.Point(103, 36);
             this.gpbProducto.Name = "gpbProducto";
-            this.gpbProducto.Size = new System.Drawing.Size(739, 122);
+            this.gpbProducto.Size = new System.Drawing.Size(383, 185);
             this.gpbProducto.TabIndex = 0;
             this.gpbProducto.TabStop = false;
             this.gpbProducto.Text = "Agregar Producto";
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(392, 84);
+            this.btnActualizar.Location = new System.Drawing.Point(232, 130);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(110, 23);
             this.btnActualizar.TabIndex = 7;
@@ -71,7 +71,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(219, 84);
+            this.btnAgregar.Location = new System.Drawing.Point(104, 130);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(110, 23);
             this.btnAgregar.TabIndex = 6;
@@ -81,22 +81,22 @@
             // 
             // txbPrecio
             // 
-            this.txbPrecio.Location = new System.Drawing.Point(360, 36);
+            this.txbPrecio.Location = new System.Drawing.Point(104, 86);
             this.txbPrecio.Name = "txbPrecio";
-            this.txbPrecio.Size = new System.Drawing.Size(122, 20);
+            this.txbPrecio.Size = new System.Drawing.Size(176, 20);
             this.txbPrecio.TabIndex = 4;
             // 
             // txbNombre
             // 
             this.txbNombre.Location = new System.Drawing.Point(104, 36);
             this.txbNombre.Name = "txbNombre";
-            this.txbNombre.Size = new System.Drawing.Size(176, 20);
+            this.txbNombre.Size = new System.Drawing.Size(213, 20);
             this.txbNombre.TabIndex = 3;
             // 
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(317, 39);
+            this.lblPrecio.Location = new System.Drawing.Point(54, 89);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(37, 13);
             this.lblPrecio.TabIndex = 1;
@@ -111,50 +111,43 @@
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "Nombre";
             // 
-            // gpbVer
-            // 
-            this.gpbVer.Controls.Add(this.btnVer);
-            this.gpbVer.Controls.Add(this.dgvBuscar);
-            this.gpbVer.Location = new System.Drawing.Point(30, 172);
-            this.gpbVer.Name = "gpbVer";
-            this.gpbVer.Size = new System.Drawing.Size(739, 253);
-            this.gpbVer.TabIndex = 1;
-            this.gpbVer.TabStop = false;
-            // 
-            // btnVer
-            // 
-            this.btnVer.Location = new System.Drawing.Point(610, 188);
-            this.btnVer.Name = "btnVer";
-            this.btnVer.Size = new System.Drawing.Size(75, 49);
-            this.btnVer.TabIndex = 1;
-            this.btnVer.Text = "Ver lista de\r\nproductos";
-            this.btnVer.UseVisualStyleBackColor = true;
-            this.btnVer.Click += new System.EventHandler(this.btnVer_Click);
-            // 
             // dgvBuscar
             // 
             this.dgvBuscar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBuscar.Location = new System.Drawing.Point(22, 19);
+            this.dgvBuscar.Location = new System.Drawing.Point(623, 36);
             this.dgvBuscar.Name = "dgvBuscar";
             this.dgvBuscar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBuscar.Size = new System.Drawing.Size(570, 218);
-            this.dgvBuscar.TabIndex = 0;
-            this.dgvBuscar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBuscar_CellClick);
+            this.dgvBuscar.Size = new System.Drawing.Size(343, 449);
+            this.dgvBuscar.TabIndex = 8;
+            this.dgvBuscar.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBuscar_CellDoubleClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(103, 295);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(383, 190);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
             // FRMProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.gpbVer);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(1044, 516);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.dgvBuscar);
             this.Controls.Add(this.gpbProducto);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FRMProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Productos";
             this.gpbProducto.ResumeLayout(false);
             this.gpbProducto.PerformLayout();
-            this.gpbVer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -167,10 +160,9 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txbPrecio;
         private System.Windows.Forms.TextBox txbNombre;
-        private System.Windows.Forms.GroupBox gpbVer;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.Button btnVer;
         private System.Windows.Forms.DataGridView dgvBuscar;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

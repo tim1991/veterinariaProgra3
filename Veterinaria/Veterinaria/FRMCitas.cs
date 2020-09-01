@@ -18,6 +18,7 @@ namespace Veterinaria
         public FRMCitas()
         {
             InitializeComponent();
+            cargarCitas();
         }
 
         private void btnAgendarCita_Click(object sender, EventArgs e)
@@ -26,9 +27,9 @@ namespace Veterinaria
 
             try
             {
-                nuevaCita.idcita = int.Parse(txtIDCita.Text);
+               
                 nuevaCita.servicio = txtIDCita.Text;
-                nuevaCita.fechacita = int.Parse(txtFecha.Text);
+                nuevaCita.fechacita = dtpFechaCita.Value;
                 nuevaCita.idUsuario = int.Parse(txtUsuarioCita.Text);
                 accionesCitas.AgregarCita(nuevaCita);
                 limpiarCampos();
@@ -45,7 +46,7 @@ namespace Veterinaria
         {
             txtIDCita.Text = String.Empty;
             cbTipoServicio.Text = String.Empty;
-            txtFecha.Text = String.Empty;
+            dtpFechaCita.Text = String.Empty;
             txtUsuarioCita.Text = String.Empty;
         }
 

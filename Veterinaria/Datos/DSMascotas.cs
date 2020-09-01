@@ -11,31 +11,34 @@ namespace Datos
 {
     public class DSMascotas : DSConexion
     {
-        public void NuevaMascota(Mascota mascota)
+        public bool NuevaMascota(Mascota mascota)
         {
             SqlCommand cmd = new SqlCommand("agregarMascota", vCnx);
+            bool insertar = true;
 
             try
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@IdMascota", mascota.idmascota);
                 cmd.Parameters.AddWithValue("@NombreMascota", mascota.nombremascota);
                 cmd.Parameters.AddWithValue("@Especie", mascota.especie);
-                cmd.Parameters.AddWithValue("@Nacimiento", mascota.raza);
-                cmd.Parameters.AddWithValue("@Genero", mascota.nacimiento);
+                cmd.Parameters.AddWithValue("@Raza", mascota.raza);
+                cmd.Parameters.AddWithValue("@Nacimiento", mascota.nacimiento);
+                cmd.Parameters.AddWithValue("@Genero", mascota.genero);
                 cmd.Parameters.AddWithValue("@IDUsuario", mascota.idUsuario);
 
                 vCnx.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                insertar = false;
             }
             finally
             {
                 vCnx.Close();
             }
+
+            return insertar;
         }
 
         public List<Mascota> listarMascotas()
@@ -46,7 +49,7 @@ namespace Datos
             {
                 if (Open())
                 {
-                    vCmd = new SqlCommand("listarMascotas", vCnx);
+                    vCmd = new SqlCommand("mostrarMascotas", vCnx);
                     vCmd.CommandType = CommandType.StoredProcedure;
                     SqlDataReader reader = vCmd.ExecuteReader();
                     while (reader.Read())
@@ -57,14 +60,14 @@ namespace Datos
                         mascota.nombremascota = reader["NombreMascota"].ToString();
                         mascota.especie = reader["Especie"].ToString();
                         mascota.raza = reader["Raza"].ToString();
-                        mascota.nacimiento = int.Parse(reader["Nacimiento"].ToString());
+                        mascota.nacimiento = DateTime.Parse(reader["Nacimiento"].ToString());
                         mascota.genero = reader["Genero"].ToString();
                         mascota.idUsuario = int.Parse(reader["IDUsuario"].ToString());
                         mascotaList.Add(mascota);
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 

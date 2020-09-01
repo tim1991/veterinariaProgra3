@@ -37,7 +37,7 @@ namespace Veterinaria
 
                     MDIPrincipal principal = new MDIPrincipal(sesion);
                     principal.Show();
-
+                    principal.FormClosed += CerrarApp;
                     this.Hide();
                 }
                 else
@@ -61,6 +61,11 @@ namespace Veterinaria
             {
                 return false;
             }
+        }
+
+        private void CerrarApp(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

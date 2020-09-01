@@ -31,13 +31,22 @@ namespace Veterinaria
                 nuevaMascota.nombremascota = txtNombreMascota.Text;
                 nuevaMascota.especie = txtEspecie.Text;
                 nuevaMascota.raza = txtRaza.Text;
-                nuevaMascota.nacimiento = int.Parse(txtNacimiento.Text);
+                nuevaMascota.nacimiento = dtpFechaNacimiento.Value;
                 nuevaMascota.genero = cbGenero.Text;
                 nuevaMascota.idUsuario = int.Parse(txtUsuarioMascota.Text);
-                accionesMascotas.AgregarMascota(nuevaMascota);
+                bool insertar = accionesMascotas.AgregarMascota(nuevaMascota);
                 limpiarCampos();
                 cargarMascotas();
-                MessageBox.Show("Mascota creada correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (insertar)
+                {
+                    MessageBox.Show("Mascota creada correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Problema al crear la mascota", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+               
             }
             catch (Exception error)
             {
@@ -51,7 +60,7 @@ namespace Veterinaria
             txtNombreMascota.Text = String.Empty;
             txtEspecie.Text = String.Empty;
             txtRaza.Text = String.Empty;
-            txtNacimiento.Text = String.Empty;
+            dtpFechaNacimiento.Text = String.Empty;
             cbGenero.Text = String.Empty;
         }
 

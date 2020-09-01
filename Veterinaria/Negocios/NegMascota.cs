@@ -12,9 +12,9 @@ namespace Negocios
     {
         private DSMascotas accionesMascotas = new DSMascotas();
 
-        public void AgregarMascota(Mascota mascota)
+        public bool AgregarMascota(Mascota mascota)
         {
-            accionesMascotas.NuevaMascota(mascota);
+           return  accionesMascotas.NuevaMascota(mascota);
         }
         public List<Mascota> ListarMascota()
         {
