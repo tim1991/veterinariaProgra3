@@ -17,6 +17,7 @@ namespace Veterinaria
         public FRMProductos()
         {
             InitializeComponent();
+            cargarProductos();
         }
 
         private NegProducto accionesProducto = new NegProducto();
@@ -123,11 +124,6 @@ namespace Veterinaria
 
         #endregion
 
-        private void btnVer_Click(object sender, EventArgs e)
-        {
-            cargarProductos();
-        }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             Agregar();
@@ -138,7 +134,7 @@ namespace Veterinaria
             Actualizar();
         }
 
-        private void dgvBuscar_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvBuscar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             selecDatos();
         }
