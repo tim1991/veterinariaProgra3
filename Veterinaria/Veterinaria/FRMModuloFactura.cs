@@ -266,11 +266,10 @@ namespace Veterinaria
             if (insert)
             {
                 idFactura = accionesFactura.idFactura();
-                lblNumFactura.Text = "" + idFactura.ToString();
+                lbl_IdFactura.Text = "" + idFactura.ToString();
                 txtNomCliente.Text = "";
                 txtCedula.Text = "";
-                Reporte reporte = new Reporte(factura.Id);
-                reporte.Show();
+
                 MessageBox.Show("Compra Exitosa.", "Felicidades", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 cargarDetalles();
@@ -283,8 +282,8 @@ namespace Veterinaria
                 "que haya escogido un método de pago y que en el \n" +
                 "carrito de compras haya al menos un producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //FacturaVenta factVenta = new FacturaVenta(idFactura);
-            //factVenta.ShowDialog();
+            Reporte reporte = new Reporte(factura.Id);
+            reporte.Show();
         }
 
         #endregion
@@ -337,11 +336,6 @@ namespace Veterinaria
         private void txtCantidad_TextChanged(object sender, EventArgs e)
         {
             calcularMontos(producto);
-        }
-
-        private void FRMModuloFactura_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
