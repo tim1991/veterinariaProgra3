@@ -8,6 +8,7 @@ namespace Entidades
 {
     public class Usuario : Persona
     {
+
         int IdUsuario;
         string Email;
         string Contrasena;

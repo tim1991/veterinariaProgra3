@@ -11,12 +11,11 @@ namespace Datos
 {
     public class DSProducto : DSConexion
     {
-        SqlDataAdapter adaptador;
         DataTable tblProducto;
 
         #region Metodos
 
-        public bool InsertarProducto(Producto producto)
+        public bool insertarProducto(Producto producto)
         {
             bool insertar = false;
 
@@ -28,14 +27,13 @@ namespace Datos
                     vCmd.CommandType = CommandType.StoredProcedure;
 
                     vCmd.Parameters.Add("@NombreProducto", SqlDbType.NVarChar).Value = producto.nombreProducto;
-                    vCmd.Parameters.Add("@Precio", SqlDbType.Int).Value = producto.precioProducto;
-                    vCmd.Parameters.Add("@Stock", SqlDbType.Int).Value = producto.stockProducto;
+                    vCmd.Parameters.Add("@Precio", SqlDbType.Decimal).Value = producto.precioProducto;
                     vCmd.ExecuteNonQuery();
 
                     insertar = true;
                 }
             }
-            catch (Exception e)
+            catch (SqlException)
             {
 
             }
@@ -46,7 +44,7 @@ namespace Datos
             return insertar;
         }
 
-        public bool ActualizarProducto(Producto producto)
+        public bool actualizarProducto(Producto producto)
         {
             bool update = false;
 
@@ -58,14 +56,13 @@ namespace Datos
                     vCmd.CommandType = CommandType.StoredProcedure;
 
                     vCmd.Parameters.Add("@NombreProducto", SqlDbType.NVarChar).Value = producto.nombreProducto;
-                    vCmd.Parameters.Add("@Precio", SqlDbType.Int).Value = producto.precioProducto;
-                    vCmd.Parameters.Add("@Stock", SqlDbType.Int).Value = producto.stockProducto;
+                    vCmd.Parameters.Add("@Precio", SqlDbType.Decimal).Value = producto.precioProducto;
                     vCmd.ExecuteNonQuery();
 
                     update = true;
                 }
             }
-            catch (Exception e)
+            catch (SqlException)
             {
 
             }
@@ -76,7 +73,70 @@ namespace Datos
             return update;
         }
 
-        public DataTable GetTblProducto()
+        public Producto buscar(int codigo)
+        {
+            Producto producto;
+            producto = null;
+
+            try
+            {
+                if (Open())
+                {
+                    vCmd = new SqlCommand("selectBuscarProducto", vCnx);
+                    vCmd.CommandType = CommandType.StoredProcedure;
+                    vCmd.Parameters.Add("@IDProducto", SqlDbType.Int).Value = codigo;
+
+                    SqlDataReader reader = vCmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        producto = new Producto();
+                        producto.IdProducto = int.Parse(reader["IDProducto"].ToString());
+                        producto.nombreProducto = reader["NombreProducto"].ToString();
+                        producto.precioProducto = decimal.Parse(reader["Precio"].ToString());
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+
+            }
+            finally
+            {
+                Close();
+            }
+            return producto;
+        }
+
+        public bool eliminar(Producto producto)
+        {
+            bool delete = false;
+
+            try
+            {
+                if (Open())
+                {
+                    vCmd = new SqlCommand("deleteProducto", vCnx);
+                    vCmd.CommandType = CommandType.StoredProcedure;
+
+                    vCmd.Parameters.Add("@NombreProducto", SqlDbType.NVarChar).Value = producto.nombreProducto;
+                    vCmd.ExecuteNonQuery();
+
+                    delete = true;
+                }
+            }
+            catch (SqlException)
+            {
+
+            }
+            finally
+            {
+                Close();
+            }
+            return delete;
+        }
+
+        public DataTable getTblProducto()
         {
             try
             {
@@ -87,7 +147,7 @@ namespace Datos
                     adaptador.Fill(tblProducto);
                 }
             }
-            catch (Exception e)
+            catch (SqlException)
             {
 
             }

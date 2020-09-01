@@ -17,6 +17,7 @@ namespace Veterinaria
         public FRMProductos()
         {
             InitializeComponent();
+            cargarProductos();
         }
 
         private NegProducto accionesProducto = new NegProducto();
@@ -27,12 +28,11 @@ namespace Veterinaria
         {
             this.txbNombre.Text = "";
             this.txbPrecio.Text = "";
-            this.txbStock.Text = "";
         }
 
         private bool validar()
         {
-            if (txbNombre.Text != String.Empty && txbPrecio.Text != String.Empty && txbStock.Text != String.Empty)
+            if (txbNombre.Text != String.Empty && txbPrecio.Text != String.Empty)
             {
                 return true;
             }
@@ -52,7 +52,6 @@ namespace Veterinaria
 
                     nuevo.nombreProducto = txbNombre.Text;
                     nuevo.precioProducto = int.Parse(txbPrecio.Text);
-                    nuevo.stockProducto = int.Parse(txbStock.Text);
 
                     bool insertar = accionesProducto.Agregar(nuevo);
 
@@ -87,7 +86,6 @@ namespace Veterinaria
 
                     updateProducto.nombreProducto = txbNombre.Text;
                     updateProducto.precioProducto = (int)decimal.Parse(txbPrecio.Text);
-                    updateProducto.stockProducto = int.Parse(txbStock.Text);
 
                     bool update = accionesProducto.Actualizar(updateProducto);
 
@@ -122,7 +120,6 @@ namespace Veterinaria
         {
             txbNombre.Text = this.dgvBuscar.CurrentRow.Cells[1].Value.ToString();
             txbPrecio.Text = this.dgvBuscar.CurrentRow.Cells[2].Value.ToString();
-            txbStock.Text = this.dgvBuscar.CurrentRow.Cells[3].Value.ToString();
         }
 
         #endregion
