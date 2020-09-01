@@ -29,6 +29,7 @@ namespace Veterinaria
             {
                 nuevaCita.fechacita = dtpFechaCita.Value;
                 nuevaCita.idUsuario = int.Parse(txtUsuarioCita.Text);
+                nuevaCita.servicio = cbTipoServicio.SelectedItem.ToString();
                 accionesCitas.AgregarCita(nuevaCita);
                 limpiarCampos();
                 cargarCitas();
