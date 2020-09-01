@@ -77,7 +77,7 @@ create table DetalleFactura
     IDProducto int foreign key (IDProducto) references Productos (IDProducto) not null,
     IDFactura int foreign key (IDFactura) references Factura (IDFactura) not null
 )
-go
+
 
 --Procedimientos almacenados listar
 
@@ -141,9 +141,83 @@ Update  Usuario set Cedula = @Cedula, NombrePersona = @NombrePersona, Contrasena
 END
 GO
 
+--Procedimientos almacenados para Mascota
+alter procedure agregarMascota
+	@NombreMascota varchar(10) ,
+	@Especie varchar(10) ,
+	@Raza varchar(10) ,
+	@Nacimiento Datetime ,
+	@Genero varchar(10),
+	@IDUsuario int
+as
+begin
+insert into Mascota (NombreMascota,Especie,Raza,Nacimiento,Genero,IDUsuario) values (@NombreMascota,@Especie,@Raza,@Nacimiento,@Genero,@IDUsuario)
+end
+go
+
+create procedure mostrarMascotas
+as
+select * from Mascota
+go
+
+create procedure buscarMascota
+@IdMascota int
+as
+select * from Mascota where IdMascota = @IdMascota
+go
+
+create procedure actualizarMascota  
+	@IdMascota int ,
+	@NombreMascota varchar(10) ,
+	@Especie varchar(10) ,
+	@Raza varchar(10) ,
+	@Nacimiento Datetime ,
+	@Genero varchar(10),
+	@IDUsuario int
+as
+begin  
+Update Mascota set NombreMascota = @NombreMascota, Especie = @Especie, Raza = @Raza, Nacimiento = @Nacimiento, Genero = @Genero Where IDUsuario = @IDUsuario  
+end
+go
+
+create procedure deleteMascota
+@IdMascota int
+as
+delete from Mascota where IdMascota = @IdMascota
+go
+
+--Procedimientos almacenados para Cita
+create procedure ConsecutivoCita
+as
+select IdCita from Cita order by IdCita desc
+go
+
+create procedure agregarCita
+	@Servicio varchar(30) ,
+	@FechaCita datetime ,
+	@IDUsuario int
+as
+begin
+insert into Cita (Servicio, FechaCita, IDUsuario) values (@Servicio, @FechaCita, @IDUsuario)
+end
+go
+
+create procedure mostrarCita
+as
+select * from Cita
+go
+
+create procedure buscarCita
+@IdCita int
+as
+select * from Cita where IdCita = @IdCita
+go
+
+
+
 --Procedimientos almacenados para Producto
 
-alter procedure agregarProducto
+create procedure agregarProducto
 @NombreProducto varchar(70),
 @Precio money
 as
@@ -151,7 +225,7 @@ insert into Productos(NombreProducto, Precio)
 values(@NombreProducto, @Precio)
 go
 
-alter procedure actualizarProducto
+create procedure actualizarProducto
 @NombreProducto varchar(70),
 @Precio money
 as
@@ -254,4 +328,11 @@ inner join Factura b on a.IDFactura = b.IDFactura
 inner join Productos c on a.IDProducto = c.IDProducto
 inner join Usuario d on b.IDUsuario = d.IDUsuario
 where a.IDFactura = @IDFactura
+go
+
+create procedure listarCitas
+as
+begin
+select * from Cita
+end
 go

@@ -42,13 +42,13 @@
             this.txtNombreMascota = new System.Windows.Forms.TextBox();
             this.txtEspecie = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtNacimiento = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtRaza = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMascotas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -102,6 +102,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dtpFechaNacimiento);
             this.groupBox1.Controls.Add(this.txtUsuarioMascota);
             this.groupBox1.Controls.Add(this.cbGenero);
             this.groupBox1.Controls.Add(this.txtIDMascota);
@@ -110,7 +111,6 @@
             this.groupBox1.Controls.Add(this.txtNombreMascota);
             this.groupBox1.Controls.Add(this.txtEspecie);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtNacimiento);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtRaza);
@@ -191,13 +191,6 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Raza";
             // 
-            // txtNacimiento
-            // 
-            this.txtNacimiento.Location = new System.Drawing.Point(25, 115);
-            this.txtNacimiento.Name = "txtNacimiento";
-            this.txtNacimiento.Size = new System.Drawing.Size(171, 20);
-            this.txtNacimiento.TabIndex = 5;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -250,6 +243,13 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "ID Mascota";
             // 
+            // dtpFechaNacimiento
+            // 
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(25, 116);
+            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaNacimiento.TabIndex = 17;
+            // 
             // FRMMascotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -285,7 +285,6 @@
         private System.Windows.Forms.TextBox txtNombreMascota;
         private System.Windows.Forms.TextBox txtEspecie;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtNacimiento;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtRaza;
@@ -294,5 +293,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtUsuarioMascota;
         private System.Windows.Forms.ComboBox cbGenero;
+        private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
     }
 }

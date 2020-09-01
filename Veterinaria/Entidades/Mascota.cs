@@ -12,7 +12,7 @@ namespace Entidades
         string NombreMascota;
         string Especie;
         string Raza;
-        int Nacimiento;
+        DateTime Nacimiento;
         string Genero;
         int IdUsuario;
 
@@ -20,7 +20,7 @@ namespace Entidades
         public string nombremascota { get => NombreMascota; set => NombreMascota = value; }
         public string especie { get => Especie; set => Especie = value; }
         public string raza { get => Raza; set => Raza = value; }
-        public int nacimiento { get => Nacimiento; set => Nacimiento = value; }
+        public DateTime nacimiento { get => Nacimiento; set => Nacimiento = value; }
         public string genero { get => Genero; set => Genero = value; }
         public int idUsuario { get => IdUsuario; set => IdUsuario = value; }
     }

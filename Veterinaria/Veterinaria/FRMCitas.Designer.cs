@@ -38,7 +38,6 @@
             this.btnBuscarUsuarioCita = new System.Windows.Forms.Button();
             this.txtUsuarioCita = new System.Windows.Forms.TextBox();
             this.cbTipoServicio = new System.Windows.Forms.ComboBox();
-            this.txtFecha = new System.Windows.Forms.TextBox();
             this.txtIDCita = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnBuscarCita = new System.Windows.Forms.Button();
@@ -46,6 +45,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dgvCitas = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dtpFechaCita = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCitas)).BeginInit();
@@ -90,11 +90,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dtpFechaCita);
             this.groupBox1.Controls.Add(this.btnAgendarCita);
             this.groupBox1.Controls.Add(this.btnBuscarUsuarioCita);
             this.groupBox1.Controls.Add(this.txtUsuarioCita);
             this.groupBox1.Controls.Add(this.cbTipoServicio);
-            this.groupBox1.Controls.Add(this.txtFecha);
             this.groupBox1.Controls.Add(this.txtIDCita);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label4);
@@ -142,15 +142,8 @@
             "Compra"});
             this.cbTipoServicio.Location = new System.Drawing.Point(104, 75);
             this.cbTipoServicio.Name = "cbTipoServicio";
-            this.cbTipoServicio.Size = new System.Drawing.Size(121, 21);
+            this.cbTipoServicio.Size = new System.Drawing.Size(201, 21);
             this.cbTipoServicio.TabIndex = 1;
-            // 
-            // txtFecha
-            // 
-            this.txtFecha.Location = new System.Drawing.Point(104, 112);
-            this.txtFecha.Name = "txtFecha";
-            this.txtFecha.Size = new System.Drawing.Size(100, 20);
-            this.txtFecha.TabIndex = 3;
             // 
             // txtIDCita
             // 
@@ -215,6 +208,13 @@
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
             // 
+            // dtpFechaCita
+            // 
+            this.dtpFechaCita.Location = new System.Drawing.Point(105, 115);
+            this.dtpFechaCita.Name = "dtpFechaCita";
+            this.dtpFechaCita.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaCita.TabIndex = 22;
+            // 
             // FRMCitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,7 +245,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.TextBox txtIDCita;
         private System.Windows.Forms.ComboBox cbTipoServicio;
         private System.Windows.Forms.Button btnBuscarUsuarioCita;
@@ -257,5 +256,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dgvCitas;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DateTimePicker dtpFechaCita;
     }
 }
