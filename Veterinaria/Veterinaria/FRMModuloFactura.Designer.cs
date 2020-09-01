@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRMModuloFactura));
             this.gpbCliente = new System.Windows.Forms.GroupBox();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.txtNomCliente = new System.Windows.Forms.TextBox();
@@ -70,12 +71,15 @@
             this.lblNumFactura = new System.Windows.Forms.Label();
             this.lbl_IdFactura = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtInfo = new System.Windows.Forms.TextBox();
             this.gpbCliente.SuspendLayout();
             this.gpbPago.SuspendLayout();
             this.gpbCarritoCompras.SuspendLayout();
             this.gpbTotalProd.SuspendLayout();
             this.gpbTotal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVenta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // gpbCliente
@@ -85,7 +89,7 @@
             this.gpbCliente.Controls.Add(this.txtCedula);
             this.gpbCliente.Controls.Add(this.lblNomCliente);
             this.gpbCliente.Controls.Add(this.lblCedula);
-            this.gpbCliente.Location = new System.Drawing.Point(12, 23);
+            this.gpbCliente.Location = new System.Drawing.Point(12, 270);
             this.gpbCliente.Name = "gpbCliente";
             this.gpbCliente.Size = new System.Drawing.Size(338, 101);
             this.gpbCliente.TabIndex = 0;
@@ -141,9 +145,9 @@
             this.gpbPago.Controls.Add(this.rdbEfectivo);
             this.gpbPago.Controls.Add(this.lblPago);
             this.gpbPago.Enabled = false;
-            this.gpbPago.Location = new System.Drawing.Point(12, 130);
+            this.gpbPago.Location = new System.Drawing.Point(12, 386);
             this.gpbPago.Name = "gpbPago";
-            this.gpbPago.Size = new System.Drawing.Size(338, 87);
+            this.gpbPago.Size = new System.Drawing.Size(338, 101);
             this.gpbPago.TabIndex = 1;
             this.gpbPago.TabStop = false;
             // 
@@ -199,9 +203,9 @@
             this.gpbCarritoCompras.Controls.Add(this.lblNomProducto);
             this.gpbCarritoCompras.Controls.Add(this.lblBuscarProd);
             this.gpbCarritoCompras.Enabled = false;
-            this.gpbCarritoCompras.Location = new System.Drawing.Point(12, 223);
+            this.gpbCarritoCompras.Location = new System.Drawing.Point(368, 24);
             this.gpbCarritoCompras.Name = "gpbCarritoCompras";
-            this.gpbCarritoCompras.Size = new System.Drawing.Size(776, 291);
+            this.gpbCarritoCompras.Size = new System.Drawing.Size(644, 463);
             this.gpbCarritoCompras.TabIndex = 2;
             this.gpbCarritoCompras.TabStop = false;
             this.gpbCarritoCompras.Text = "Carrito de Compras";
@@ -214,7 +218,7 @@
             this.gpbTotalProd.Controls.Add(this.lbl_IVAProd);
             this.gpbTotalProd.Controls.Add(this.lblTotalProd);
             this.gpbTotalProd.Controls.Add(this.lblSubtotalProd);
-            this.gpbTotalProd.Location = new System.Drawing.Point(653, 186);
+            this.gpbTotalProd.Location = new System.Drawing.Point(167, 358);
             this.gpbTotalProd.Name = "gpbTotalProd";
             this.gpbTotalProd.Size = new System.Drawing.Size(123, 99);
             this.gpbTotalProd.TabIndex = 13;
@@ -282,7 +286,7 @@
             // btnFacturar
             // 
             this.btnFacturar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFacturar.Location = new System.Drawing.Point(495, 199);
+            this.btnFacturar.Location = new System.Drawing.Point(495, 375);
             this.btnFacturar.Name = "btnFacturar";
             this.btnFacturar.Size = new System.Drawing.Size(126, 72);
             this.btnFacturar.TabIndex = 13;
@@ -298,9 +302,9 @@
             this.gpbTotal.Controls.Add(this.lbl_IVA);
             this.gpbTotal.Controls.Add(this.lblTotal);
             this.gpbTotal.Controls.Add(this.lblSubtotal);
-            this.gpbTotal.Location = new System.Drawing.Point(268, 186);
+            this.gpbTotal.Location = new System.Drawing.Point(296, 358);
             this.gpbTotal.Name = "gpbTotal";
-            this.gpbTotal.Size = new System.Drawing.Size(200, 99);
+            this.gpbTotal.Size = new System.Drawing.Size(193, 99);
             this.gpbTotal.TabIndex = 12;
             this.gpbTotal.TabStop = false;
             // 
@@ -363,7 +367,7 @@
             // 
             // btnAgregarProd
             // 
-            this.btnAgregarProd.Location = new System.Drawing.Point(114, 237);
+            this.btnAgregarProd.Location = new System.Drawing.Point(23, 386);
             this.btnAgregarProd.Name = "btnAgregarProd";
             this.btnAgregarProd.Size = new System.Drawing.Size(90, 34);
             this.btnAgregarProd.TabIndex = 11;
@@ -376,12 +380,12 @@
             this.dgvVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVenta.Location = new System.Drawing.Point(229, 28);
             this.dgvVenta.Name = "dgvVenta";
-            this.dgvVenta.Size = new System.Drawing.Size(541, 152);
+            this.dgvVenta.Size = new System.Drawing.Size(392, 304);
             this.dgvVenta.TabIndex = 10;
             // 
             // btnBuscarProd
             // 
-            this.btnBuscarProd.Location = new System.Drawing.Point(114, 30);
+            this.btnBuscarProd.Location = new System.Drawing.Point(23, 88);
             this.btnBuscarProd.Name = "btnBuscarProd";
             this.btnBuscarProd.Size = new System.Drawing.Size(90, 34);
             this.btnBuscarProd.TabIndex = 5;
@@ -391,28 +395,28 @@
             // 
             // txtNomProd
             // 
-            this.txtNomProd.Location = new System.Drawing.Point(23, 98);
+            this.txtNomProd.Location = new System.Drawing.Point(23, 189);
             this.txtNomProd.Name = "txtNomProd";
             this.txtNomProd.Size = new System.Drawing.Size(165, 20);
             this.txtNomProd.TabIndex = 9;
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(23, 149);
+            this.txtCodigo.Location = new System.Drawing.Point(23, 240);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(60, 20);
             this.txtCodigo.TabIndex = 8;
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(23, 197);
+            this.txtPrecio.Location = new System.Drawing.Point(23, 288);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(107, 20);
             this.txtPrecio.TabIndex = 7;
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(23, 245);
+            this.txtCantidad.Location = new System.Drawing.Point(23, 336);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(60, 20);
             this.txtCantidad.TabIndex = 6;
@@ -428,7 +432,7 @@
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(20, 133);
+            this.lblCodigo.Location = new System.Drawing.Point(20, 224);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(40, 13);
             this.lblCodigo.TabIndex = 4;
@@ -437,7 +441,7 @@
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(20, 181);
+            this.lblPrecio.Location = new System.Drawing.Point(20, 272);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(37, 13);
             this.lblPrecio.TabIndex = 3;
@@ -446,7 +450,7 @@
             // lblCantidad
             // 
             this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Location = new System.Drawing.Point(20, 229);
+            this.lblCantidad.Location = new System.Drawing.Point(20, 320);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(49, 13);
             this.lblCantidad.TabIndex = 2;
@@ -455,7 +459,7 @@
             // lblNomProducto
             // 
             this.lblNomProducto.AutoSize = true;
-            this.lblNomProducto.Location = new System.Drawing.Point(20, 82);
+            this.lblNomProducto.Location = new System.Drawing.Point(20, 173);
             this.lblNomProducto.Name = "lblNomProducto";
             this.lblNomProducto.Size = new System.Drawing.Size(44, 13);
             this.lblNomProducto.TabIndex = 1;
@@ -474,7 +478,7 @@
             // 
             this.lblNumFactura.AutoSize = true;
             this.lblNumFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumFactura.Location = new System.Drawing.Point(429, 130);
+            this.lblNumFactura.Location = new System.Drawing.Point(60, 210);
             this.lblNumFactura.Name = "lblNumFactura";
             this.lblNumFactura.Size = new System.Drawing.Size(184, 25);
             this.lblNumFactura.TabIndex = 3;
@@ -484,7 +488,7 @@
             // 
             this.lbl_IdFactura.AutoSize = true;
             this.lbl_IdFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_IdFactura.Location = new System.Drawing.Point(619, 130);
+            this.lbl_IdFactura.Location = new System.Drawing.Point(250, 210);
             this.lbl_IdFactura.Name = "lbl_IdFactura";
             this.lbl_IdFactura.Size = new System.Drawing.Size(34, 25);
             this.lbl_IdFactura.TabIndex = 4;
@@ -492,27 +496,52 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(434, 172);
+            this.dateTimePicker1.Location = new System.Drawing.Point(65, 252);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(219, 20);
             this.dateTimePicker1.TabIndex = 5;
             this.dateTimePicker1.Visible = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(105, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(153, 96);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // txtInfo
+            // 
+            this.txtInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtInfo.Location = new System.Drawing.Point(88, 126);
+            this.txtInfo.Multiline = true;
+            this.txtInfo.Name = "txtInfo";
+            this.txtInfo.Size = new System.Drawing.Size(187, 81);
+            this.txtInfo.TabIndex = 7;
+            this.txtInfo.Text = "Mundo Animalia Veterinaria\r\nCed Jurídica 3101000509\r\nTeléfono 2525-2525\r\nCartago," +
+    " Costa Rica\r\nmundoanimalveterinaria.com";
+            this.txtInfo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // FRMModuloFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 526);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(1044, 516);
+            this.Controls.Add(this.txtInfo);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.lbl_IdFactura);
             this.Controls.Add(this.lblNumFactura);
             this.Controls.Add(this.gpbCarritoCompras);
             this.Controls.Add(this.gpbPago);
             this.Controls.Add(this.gpbCliente);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FRMModuloFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FRMModuloFactura";
-            this.Load += new System.EventHandler(this.FRMModuloFactura_Load);
             this.gpbCliente.ResumeLayout(false);
             this.gpbCliente.PerformLayout();
             this.gpbPago.ResumeLayout(false);
@@ -524,6 +553,7 @@
             this.gpbTotal.ResumeLayout(false);
             this.gpbTotal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVenta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -573,5 +603,7 @@
         private System.Windows.Forms.Label lblSubtotal;
         private System.Windows.Forms.Button btnAgregarProd;
         private System.Windows.Forms.DataGridView dgvVenta;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox txtInfo;
     }
 }
