@@ -64,7 +64,7 @@
             this.groupBox2.Controls.Add(this.txtFiltroMascotas);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.dgvMascotas);
-            this.groupBox2.Location = new System.Drawing.Point(24, 18);
+            this.groupBox2.Location = new System.Drawing.Point(116, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(817, 288);
             this.groupBox2.TabIndex = 22;
@@ -134,7 +134,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(24, 322);
+            this.groupBox1.Location = new System.Drawing.Point(116, 322);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(817, 182);
             this.groupBox1.TabIndex = 21;
@@ -295,7 +295,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(866, 516);
+            this.ClientSize = new System.Drawing.Size(1044, 516);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
