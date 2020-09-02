@@ -27,7 +27,7 @@ namespace Datos
                 }
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -40,8 +40,9 @@ namespace Datos
             return conse;
         }
 
-        public void NuevaCita(Cita cita)
+        public bool NuevaCita(Cita cita)
         {
+            bool insertar = true;
             SqlCommand cmd = new SqlCommand("agregarCita", vCnx);
 
             try
@@ -55,14 +56,16 @@ namespace Datos
                 vCnx.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                insertar = false;
             }
             finally
             {
                 vCnx.Close();
             }
+
+            return insertar;
         }
 
         public List<Cita> listarCitas()
@@ -73,7 +76,7 @@ namespace Datos
             {
                 if (Open())
                 {
-                    vCmd = new SqlCommand("listarCitas", vCnx);
+                    vCmd = new SqlCommand("mostrarCita", vCnx);
                     vCmd.CommandType = CommandType.StoredProcedure;
                     SqlDataReader reader = vCmd.ExecuteReader();
                     while (reader.Read())
@@ -117,16 +120,16 @@ namespace Datos
                     while (reader.Read())
                     {
                         cita = new Cita();
-                        cita.idcita = int.Parse(reader["IdMascota"].ToString());
-                        cita.servicio = reader["NombreMascota"].ToString();
-                        cita.fechacita = DateTime.Parse(reader["Especie"].ToString());
-                        cita.idUsuario = int.Parse(reader["Raza"].ToString());
+                        cita.idcita = int.Parse(reader["IdCita"].ToString());
+                        cita.servicio = reader["Servicio"].ToString();
+                        cita.fechacita = DateTime.Parse(reader["FechaCita"].ToString());
+                        cita.idUsuario = int.Parse(reader["IDUsuario"].ToString());
                     }
                 }
             }
             catch (Exception error)
             {
-                throw error;
+                
             }
 
             finally

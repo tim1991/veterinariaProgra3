@@ -30,20 +30,22 @@ create table Usuario
 insert into Usuario(Cedula, Contrasena, NombrePersona, Apellidos, Email, Telefono, Direccion, IdRol)
 values(300010001, 'admin', 'Administrador', 'Administrador', 'admin', 88888888, 'Cartago', 1)
 
+
 create table Mascota
 (
     IdMascota int primary key Identity(1, 1) not null,
     NombreMascota varchar(10)  not null,
     Especie varchar(10) not null,
     Raza varchar(10) not null,
-    Nacimiento int not null,
+    Nacimiento datetime not null,
     Genero varchar(10) not null,
     IDUsuario int foreign key (IDUsuario) references Usuario (IDUsuario) not null
 )
 
+
 create table Cita
 (
-    IdCita int primary key Identity(1, 1) not null,
+    IdCita int primary key not null,
     Servicio varchar(30)  not null,
     FechaCita datetime not null,
     IDUsuario int foreign key (IDUsuario) references Usuario (IDUsuario) not null
@@ -147,7 +149,7 @@ create procedure agregarMascota
 	@NombreMascota varchar(10) ,
 	@Especie varchar(10) ,
 	@Raza varchar(10) ,
-	@Nacimiento int ,
+	@Nacimiento datetime ,
 	@Genero varchar(10),
 	@IDUsuario int
 as
@@ -167,17 +169,17 @@ as
 select * from Mascota where IdMascota = @IdMascota
 go
 
-create procedure actualizarMascota  
+create  procedure actualizarMascota  
 	@IdMascota int ,
 	@NombreMascota varchar(10) ,
 	@Especie varchar(10) ,
 	@Raza varchar(10) ,
-	@Nacimiento int ,
+	@Nacimiento datetime ,
 	@Genero varchar(10),
 	@IDUsuario int
 as
 begin  
-Update Mascota set IdMascota = @IdMascota, NombreMascota = @NombreMascota, Especie = @Especie, Raza = @Raza, Nacimiento = @Nacimiento, Genero = @Genero Where IDUsuario = @IDUsuario  
+Update Mascota set  NombreMascota = @NombreMascota, Especie = @Especie, Raza = @Raza, Nacimiento = @Nacimiento, Genero = @Genero, IDUsuario = @IDUsuario Where IdMascota = @IdMascota  
 end
 go
 

@@ -33,7 +33,7 @@ namespace Veterinaria
             txtNombreMascota.Text = String.Empty;
             txtEspecie.Text = String.Empty;
             txtRaza.Text = String.Empty;
-            txtNacimiento.Text = String.Empty;
+            dtpNacimiento.Text = String.Empty;
             cbGenero.Text = String.Empty;
             txtUsuarioMascota.Text = String.Empty;
         }
@@ -54,7 +54,7 @@ namespace Veterinaria
                 nuevaMascota.nombremascota = txtNombreMascota.Text;
                 nuevaMascota.especie = txtEspecie.Text;
                 nuevaMascota.raza = txtRaza.Text;
-                nuevaMascota.nacimiento = int.Parse(txtNacimiento.Text);
+                nuevaMascota.nacimiento = dtpNacimiento.Value;
                 nuevaMascota.genero = cbGenero.Text;
                 nuevaMascota.idUsuario = int.Parse(txtUsuarioMascota.Text);
                 accionesMascotas.AgregarMascota(nuevaMascota);
@@ -82,7 +82,7 @@ namespace Veterinaria
                 txtNombreMascota.Text = mascota.nombremascota.ToString();
                 txtEspecie.Text = mascota.especie.ToString();
                 txtRaza.Text = mascota.raza.ToString();
-                txtNacimiento.Text = mascota.nacimiento.ToString();
+                dtpNacimiento.Text = mascota.nacimiento.ToString();
                 cbGenero.Text = mascota.genero.ToString();
                 txtUsuarioMascota.Text = mascota.idUsuario.ToString();
             }
@@ -102,7 +102,7 @@ namespace Veterinaria
                 mascota.nombremascota = txtNombreMascota.Text;
                 mascota.especie = txtEspecie.Text;
                 mascota.raza = txtRaza.Text;
-                mascota.nacimiento = int.Parse(txtNacimiento.Text);
+                mascota.nacimiento = dtpNacimiento.Value;
                 mascota.genero = cbGenero.Text;
                 mascota.idUsuario = int.Parse(txtUsuarioMascota.Text);
 
@@ -137,7 +137,7 @@ namespace Veterinaria
                 mascota.nombremascota = txtNombreMascota.Text;
                 mascota.especie = txtEspecie.Text;
                 mascota.raza = txtRaza.Text;
-                mascota.nacimiento = int.Parse(txtNacimiento.Text);
+                mascota.nacimiento = dtpNacimiento.Value;
                 mascota.genero = cbGenero.Text;
                 mascota.idUsuario = int.Parse(txtUsuarioMascota.Text);
 

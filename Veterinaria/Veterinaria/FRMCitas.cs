@@ -24,6 +24,7 @@ namespace Veterinaria
             InitializeComponent();
             v_consecutivo = accionesCitas.consecutivoCita();
             lb_numCita.Text = v_consecutivo.ToString();
+            cargarCitas();
         }
 
         #region metodos
@@ -51,12 +52,21 @@ namespace Veterinaria
                 nuevaCita.fechacita = dtp_cita.Value;
                 nuevaCita.idUsuario = int.Parse(txtUsuarioCita.Text);
 
-                accionesCitas.AgregarCita(nuevaCita);
+                bool insertar = accionesCitas.AgregarCita(nuevaCita);
 
                 limpiarCampos();
                 cargarCitas();
 
-                MessageBox.Show("Cita agendada correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (insertar)
+                {
+                    MessageBox.Show("Cita agendada correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error creando la cita ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                ;
             }
             catch (Exception error)
             {
@@ -68,7 +78,7 @@ namespace Veterinaria
         {
             int idCita = int.Parse(txtFiltroCita.Text);
 
-            Cita cita = accionesCitas.buscarCita();
+            Cita cita = accionesCitas.buscarCita(idCita);
 
             try
             {

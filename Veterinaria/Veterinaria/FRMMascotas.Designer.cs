@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_refresh = new System.Windows.Forms.Button();
             this.btnBuscarMascotas = new System.Windows.Forms.Button();
             this.txtFiltroMascotas = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.dgvMascotas = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_eliminarMascota = new System.Windows.Forms.Button();
+            this.btn_actualizarMascota = new System.Windows.Forms.Button();
             this.txtUsuarioMascota = new System.Windows.Forms.TextBox();
             this.cbGenero = new System.Windows.Forms.ComboBox();
             this.txtIDMascota = new System.Windows.Forms.TextBox();
@@ -42,16 +45,13 @@
             this.txtNombreMascota = new System.Windows.Forms.TextBox();
             this.txtEspecie = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtNacimiento = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtRaza = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_refresh = new System.Windows.Forms.Button();
-            this.btn_actualizarMascota = new System.Windows.Forms.Button();
-            this.btn_eliminarMascota = new System.Windows.Forms.Button();
+            this.dtpNacimiento = new System.Windows.Forms.DateTimePicker();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMascotas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -70,6 +70,16 @@
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Mascotas";
+            // 
+            // btn_refresh
+            // 
+            this.btn_refresh.Location = new System.Drawing.Point(687, 29);
+            this.btn_refresh.Name = "btn_refresh";
+            this.btn_refresh.Size = new System.Drawing.Size(110, 23);
+            this.btn_refresh.TabIndex = 23;
+            this.btn_refresh.Text = "Nueva busqueda";
+            this.btn_refresh.UseVisualStyleBackColor = true;
+            this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
             // 
             // btnBuscarMascotas
             // 
@@ -107,6 +117,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dtpNacimiento);
             this.groupBox1.Controls.Add(this.btn_eliminarMascota);
             this.groupBox1.Controls.Add(this.btn_actualizarMascota);
             this.groupBox1.Controls.Add(this.txtUsuarioMascota);
@@ -117,7 +128,6 @@
             this.groupBox1.Controls.Add(this.txtNombreMascota);
             this.groupBox1.Controls.Add(this.txtEspecie);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtNacimiento);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtRaza);
@@ -130,6 +140,26 @@
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Agregar mascota";
+            // 
+            // btn_eliminarMascota
+            // 
+            this.btn_eliminarMascota.Location = new System.Drawing.Point(655, 124);
+            this.btn_eliminarMascota.Name = "btn_eliminarMascota";
+            this.btn_eliminarMascota.Size = new System.Drawing.Size(142, 23);
+            this.btn_eliminarMascota.TabIndex = 18;
+            this.btn_eliminarMascota.Text = "Eliminar";
+            this.btn_eliminarMascota.UseVisualStyleBackColor = true;
+            this.btn_eliminarMascota.Click += new System.EventHandler(this.btn_eliminarMascota_Click);
+            // 
+            // btn_actualizarMascota
+            // 
+            this.btn_actualizarMascota.Location = new System.Drawing.Point(655, 83);
+            this.btn_actualizarMascota.Name = "btn_actualizarMascota";
+            this.btn_actualizarMascota.Size = new System.Drawing.Size(142, 23);
+            this.btn_actualizarMascota.TabIndex = 17;
+            this.btn_actualizarMascota.Text = "Actualizar";
+            this.btn_actualizarMascota.UseVisualStyleBackColor = true;
+            this.btn_actualizarMascota.Click += new System.EventHandler(this.btn_actualizarMascota_Click);
             // 
             // txtUsuarioMascota
             // 
@@ -198,13 +228,6 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Raza";
             // 
-            // txtNacimiento
-            // 
-            this.txtNacimiento.Location = new System.Drawing.Point(25, 115);
-            this.txtNacimiento.Name = "txtNacimiento";
-            this.txtNacimiento.Size = new System.Drawing.Size(171, 20);
-            this.txtNacimiento.TabIndex = 5;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -257,35 +280,12 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "ID Mascota";
             // 
-            // btn_refresh
+            // dtpNacimiento
             // 
-            this.btn_refresh.Location = new System.Drawing.Point(687, 29);
-            this.btn_refresh.Name = "btn_refresh";
-            this.btn_refresh.Size = new System.Drawing.Size(110, 23);
-            this.btn_refresh.TabIndex = 23;
-            this.btn_refresh.Text = "Nueva busqueda";
-            this.btn_refresh.UseVisualStyleBackColor = true;
-            this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
-            // 
-            // btn_actualizarMascota
-            // 
-            this.btn_actualizarMascota.Location = new System.Drawing.Point(655, 83);
-            this.btn_actualizarMascota.Name = "btn_actualizarMascota";
-            this.btn_actualizarMascota.Size = new System.Drawing.Size(142, 23);
-            this.btn_actualizarMascota.TabIndex = 17;
-            this.btn_actualizarMascota.Text = "Actualizar";
-            this.btn_actualizarMascota.UseVisualStyleBackColor = true;
-            this.btn_actualizarMascota.Click += new System.EventHandler(this.btn_actualizarMascota_Click);
-            // 
-            // btn_eliminarMascota
-            // 
-            this.btn_eliminarMascota.Location = new System.Drawing.Point(655, 124);
-            this.btn_eliminarMascota.Name = "btn_eliminarMascota";
-            this.btn_eliminarMascota.Size = new System.Drawing.Size(142, 23);
-            this.btn_eliminarMascota.TabIndex = 18;
-            this.btn_eliminarMascota.Text = "Eliminar";
-            this.btn_eliminarMascota.UseVisualStyleBackColor = true;
-            this.btn_eliminarMascota.Click += new System.EventHandler(this.btn_eliminarMascota_Click);
+            this.dtpNacimiento.Location = new System.Drawing.Point(25, 115);
+            this.dtpNacimiento.Name = "dtpNacimiento";
+            this.dtpNacimiento.Size = new System.Drawing.Size(200, 20);
+            this.dtpNacimiento.TabIndex = 19;
             // 
             // FRMMascotas
             // 
@@ -322,7 +322,6 @@
         private System.Windows.Forms.TextBox txtNombreMascota;
         private System.Windows.Forms.TextBox txtEspecie;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtNacimiento;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtRaza;
@@ -334,5 +333,6 @@
         private System.Windows.Forms.Button btn_refresh;
         private System.Windows.Forms.Button btn_eliminarMascota;
         private System.Windows.Forms.Button btn_actualizarMascota;
+        private System.Windows.Forms.DateTimePicker dtpNacimiento;
     }
 }
