@@ -30,6 +30,7 @@ create table Usuario
 insert into Usuario(Cedula, Contrasena, NombrePersona, Apellidos, Email, Telefono, Direccion, IdRol)
 values(300010001, 'admin', 'Administrador', 'Administrador', 'admin', 88888888, 'Cartago', 1)
 
+
 create table Mascota
 (
     IdMascota int primary key Identity(1, 1) not null,
@@ -41,9 +42,10 @@ create table Mascota
     IDUsuario int foreign key (IDUsuario) references Usuario (IDUsuario) not null
 )
 
+
 create table Cita
 (
-    IdCita int primary key Identity(1, 1) not null,
+    IdCita int primary key not null,
     Servicio varchar(30)  not null,
     FechaCita datetime not null,
     IDUsuario int foreign key (IDUsuario) references Usuario (IDUsuario) not null
@@ -78,6 +80,8 @@ create table DetalleFactura
     IDFactura int foreign key (IDFactura) references Factura (IDFactura) not null
 )
 go
+
+select * from Usuario
 
 --Procedimientos almacenados listar
 
@@ -142,17 +146,17 @@ END
 GO
 
 --Procedimientos almacenados para Mascota
-
 create procedure agregarMascota
+	@IdMascota int ,
 	@NombreMascota varchar(10) ,
 	@Especie varchar(10) ,
 	@Raza varchar(10) ,
-	@Nacimiento Datetime ,
+	@Nacimiento datetime ,
 	@Genero varchar(10),
 	@IDUsuario int
 as
 begin
-insert into Mascota (NombreMascota,Especie,Raza,Nacimiento,Genero,IDUsuario) values (@NombreMascota,@Especie,@Raza,@Nacimiento,@Genero,@IDUsuario)
+insert into Mascota (IdMascota,NombreMascota,Especie,Raza,Nacimiento,Genero,IDUsuario) values (@IdMascota,@NombreMascota,@Especie,@Raza,@Nacimiento,@Genero,@IDUsuario)
 end
 go
 
@@ -167,17 +171,17 @@ as
 select * from Mascota where IdMascota = @IdMascota
 go
 
-create procedure actualizarMascota  
+create  procedure actualizarMascota  
 	@IdMascota int ,
 	@NombreMascota varchar(10) ,
 	@Especie varchar(10) ,
 	@Raza varchar(10) ,
-	@Nacimiento Datetime ,
+	@Nacimiento datetime ,
 	@Genero varchar(10),
 	@IDUsuario int
 as
 begin  
-Update Mascota set NombreMascota = @NombreMascota, Especie = @Especie, Raza = @Raza, Nacimiento = @Nacimiento, Genero = @Genero Where IDUsuario = @IDUsuario  
+Update Mascota set  NombreMascota = @NombreMascota, Especie = @Especie, Raza = @Raza, Nacimiento = @Nacimiento, Genero = @Genero, IDUsuario = @IDUsuario Where IdMascota = @IdMascota  
 end
 go
 
@@ -188,34 +192,37 @@ delete from Mascota where IdMascota = @IdMascota
 go
 
 --Procedimientos almacenados para Cita
+create procedure ConsecutivoCita
+as
+select IdCita from Cita order by IdCita desc
+go
 
 create procedure agregarCita
+	@IdCita int ,
 	@Servicio varchar(30) ,
 	@FechaCita datetime ,
 	@IDUsuario int
 as
 begin
-insert into Cita (Servicio, FechaCita, IDUsuario) values (@Servicio, @FechaCita, @IDUsuario)
+insert into Cita (IdCita, Servicio, FechaCita, IDUsuario) values (@IdCita, @Servicio, @FechaCita, @IDUsuario)
 end
 go
 
 create procedure mostrarCita
 as
-select * from Cita
+select Cita.IdCita,Cita.FechaCita,Cita.Servicio,Cita.IDUsuario,Usuario.NombrePersona from Cita 
+inner join Usuario on Usuario.IDUsuario = Cita.IDUsuario
 go
 
 create procedure buscarCita
-@IdCita int
+@Cedula int
 as
-select * from Cita where IdCita = @IdCita
+select Cita.IdCita,Cita.FechaCita,Cita.Servicio,Cita.IDUsuario,Usuario.NombrePersona from Cita 
+inner join Usuario on Usuario.IDUsuario = Cita.IDUsuario
+where Usuario.Cedula = @Cedula
 go
 
-create procedure listarCitas
-as
-begin
-select * from Cita
-end
-go
+
 
 --Procedimientos almacenados para Producto
 
@@ -246,6 +253,7 @@ delete from Productos where NombreProducto = @NombreProducto
 go
 
 --Procedimientos almacenados para Factura y Detalles
+
 
 create procedure insertarFactura
 @IDFactura int,

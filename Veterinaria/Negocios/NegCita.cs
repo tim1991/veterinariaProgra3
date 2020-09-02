@@ -12,9 +12,17 @@ namespace Negocios
     {
         private DSCitas accionesCitas = new DSCitas();
 
-        public void AgregarCita(Cita cita)
+        public int consecutivoCita()
         {
-            accionesCitas.NuevaCita(cita);
+            int conse = accionesCitas.ConsecutivoCita();
+            conse = conse + 1;
+
+            return conse;
+        }
+
+        public bool AgregarCita(Cita cita)
+        {
+           return  accionesCitas.NuevaCita(cita);
         }
 
         public List<Cita> ListarCita()
@@ -24,7 +32,7 @@ namespace Negocios
             return cita;
         }
 
-        public Cita buscarCita(int idCita)
+        public List<Cita> buscarCita(int idCita)
         {
             return accionesCitas.BuscarCita(idCita);
         }

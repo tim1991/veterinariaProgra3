@@ -6,7 +6,7 @@
             <div class="topbar">
                 <ul class="contact">
                     <li>
-                        <a href="mailto:valverdeagustn@gmail.com">valverdeagustn@gmail.com</a>
+                        <a href="mailto:info@mundoanimal.com">info@mundoanimal</a>
                     </li>
                     <li>
                         <a href="tel:50688888888">8888-8888</a>
@@ -90,6 +90,27 @@
     </section>
         <div>
             &nbsp;</div>
-    </form>
+     <section class="container-fluid" style="background: #90c424;padding-top:20px;padding-bottom:20px">
+     <div class="container" >
+         <div class="row">
+                <div class="col-12 col-md-6">
+                <h2>Consultar citas</h2>
+                 <p>
+                     <asp:TextBox class="form-control" ID="txtCedula" runat="server"></asp:TextBox>
+                     <asp:Button ID="btnBuscar" class="btn btn-info" runat="server" OnClick="btnBuscar_Click" Text="Consultar citas por cédula" />
+                 </p>
+           </div>
+               <div class="col-12 col-md-6">
+                   <h2>Mis citas</h2>
+                     <ul class="list-group">
+                         <% foreach (var cita in misCitas){ %>
+                         <li class="list-group-item" ><%= cita.fechacita %> <%= cita.servicio %> <%= cita.nombrePersona %></li>
 
-</asp:Content>
+                         <% } %>
+                     </ul>
+                </div>
+         </div>
+         </div>
+     </section>
+    </form>
+     </asp:Content>
