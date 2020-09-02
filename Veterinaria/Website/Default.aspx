@@ -96,6 +96,7 @@
                 <div class="col-12 col-md-6">
                 <h2>Consultar citas</h2>
                  <p>
+                     
                      <asp:TextBox class="form-control" ID="txtCedula" runat="server"></asp:TextBox>
                      <asp:Button ID="btnBuscar" class="btn btn-info" runat="server" OnClick="btnBuscar_Click" Text="Consultar citas por cédula" />
                  </p>
