@@ -134,7 +134,7 @@ namespace Datos
                     vCmd.Parameters.Add("@NombreMascota", SqlDbType.NVarChar).Value = mascot.nombremascota;
                     vCmd.Parameters.Add("@Especie", SqlDbType.NVarChar).Value = mascot.especie;
                     vCmd.Parameters.Add("@Raza", SqlDbType.NVarChar).Value = mascot.raza;
-                    vCmd.Parameters.Add("@Nacimiento", SqlDbType.Int).Value = mascot.nacimiento;
+                    vCmd.Parameters.Add("@Nacimiento", SqlDbType.DateTime).Value = mascot.nacimiento;
                     vCmd.Parameters.Add("@Genero", SqlDbType.NVarChar).Value = mascot.genero;
                     vCmd.Parameters.Add("@IDUsuario", SqlDbType.Int).Value = mascot.idUsuario;
 

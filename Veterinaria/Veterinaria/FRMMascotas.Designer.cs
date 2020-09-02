@@ -35,6 +35,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dgvMascotas = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbUsuario = new System.Windows.Forms.ComboBox();
             this.dtpNacimiento = new System.Windows.Forms.DateTimePicker();
             this.btn_eliminarMascota = new System.Windows.Forms.Button();
             this.btn_actualizarMascota = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbUsuario = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMascotas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -64,7 +64,7 @@
             this.groupBox2.Controls.Add(this.txtFiltroMascotas);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.dgvMascotas);
-            this.groupBox2.Location = new System.Drawing.Point(24, 18);
+            this.groupBox2.Location = new System.Drawing.Point(116, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(817, 288);
             this.groupBox2.TabIndex = 22;
@@ -134,12 +134,21 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(24, 322);
+            this.groupBox1.Location = new System.Drawing.Point(116, 322);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(817, 182);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Agregar mascota";
+            // 
+            // cbUsuario
+            // 
+            this.cbUsuario.FormattingEnabled = true;
+            this.cbUsuario.Location = new System.Drawing.Point(411, 114);
+            this.cbUsuario.Name = "cbUsuario";
+            this.cbUsuario.Size = new System.Drawing.Size(203, 21);
+            this.cbUsuario.TabIndex = 20;
+            this.cbUsuario.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // dtpNacimiento
             // 
@@ -181,6 +190,7 @@
             // 
             // txtIDMascota
             // 
+            this.txtIDMascota.Enabled = false;
             this.txtIDMascota.Location = new System.Drawing.Point(25, 64);
             this.txtIDMascota.Name = "txtIDMascota";
             this.txtIDMascota.Size = new System.Drawing.Size(100, 20);
@@ -280,21 +290,12 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "ID Mascota";
             // 
-            // cbUsuario
-            // 
-            this.cbUsuario.FormattingEnabled = true;
-            this.cbUsuario.Location = new System.Drawing.Point(411, 114);
-            this.cbUsuario.Name = "cbUsuario";
-            this.cbUsuario.Size = new System.Drawing.Size(203, 21);
-            this.cbUsuario.TabIndex = 20;
-            this.cbUsuario.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // FRMMascotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(866, 516);
+            this.ClientSize = new System.Drawing.Size(1044, 516);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

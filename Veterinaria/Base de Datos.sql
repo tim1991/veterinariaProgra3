@@ -81,8 +81,6 @@ create table DetalleFactura
 )
 go
 
-select * from Usuario
-
 --Procedimientos almacenados listar
 
 CREATE PROCEDURE listarRoles
@@ -146,6 +144,7 @@ END
 GO
 
 --Procedimientos almacenados para Mascota
+
 create procedure agregarMascota
 	@IdMascota int ,
 	@NombreMascota varchar(10) ,
@@ -192,6 +191,7 @@ delete from Mascota where IdMascota = @IdMascota
 go
 
 --Procedimientos almacenados para Cita
+
 create procedure ConsecutivoCita
 as
 select IdCita from Cita order by IdCita desc
@@ -222,8 +222,6 @@ inner join Usuario on Usuario.IDUsuario = Cita.IDUsuario
 where Usuario.Cedula = @Cedula
 go
 
-
-
 --Procedimientos almacenados para Producto
 
 create procedure agregarProducto
@@ -253,7 +251,6 @@ delete from Productos where NombreProducto = @NombreProducto
 go
 
 --Procedimientos almacenados para Factura y Detalles
-
 
 create procedure insertarFactura
 @IDFactura int,
@@ -327,14 +324,3 @@ BEGIN
  select * from Usuario where Cedula = @Cedula  
 END  
 GO
-
-create procedure selectDetallesVenta
-@IDFactura int
-as
-select a.IDFactura, d.NombrePersona, d.Apellidos, d.Telefono, d.Direccion, b.FechaFactura, c.IDProducto, c.NombreProducto, c.Precio, a.Cantidad,
-a.SubtotalDetalle, a.ImpuestosDetalle, a.TotalDetalle, b.MetodoPago from DetalleFactura a
-inner join Factura b on a.IDFactura = b.IDFactura
-inner join Productos c on a.IDProducto = c.IDProducto
-inner join Usuario d on b.IDUsuario = d.IDUsuario
-where a.IDFactura = @IDFactura
-go
