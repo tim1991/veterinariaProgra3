@@ -33,7 +33,7 @@ namespace Datos
                     insertar = true;
                 }
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
 
             }

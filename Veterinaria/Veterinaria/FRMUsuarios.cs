@@ -112,7 +112,8 @@ namespace Veterinaria
             cboRol.ValueMember = "IdRol";
 
 
-        } public void cargarUsuarios()
+        } 
+        public void cargarUsuarios()
         {
             List<Usuario> litaUsuarios = accionesUsuario.ListarUsuarios();
             dgvUsuarios.DataSource = litaUsuarios;

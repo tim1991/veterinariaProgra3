@@ -34,18 +34,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtp_cita = new System.Windows.Forms.DateTimePicker();
             this.btnAgendarCita = new System.Windows.Forms.Button();
-            this.btnBuscarUsuarioCita = new System.Windows.Forms.Button();
-            this.txtUsuarioCita = new System.Windows.Forms.TextBox();
             this.cbTipoServicio = new System.Windows.Forms.ComboBox();
-            this.txtIDCita = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnBuscarCita = new System.Windows.Forms.Button();
-            this.txtFiltroMascotas = new System.Windows.Forms.TextBox();
+            this.txtFiltroCita = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.dgvCitas = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dtpFechaCita = new System.Windows.Forms.DateTimePicker();
+            this.lb_numCita = new System.Windows.Forms.Label();
+            this.cbUsuario = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCitas)).BeginInit();
@@ -90,12 +89,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dtpFechaCita);
+            this.groupBox1.Controls.Add(this.cbUsuario);
+            this.groupBox1.Controls.Add(this.lb_numCita);
+            this.groupBox1.Controls.Add(this.dtp_cita);
             this.groupBox1.Controls.Add(this.btnAgendarCita);
-            this.groupBox1.Controls.Add(this.btnBuscarUsuarioCita);
-            this.groupBox1.Controls.Add(this.txtUsuarioCita);
             this.groupBox1.Controls.Add(this.cbTipoServicio);
-            this.groupBox1.Controls.Add(this.txtIDCita);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
@@ -107,6 +105,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nueva Cita";
             // 
+            // dtp_cita
+            // 
+            this.dtp_cita.Location = new System.Drawing.Point(105, 115);
+            this.dtp_cita.Name = "dtp_cita";
+            this.dtp_cita.Size = new System.Drawing.Size(200, 20);
+            this.dtp_cita.TabIndex = 22;
+            // 
             // btnAgendarCita
             // 
             this.btnAgendarCita.Location = new System.Drawing.Point(104, 198);
@@ -116,23 +121,6 @@
             this.btnAgendarCita.Text = "Agendar cita";
             this.btnAgendarCita.UseVisualStyleBackColor = true;
             this.btnAgendarCita.Click += new System.EventHandler(this.btnAgendarCita_Click);
-            // 
-            // btnBuscarUsuarioCita
-            // 
-            this.btnBuscarUsuarioCita.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarUsuarioCita.Location = new System.Drawing.Point(290, 152);
-            this.btnBuscarUsuarioCita.Name = "btnBuscarUsuarioCita";
-            this.btnBuscarUsuarioCita.Size = new System.Drawing.Size(45, 23);
-            this.btnBuscarUsuarioCita.TabIndex = 21;
-            this.btnBuscarUsuarioCita.Text = "...";
-            this.btnBuscarUsuarioCita.UseVisualStyleBackColor = true;
-            // 
-            // txtUsuarioCita
-            // 
-            this.txtUsuarioCita.Location = new System.Drawing.Point(104, 154);
-            this.txtUsuarioCita.Name = "txtUsuarioCita";
-            this.txtUsuarioCita.Size = new System.Drawing.Size(171, 20);
-            this.txtUsuarioCita.TabIndex = 20;
             // 
             // cbTipoServicio
             // 
@@ -145,17 +133,10 @@
             this.cbTipoServicio.Size = new System.Drawing.Size(201, 21);
             this.cbTipoServicio.TabIndex = 1;
             // 
-            // txtIDCita
-            // 
-            this.txtIDCita.Location = new System.Drawing.Point(104, 30);
-            this.txtIDCita.Name = "txtIDCita";
-            this.txtIDCita.Size = new System.Drawing.Size(100, 20);
-            this.txtIDCita.TabIndex = 0;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnBuscarCita);
-            this.groupBox2.Controls.Add(this.txtFiltroMascotas);
+            this.groupBox2.Controls.Add(this.txtFiltroCita);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.dgvCitas);
             this.groupBox2.Location = new System.Drawing.Point(417, 28);
@@ -167,28 +148,29 @@
             // 
             // btnBuscarCita
             // 
-            this.btnBuscarCita.Location = new System.Drawing.Point(196, 29);
+            this.btnBuscarCita.Location = new System.Drawing.Point(506, 29);
             this.btnBuscarCita.Name = "btnBuscarCita";
             this.btnBuscarCita.Size = new System.Drawing.Size(75, 23);
             this.btnBuscarCita.TabIndex = 6;
             this.btnBuscarCita.Text = "Buscar";
             this.btnBuscarCita.UseVisualStyleBackColor = true;
+            this.btnBuscarCita.Click += new System.EventHandler(this.btnBuscarCita_Click_1);
             // 
-            // txtFiltroMascotas
+            // txtFiltroCita
             // 
-            this.txtFiltroMascotas.Location = new System.Drawing.Point(63, 31);
-            this.txtFiltroMascotas.Name = "txtFiltroMascotas";
-            this.txtFiltroMascotas.Size = new System.Drawing.Size(99, 20);
-            this.txtFiltroMascotas.TabIndex = 5;
+            this.txtFiltroCita.Location = new System.Drawing.Point(98, 31);
+            this.txtFiltroCita.Name = "txtFiltroCita";
+            this.txtFiltroCita.Size = new System.Drawing.Size(402, 20);
+            this.txtFiltroCita.TabIndex = 5;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(18, 34);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.Size = new System.Drawing.Size(74, 13);
             this.label9.TabIndex = 20;
-            this.label9.Text = "N° cita";
+            this.label9.Text = "Cedula cliente";
             // 
             // dgvCitas
             // 
@@ -208,12 +190,23 @@
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
             // 
-            // dtpFechaCita
+            // lb_numCita
             // 
-            this.dtpFechaCita.Location = new System.Drawing.Point(105, 115);
-            this.dtpFechaCita.Name = "dtpFechaCita";
-            this.dtpFechaCita.Size = new System.Drawing.Size(200, 20);
-            this.dtpFechaCita.TabIndex = 22;
+            this.lb_numCita.AutoSize = true;
+            this.lb_numCita.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_numCita.Location = new System.Drawing.Point(104, 34);
+            this.lb_numCita.Name = "lb_numCita";
+            this.lb_numCita.Size = new System.Drawing.Size(51, 16);
+            this.lb_numCita.TabIndex = 23;
+            this.lb_numCita.Text = "label5";
+            // 
+            // cbUsuario
+            // 
+            this.cbUsuario.FormattingEnabled = true;
+            this.cbUsuario.Location = new System.Drawing.Point(107, 154);
+            this.cbUsuario.Name = "cbUsuario";
+            this.cbUsuario.Size = new System.Drawing.Size(198, 21);
+            this.cbUsuario.TabIndex = 24;
             // 
             // FRMCitas
             // 
@@ -228,6 +221,7 @@
             this.Name = "FRMCitas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FRMCitas";
+            this.Load += new System.EventHandler(this.FRMCitas_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -245,17 +239,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtIDCita;
         private System.Windows.Forms.ComboBox cbTipoServicio;
-        private System.Windows.Forms.Button btnBuscarUsuarioCita;
-        private System.Windows.Forms.TextBox txtUsuarioCita;
         private System.Windows.Forms.Button btnAgendarCita;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnBuscarCita;
-        private System.Windows.Forms.TextBox txtFiltroMascotas;
+        private System.Windows.Forms.TextBox txtFiltroCita;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dgvCitas;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DateTimePicker dtpFechaCita;
+        private System.Windows.Forms.DateTimePicker dtp_cita;
+        private System.Windows.Forms.Label lb_numCita;
+        private System.Windows.Forms.ComboBox cbUsuario;
     }
 }
