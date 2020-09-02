@@ -100,7 +100,7 @@ namespace Datos
                         mascota.nombremascota = reader["NombreMascota"].ToString();
                         mascota.especie = reader["Especie"].ToString();
                         mascota.raza = reader["Raza"].ToString();
-                        mascota.nacimiento = int.Parse(reader["Nacimiento"].ToString());
+                        mascota.nacimiento = DateTime.Parse(reader["Nacimiento"].ToString());
                         mascota.genero = reader["Genero"].ToString();
                         mascota.idUsuario = int.Parse(reader["IDUsuario"].ToString());
                     }

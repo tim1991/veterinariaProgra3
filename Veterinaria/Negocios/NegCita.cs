@@ -20,9 +20,9 @@ namespace Negocios
             return conse;
         }
 
-        public void AgregarCita(Cita cita)
+        public bool AgregarCita(Cita cita)
         {
-            accionesCitas.NuevaCita(cita);
+           return  accionesCitas.NuevaCita(cita);
         }
 
         public List<Cita> ListarCita()
