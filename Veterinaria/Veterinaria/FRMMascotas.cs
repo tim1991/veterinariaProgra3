@@ -15,6 +15,7 @@ namespace Veterinaria
     public partial class FRMMascotas : Form
     {
         NegMascota accionesMascotas = new NegMascota();
+        NegUsuario accionesUsuario = new NegUsuario();
 
         private int v_idMascota = 0;
 
@@ -22,6 +23,7 @@ namespace Veterinaria
         {
             InitializeComponent();
             cargarMascotas();
+            cargarUsuarios();
         }
 
         #region metodos
@@ -35,7 +37,6 @@ namespace Veterinaria
             txtRaza.Text = String.Empty;
             dtpNacimiento.Text = String.Empty;
             cbGenero.Text = String.Empty;
-            txtUsuarioMascota.Text = String.Empty;
         }
 
         public void cargarMascotas()
@@ -47,16 +48,15 @@ namespace Veterinaria
         public void m_agregarMascota()
         {
             Mascota nuevaMascota = new Mascota();
-
+            Usuario selectedUsusario = (Usuario)cbUsuario.SelectedItem;
             try
             {
-                nuevaMascota.idmascota = int.Parse(txtIDMascota.Text);
                 nuevaMascota.nombremascota = txtNombreMascota.Text;
                 nuevaMascota.especie = txtEspecie.Text;
                 nuevaMascota.raza = txtRaza.Text;
                 nuevaMascota.nacimiento = dtpNacimiento.Value;
                 nuevaMascota.genero = cbGenero.Text;
-                nuevaMascota.idUsuario = int.Parse(txtUsuarioMascota.Text);
+                nuevaMascota.idUsuario = selectedUsusario.idUsuario;
                 accionesMascotas.AgregarMascota(nuevaMascota);
                 limpiarCampos();
                 cargarMascotas();
@@ -84,7 +84,7 @@ namespace Veterinaria
                 txtRaza.Text = mascota.raza.ToString();
                 dtpNacimiento.Text = mascota.nacimiento.ToString();
                 cbGenero.Text = mascota.genero.ToString();
-                txtUsuarioMascota.Text = mascota.idUsuario.ToString();
+                cbUsuario.SelectedItem  = mascota.idUsuario;
             }
             catch (Exception error)
             {
@@ -97,14 +97,14 @@ namespace Veterinaria
             try
             {
                 Mascota mascota = new Mascota();
-
+                Usuario selectedUsusario = (Usuario)cbUsuario.SelectedItem;
                 mascota.idmascota = int.Parse(txtIDMascota.Text);
                 mascota.nombremascota = txtNombreMascota.Text;
                 mascota.especie = txtEspecie.Text;
                 mascota.raza = txtRaza.Text;
                 mascota.nacimiento = dtpNacimiento.Value;
                 mascota.genero = cbGenero.Text;
-                mascota.idUsuario = int.Parse(txtUsuarioMascota.Text);
+                mascota.idUsuario = selectedUsusario.idUsuario;
 
                 bool actualizar = accionesMascotas.actualizarMascota(mascota);
 
@@ -134,12 +134,6 @@ namespace Veterinaria
                 Mascota mascota = new Mascota();
 
                 mascota.idmascota = int.Parse(txtIDMascota.Text);
-                mascota.nombremascota = txtNombreMascota.Text;
-                mascota.especie = txtEspecie.Text;
-                mascota.raza = txtRaza.Text;
-                mascota.nacimiento = dtpNacimiento.Value;
-                mascota.genero = cbGenero.Text;
-                mascota.idUsuario = int.Parse(txtUsuarioMascota.Text);
 
                 bool borrar = accionesMascotas.eliminarMascota(mascota);
 
@@ -187,6 +181,20 @@ namespace Veterinaria
         private void btn_eliminarMascota_Click(object sender, EventArgs e)
         {
             m_eliminarMascota();
+        }
+
+        public void cargarUsuarios()
+        {
+            List<Usuario> litaUsuarios = accionesUsuario.ListarUsuarios();
+            cbUsuario.DataSource = litaUsuarios;
+            cbUsuario.DisplayMember = "Nombre";
+            cbUsuario.ValueMember = "IdUsuario";
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

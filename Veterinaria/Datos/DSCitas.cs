@@ -87,6 +87,7 @@ namespace Datos
                         cita.servicio = reader["Servicio"].ToString();
                         cita.fechacita = DateTime.Parse(reader["FechaCita"].ToString());
                         cita.idUsuario = int.Parse(reader["IDUsuario"].ToString());
+                        cita.nombrePersona = reader["NombrePersona"].ToString();
                         citaList.Add(cita);
                     }
                 }
@@ -103,33 +104,33 @@ namespace Datos
             return citaList;
         }
 
-        public Cita BuscarCita(int idCita)
+        public List<Cita> BuscarCita(int idCita)
         {
+            List<Cita> citaList = new List<Cita>();
             Cita cita = null;
-
             try
             {
                 if (Open())
                 {
                     vCmd = new SqlCommand("buscarCita", vCnx);
                     vCmd.CommandType = CommandType.StoredProcedure;
-                    vCmd.Parameters.Add("@IdCita", SqlDbType.Int).Value = idCita;
-
+                    vCmd.Parameters.Add("@Cedula", SqlDbType.Int).Value = idCita;
                     SqlDataReader reader = vCmd.ExecuteReader();
-
                     while (reader.Read())
                     {
+
                         cita = new Cita();
                         cita.idcita = int.Parse(reader["IdCita"].ToString());
                         cita.servicio = reader["Servicio"].ToString();
                         cita.fechacita = DateTime.Parse(reader["FechaCita"].ToString());
                         cita.idUsuario = int.Parse(reader["IDUsuario"].ToString());
+                        cita.nombrePersona = reader["NombrePersona"].ToString();
+                        citaList.Add(cita);
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception)
             {
-                
             }
 
             finally
@@ -137,7 +138,9 @@ namespace Datos
                 Close();
             }
 
-            return cita;
+            return citaList;
         }
+
+
     }
 }

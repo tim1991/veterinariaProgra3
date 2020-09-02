@@ -15,6 +15,7 @@ namespace Veterinaria
     public partial class FRMCitas : Form
     {
         NegCita accionesCitas = new NegCita();
+        NegUsuario accionesUsuario = new NegUsuario();
 
         private int v_consecutivo = 0;
         private int v_idCita = 0;
@@ -25,6 +26,7 @@ namespace Veterinaria
             v_consecutivo = accionesCitas.consecutivoCita();
             lb_numCita.Text = v_consecutivo.ToString();
             cargarCitas();
+            cargarUsuarios();
         }
 
         #region metodos
@@ -32,7 +34,6 @@ namespace Veterinaria
         public void limpiarCampos()
         {
             cbTipoServicio.Text = String.Empty;
-            txtUsuarioCita.Text = String.Empty;
         }
 
         public void cargarCitas()
@@ -47,10 +48,12 @@ namespace Veterinaria
 
             try
             {
+
+                Usuario selectedUsusario = (Usuario)cbUsuario.SelectedItem;
                 nuevaCita.idcita = int.Parse(lb_numCita.Text);
                 nuevaCita.servicio = cbTipoServicio.Text;
                 nuevaCita.fechacita = dtp_cita.Value;
-                nuevaCita.idUsuario = int.Parse(txtUsuarioCita.Text);
+                nuevaCita.idUsuario = selectedUsusario.idUsuario;
 
                 bool insertar = accionesCitas.AgregarCita(nuevaCita);
 
@@ -78,13 +81,13 @@ namespace Veterinaria
         {
             int idCita = int.Parse(txtFiltroCita.Text);
 
-            Cita cita = accionesCitas.buscarCita(idCita);
+            List<Cita> cita = accionesCitas.buscarCita(idCita);
 
             try
             {
-                v_idCita = cita.idUsuario;
+               
 
-                //dgvCitas.DataSource = buscarCita;
+                dgvCitas.DataSource = cita;
 
             }
             catch (Exception error)
@@ -100,9 +103,24 @@ namespace Veterinaria
             m_agendarCita();
         }
 
-        private void btnBuscarCita_Click(object sender, EventArgs e)
+        
+        private void FRMCitas_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBuscarCita_Click_1(object sender, EventArgs e)
         {
             m_buscarCita();
+        }
+
+        public void cargarUsuarios()
+        {
+            List<Usuario> litaUsuarios = accionesUsuario.ListarUsuarios();
+            cbUsuario.DataSource = litaUsuarios;
+            cbUsuario.DisplayMember = "Nombre";
+            cbUsuario.ValueMember = "IdUsuario";
+
         }
     }
 }

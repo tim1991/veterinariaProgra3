@@ -81,6 +81,8 @@ create table DetalleFactura
 )
 go
 
+select * from Usuario
+
 --Procedimientos almacenados listar
 
 CREATE PROCEDURE listarRoles
@@ -208,20 +210,23 @@ go
 
 create procedure mostrarCita
 as
-select * from Cita
+select Cita.IdCita,Cita.FechaCita,Cita.Servicio,Cita.IDUsuario,Usuario.NombrePersona from Cita 
+inner join Usuario on Usuario.IDUsuario = Cita.IDUsuario
 go
 
 create procedure buscarCita
-@IdCita int
+@Cedula int
 as
-select * from Cita where IdCita = @IdCita
+select Cita.IdCita,Cita.FechaCita,Cita.Servicio,Cita.IDUsuario,Usuario.NombrePersona from Cita 
+inner join Usuario on Usuario.IDUsuario = Cita.IDUsuario
+where Usuario.Cedula = @Cedula
 go
 
 
 
 --Procedimientos almacenados para Producto
 
-alter procedure agregarProducto
+create procedure agregarProducto
 @NombreProducto varchar(70),
 @Precio money
 as
@@ -229,7 +234,7 @@ insert into Productos(NombreProducto, Precio)
 values(@NombreProducto, @Precio)
 go
 
-alter procedure actualizarProducto
+create procedure actualizarProducto
 @NombreProducto varchar(70),
 @Precio money
 as

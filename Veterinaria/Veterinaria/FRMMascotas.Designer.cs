@@ -35,9 +35,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dgvMascotas = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpNacimiento = new System.Windows.Forms.DateTimePicker();
             this.btn_eliminarMascota = new System.Windows.Forms.Button();
             this.btn_actualizarMascota = new System.Windows.Forms.Button();
-            this.txtUsuarioMascota = new System.Windows.Forms.TextBox();
             this.cbGenero = new System.Windows.Forms.ComboBox();
             this.txtIDMascota = new System.Windows.Forms.TextBox();
             this.btnAgregarMascota = new System.Windows.Forms.Button();
@@ -51,7 +51,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtpNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.cbUsuario = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMascotas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -117,10 +117,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbUsuario);
             this.groupBox1.Controls.Add(this.dtpNacimiento);
             this.groupBox1.Controls.Add(this.btn_eliminarMascota);
             this.groupBox1.Controls.Add(this.btn_actualizarMascota);
-            this.groupBox1.Controls.Add(this.txtUsuarioMascota);
             this.groupBox1.Controls.Add(this.cbGenero);
             this.groupBox1.Controls.Add(this.txtIDMascota);
             this.groupBox1.Controls.Add(this.btnAgregarMascota);
@@ -141,6 +141,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Agregar mascota";
             // 
+            // dtpNacimiento
+            // 
+            this.dtpNacimiento.Location = new System.Drawing.Point(25, 115);
+            this.dtpNacimiento.Name = "dtpNacimiento";
+            this.dtpNacimiento.Size = new System.Drawing.Size(200, 20);
+            this.dtpNacimiento.TabIndex = 19;
+            // 
             // btn_eliminarMascota
             // 
             this.btn_eliminarMascota.Location = new System.Drawing.Point(655, 124);
@@ -160,13 +167,6 @@
             this.btn_actualizarMascota.Text = "Actualizar";
             this.btn_actualizarMascota.UseVisualStyleBackColor = true;
             this.btn_actualizarMascota.Click += new System.EventHandler(this.btn_actualizarMascota_Click);
-            // 
-            // txtUsuarioMascota
-            // 
-            this.txtUsuarioMascota.Location = new System.Drawing.Point(411, 115);
-            this.txtUsuarioMascota.Name = "txtUsuarioMascota";
-            this.txtUsuarioMascota.Size = new System.Drawing.Size(171, 20);
-            this.txtUsuarioMascota.TabIndex = 7;
             // 
             // cbGenero
             // 
@@ -280,12 +280,14 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "ID Mascota";
             // 
-            // dtpNacimiento
+            // cbUsuario
             // 
-            this.dtpNacimiento.Location = new System.Drawing.Point(25, 115);
-            this.dtpNacimiento.Name = "dtpNacimiento";
-            this.dtpNacimiento.Size = new System.Drawing.Size(200, 20);
-            this.dtpNacimiento.TabIndex = 19;
+            this.cbUsuario.FormattingEnabled = true;
+            this.cbUsuario.Location = new System.Drawing.Point(411, 114);
+            this.cbUsuario.Name = "cbUsuario";
+            this.cbUsuario.Size = new System.Drawing.Size(203, 21);
+            this.cbUsuario.TabIndex = 20;
+            this.cbUsuario.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // FRMMascotas
             // 
@@ -328,11 +330,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtUsuarioMascota;
         private System.Windows.Forms.ComboBox cbGenero;
         private System.Windows.Forms.Button btn_refresh;
         private System.Windows.Forms.Button btn_eliminarMascota;
         private System.Windows.Forms.Button btn_actualizarMascota;
         private System.Windows.Forms.DateTimePicker dtpNacimiento;
+        private System.Windows.Forms.ComboBox cbUsuario;
     }
 }
