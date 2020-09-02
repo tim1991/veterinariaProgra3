@@ -35,6 +35,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dgvMascotas = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbUsuario = new System.Windows.Forms.ComboBox();
             this.dtpNacimiento = new System.Windows.Forms.DateTimePicker();
             this.btn_eliminarMascota = new System.Windows.Forms.Button();
             this.btn_actualizarMascota = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbUsuario = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMascotas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -141,6 +141,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Agregar mascota";
             // 
+            // cbUsuario
+            // 
+            this.cbUsuario.FormattingEnabled = true;
+            this.cbUsuario.Location = new System.Drawing.Point(411, 114);
+            this.cbUsuario.Name = "cbUsuario";
+            this.cbUsuario.Size = new System.Drawing.Size(203, 21);
+            this.cbUsuario.TabIndex = 20;
+            this.cbUsuario.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // dtpNacimiento
             // 
             this.dtpNacimiento.Location = new System.Drawing.Point(25, 115);
@@ -181,6 +190,7 @@
             // 
             // txtIDMascota
             // 
+            this.txtIDMascota.Enabled = false;
             this.txtIDMascota.Location = new System.Drawing.Point(25, 64);
             this.txtIDMascota.Name = "txtIDMascota";
             this.txtIDMascota.Size = new System.Drawing.Size(100, 20);
@@ -279,15 +289,6 @@
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "ID Mascota";
-            // 
-            // cbUsuario
-            // 
-            this.cbUsuario.FormattingEnabled = true;
-            this.cbUsuario.Location = new System.Drawing.Point(411, 114);
-            this.cbUsuario.Name = "cbUsuario";
-            this.cbUsuario.Size = new System.Drawing.Size(203, 21);
-            this.cbUsuario.TabIndex = 20;
-            this.cbUsuario.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // FRMMascotas
             // 
