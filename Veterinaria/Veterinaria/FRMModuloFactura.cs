@@ -198,7 +198,7 @@ namespace Veterinaria
 
                 cargarDetalles();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -312,7 +312,6 @@ namespace Veterinaria
         private void btnBuscarProd_Click(object sender, EventArgs e)
         {
             buscarProducto();
-          
         }
 
         private void txtIVAProd_TextChanged(object sender, EventArgs e)
@@ -324,8 +323,6 @@ namespace Veterinaria
         {
             realizarCompra();
         }
-
-      
 
         private void btnAgregarProd_Click_1(object sender, EventArgs e)
         {

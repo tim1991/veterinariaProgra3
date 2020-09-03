@@ -20,9 +20,9 @@ namespace Negocios
             return conse;
         }
 
-        public void AgregarCita(Cita cita)
+        public bool AgregarCita(Cita cita)
         {
-            accionesCitas.NuevaCita(cita);
+           return  accionesCitas.NuevaCita(cita);
         }
 
         public List<Cita> ListarCita()
@@ -32,7 +32,7 @@ namespace Negocios
             return cita;
         }
 
-        public Cita buscarCita(int idCita)
+        public List<Cita> buscarCita(int idCita)
         {
             return accionesCitas.BuscarCita(idCita);
         }

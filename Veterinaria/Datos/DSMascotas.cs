@@ -100,7 +100,7 @@ namespace Datos
                         mascota.nombremascota = reader["NombreMascota"].ToString();
                         mascota.especie = reader["Especie"].ToString();
                         mascota.raza = reader["Raza"].ToString();
-                        mascota.nacimiento = int.Parse(reader["Nacimiento"].ToString());
+                        mascota.nacimiento = DateTime.Parse(reader["Nacimiento"].ToString());
                         mascota.genero = reader["Genero"].ToString();
                         mascota.idUsuario = int.Parse(reader["IDUsuario"].ToString());
                     }
@@ -134,7 +134,7 @@ namespace Datos
                     vCmd.Parameters.Add("@NombreMascota", SqlDbType.NVarChar).Value = mascot.nombremascota;
                     vCmd.Parameters.Add("@Especie", SqlDbType.NVarChar).Value = mascot.especie;
                     vCmd.Parameters.Add("@Raza", SqlDbType.NVarChar).Value = mascot.raza;
-                    vCmd.Parameters.Add("@Nacimiento", SqlDbType.Int).Value = mascot.nacimiento;
+                    vCmd.Parameters.Add("@Nacimiento", SqlDbType.DateTime).Value = mascot.nacimiento;
                     vCmd.Parameters.Add("@Genero", SqlDbType.NVarChar).Value = mascot.genero;
                     vCmd.Parameters.Add("@IDUsuario", SqlDbType.Int).Value = mascot.idUsuario;
 
